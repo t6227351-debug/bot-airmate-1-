@@ -6679,28 +6679,17 @@ async function submitWebRequest() {
     submitted_at: new Date().toISOString()
   };
   try {
-    /* Primero intentar web_requests (si tiene columnas) */
-    let saved = false;
-    try {
-      const { error: e1 } = await _SB.from('web_requests').insert([{
-        business_name: business, business_type: type||null,
-        instagram: extraData.instagram||null, google_maps: extraData.google_maps||null,
-        phone, email, description: extraData.description||null, status:'pending'
-      }]);
-      if (!e1) saved = true;
-    } catch(_) {}
-
-    /* Fallback: guardar en clients con plan='web_request' */
-    if (!saved) {
-      const { error } = await _SB.from('clients').insert([{
-        name: business + ' | ' + phone,
-        email: email,
-        plan: 'web_request',
-        active: false,
-        password: JSON.stringify(extraData)
-      }]);
-      if (error) throw error;
-    }
+    const { error } = await _SB.from('web_requests').insert([{
+      business_name: business,
+      business_type: type || null,
+      instagram: extraData.instagram || null,
+      google_maps: extraData.google_maps || null,
+      phone,
+      email,
+      description: extraData.description || null,
+      status: 'pending'
+    }]);
+    if (error) throw error;
     showToast('✅ ¡Solicitud enviada! Te contactamos en menos de 24h.');
     ['wf-business','wf-type','wf-instagram','wf-gmaps','wf-phone','wf-email','wf-desc'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
@@ -6732,34 +6721,9 @@ async function loadWebRequests() {
     Cargando solicitudes…
   </div>`;
   try {
-    let rows = [];
-    try {
-      const { data: wr } = await _SB.from('web_requests').select('*').order('created_at',{ascending:false});
-      if (wr && wr.length && wr[0].business_name !== undefined) rows = wr;
-    } catch(_) {}
-
-    const { data: cr } = await _SB.from('clients').select('*').eq('plan','web_request').order('created_at',{ascending:false});
-    if (cr && cr.length) {
-      const mapped = cr.map(c => {
-        let extra = {};
-        try { extra = JSON.parse(c.password || '{}'); } catch(_) {}
-        const nameParts = (c.name || '').split(' | ');
-        return { id: c.id, _source:'clients',
-          business_name: nameParts[0] || c.name,
-          phone: nameParts[1] || extra.phone || '',
-          email: c.email,
-          business_type: extra.business_type || '',
-          instagram: extra.instagram || '',
-          google_maps: extra.google_maps || '',
-          description: extra.description || '',
-          status: extra.status || 'pending',
-          created_at: c.created_at
-        };
-      });
-      rows = [...rows, ...mapped].sort((a,b) => new Date(b.created_at)-new Date(a.created_at));
-    }
-
-    _wrAllRows = rows;
+    const { data: rows, error } = await _SB.from('web_requests').select('*').order('created_at',{ascending:false});
+    if (error) throw error;
+    _wrAllRows = rows || [];
 
     /* Stats */
     const total   = rows.length;
@@ -6858,7 +6822,7 @@ function renderWebRequests(rows) {
         </div>
         ${r.description ? `<div style="background:var(--gray-50);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--gray-700);line-height:1.6;margin-bottom:14px;">"${r.description}"</div>` : ''}
         <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          ${!isDone ? `<button onclick="markWebRequestDone('${r.id}','${r._source||'web_requests'}')" style="padding:9px 20px;background:var(--success);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">✅ Marcar gestionada</button>` : ''}
+          ${!isDone ? `<button onclick="markWebRequestDone('${r.id}')" style="padding:9px 20px;background:var(--success);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">✅ Marcar gestionada</button>` : ''}
           <a href="mailto:${r.email}" style="padding:9px 20px;background:var(--accent-light);color:var(--accent);border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:6px;">✉️ Enviar email</a>
         </div>
       </div>
@@ -6875,16 +6839,8 @@ function toggleWrCard(id) {
   if (chevron) chevron.style.transform = open ? 'rotate(0deg)' : 'rotate(90deg)';
 }
 
-async function markWebRequestDone(id, source) {
-  if (source === 'clients') {
-    const { data } = await _SB.from('clients').select('password').eq('id',id).single();
-    let extra = {};
-    try { extra = JSON.parse(data?.password || '{}'); } catch(_) {}
-    extra.status = 'done';
-    await _SB.from('clients').update({ password: JSON.stringify(extra) }).eq('id',id);
-  } else {
-    await _SB.from('web_requests').update({status:'done'}).eq('id',id);
-  }
+async function markWebRequestDone(id) {
+  await _SB.from('web_requests').update({ status: 'done' }).eq('id', id);
   loadWebRequests();
 }
 
