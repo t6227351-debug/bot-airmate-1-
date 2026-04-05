@@ -207,32 +207,57 @@
 
   function _fmt(raw) {
     if (!raw) return '';
-    const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
-    if (lines.length <= 1) {
-      return _esc(raw.trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    }
-    const isItem = l => /^[-•·🛍✨📍🕐💇💆🧖💪🏋🧘🥗🍽🏥🩺💊🧴👗👔👖👠👟🎁🛒✅➡️▪️▸]/.test(l) || /^\d+[.)]\s/.test(l);
-    const introLines = [];
-    const itemLines  = [];
-    let inList = false;
-    for (const l of lines) {
-      if (isItem(l)) { inList = true; itemLines.push(l); }
-      else if (!inList) { introLines.push(l); }
-      else { itemLines.push(l); }
-    }
     const esc = s => _esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+    // Separar bloques por línea en blanco
+    const blocks = raw.split(/\n{2,}/).map(b => b.trim()).filter(Boolean);
+
+    const isItem = l => /^[-•·*]\s/.test(l) || /^\d+[.)]\s/.test(l) ||
+      /^[🛍✨📍🕐💇💆🧖💪🏋🧘🥗🍽🏥🩺💊🧴👗👔👖👠👟🎁🛒✅➡️▪️▸]/.test(l);
+
+    const cleanItem = l => l.replace(/^[-•·*]\s*/, '').replace(/^\d+[.)]\s*/, '');
+
     let html = '';
-    if (introLines.length) html += `<p style="margin:0 0 8px 0">${introLines.map(esc).join('<br>')}</p>`;
-    if (itemLines.length) {
-      const lis = itemLines.map(l => {
-        const clean = l.replace(/^[-•·]\s*/, '');
-        return `<li style="padding:3px 0;line-height:1.45">${esc(clean)}</li>`;
-      }).join('');
-      html += `<ul style="margin:0;padding-left:0;list-style:none">${lis}</ul>`;
-    } else if (!introLines.length) {
-      html = lines.map(esc).join('<br>');
+    for (const block of blocks) {
+      const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+      if (lines.length === 0) continue;
+
+      // Si todas las líneas son items → lista compacta
+      if (lines.every(isItem)) {
+        html += '<ul style="margin:4px 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px">';
+        for (const l of lines) {
+          html += `<li style="display:flex;align-items:flex-start;gap:6px;line-height:1.5">
+            <span style="color:#22c55e;font-weight:900;flex-shrink:0;margin-top:1px">·</span>
+            <span>${esc(cleanItem(l))}</span>
+          </li>`;
+        }
+        html += '</ul>';
+      }
+      // Si la primera línea es texto y el resto son items → intro + lista
+      else if (lines.length > 1 && !isItem(lines[0]) && lines.slice(1).some(isItem)) {
+        html += `<p style="margin:0 0 7px 0;line-height:1.55">${esc(lines[0])}</p>`;
+        const rest = lines.slice(1);
+        html += '<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px">';
+        for (const l of rest) {
+          if (isItem(l)) {
+            html += `<li style="display:flex;align-items:flex-start;gap:6px;line-height:1.5">
+              <span style="color:#22c55e;font-weight:900;flex-shrink:0;margin-top:1px">·</span>
+              <span>${esc(cleanItem(l))}</span>
+            </li>`;
+          } else {
+            html += `<li style="line-height:1.55;padding-left:14px">${esc(l)}</li>`;
+          }
+        }
+        html += '</ul>';
+      }
+      // Párrafo de texto normal
+      else {
+        const text = lines.join(' ');
+        html += `<p style="margin:0 0 6px 0;line-height:1.6">${esc(text)}</p>`;
+      }
     }
-    return html;
+
+    return html.replace(/<p style="[^"]*"><\/p>/g, '');
   }
 
   function _addWACTA() {
