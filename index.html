@@ -2130,15 +2130,6 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   .lp-demo-grid { grid-template-columns:1fr 1fr !important; }
   .lp-section-title { font-size:1.6rem !important; }
 
-  /* ── Plan y pago — columna única en móvil ── */
-  #admin-plan [style*="repeat(3"],
-  #admin-plan [style*="grid-template-columns"] {
-    grid-template-columns:1fr !important;
-    gap:16px !important;
-  }
-  #plan-card-starter { border-radius:14px !important; border-right:1.5px solid #edf0f7 !important; margin:0 !important; }
-  #plan-card-lan { border-radius:14px !important; margin:0 !important; z-index:1 !important; }
-  #plan-card-plus { border-radius:14px !important; border-left:1.5px solid #edf0f7 !important; margin:0 !important; }
   /* ── Planes upgrade — una columna en móvil ── */
   #acc-upgrade-block [style*="grid-template-columns"] {
     grid-template-columns:1fr !important;
@@ -2395,6 +2386,22 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 
   <!-- ══ HERO ══ -->
   <section class="lp-hero" id="lp-hero-section">
+    <div class="lp-hero-bg"></div>
+    <canvas id="lp-globe-bg" aria-hidden="true"></canvas>
+    <div class="lp-hero-glow"></div>
+    <canvas id="lp-hero-canvas" aria-hidden="true"></canvas>
+    <div class="lp-particles" aria-hidden="true">
+      <div class="lp-particle" style="width:5px;height:5px;top:12%;left:8%;--dur:5s;--del:0s;"></div>
+      <div class="lp-particle" style="width:3px;height:3px;top:25%;left:20%;--dur:7s;--del:1s;"></div>
+      <div class="lp-particle" style="width:6px;height:6px;top:60%;left:5%;--dur:6s;--del:.5s;"></div>
+      <div class="lp-particle" style="width:4px;height:4px;top:80%;left:15%;--dur:8s;--del:2s;"></div>
+      <div class="lp-particle" style="width:3px;height:3px;top:10%;left:88%;--dur:6s;--del:.2s;"></div>
+      <div class="lp-particle" style="width:5px;height:5px;top:40%;left:92%;--dur:7s;--del:1.5s;"></div>
+      <div class="lp-particle" style="width:4px;height:4px;top:70%;left:85%;--dur:5s;--del:.8s;"></div>
+      <div class="lp-particle" style="width:3px;height:3px;top:90%;left:75%;--dur:9s;--del:0s;"></div>
+      <div class="lp-particle" style="width:6px;height:6px;top:30%;left:50%;--dur:6s;--del:2.5s;"></div>
+      <div class="lp-particle" style="width:3px;height:3px;top:55%;left:62%;--dur:8s;--del:1s;"></div>
+    </div>
 
     <div class="lp-hero-inner">
       <div>
@@ -2530,13 +2537,305 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     </div>
   </section>
 
-  <!-- CTA simple -->
-  <section style="background:linear-gradient(160deg,#060d1a,#0c1e3d);padding:60px 24px;text-align:center;">
+  <!-- ══ HOW IT WORKS ══ -->
+  <section class="lp-how-section">
+    <div class="lp-how-inner">
+      <div class="reveal" style="text-align:center;margin-bottom:0;">
+        <div class="lp-section-label">Cómo funciona</div>
+        <h2 class="lp-section-title lp-how-title" style="text-align:center;">De cero a agente<br>en <em>10 minutos</em></h2>
+        <p class="lp-section-sub lp-how-sub" style="margin:12px auto 0;text-align:center;">Sin programación. Sin servidores. Sin complicaciones.</p>
+      </div>
+      <div class="lp-steps">
+        <div class="lp-step reveal from-left">
+          <div class="lp-step-num">1</div>
+          <h3>Crea tu cuenta</h3>
+          <p>Elige tu plan y accede al panel en segundos. Sin tarjeta de crédito para empezar.</p>
+        </div>
+        <div class="lp-step reveal delay-1">
+          <div class="lp-step-num">2</div>
+          <h3>Configura tu agente</h3>
+          <p>Añade los datos esenciales de tu negocio. El agente aprende y asesora desde el primer mensaje.</p>
+        </div>
+        <div class="lp-step reveal from-right delay-2">
+          <div class="lp-step-num">3</div>
+          <h3>Pega 2 líneas en tu web</h3>
+          <p>Copia el snippet y pégalo en WordPress, Wix, Shopify o HTML. El agente aparece al instante.</p>
+          <div style="margin-top:16px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;font-family:'Courier New',monospace;font-size:11px;line-height:1.9;color:#a8e6a0;overflow-x:auto;">
+            <span style="color:#6a9955;"><!-- Pega esto antes de &lt;/body&gt; --></span><br>
+            <span style="color:#82aaff;">&lt;script&gt;</span><br>
+            &nbsp;window.AIRMATE_CONFIG = {<br>
+            &nbsp;&nbsp;<span style="color:#f9c74f;">business_id</span>: <span style="color:#ce9178;">"mi-negocio"</span><br>
+            &nbsp;};<br>
+            <span style="color:#82aaff;">&lt;/script&gt;</span><br>
+            <span style="color:#82aaff;">&lt;script</span> <span style="color:#9cdcfe;">src</span>=<span style="color:#ce9178;">"airmate-widget.js"</span><span style="color:#82aaff;">&gt;&lt;/script&gt;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BETA FOUNDERS ══ -->
+  <section class="lp-beta-section" id="lp-beta">
+    <div class="lp-beta-bg-glow"></div>
+    <div class="lp-beta-inner">
+      <div class="lp-beta-badge">⚡ OFERTA EXCLUSIVA DE LANZAMIENTO</div>
+      <h2 class="lp-beta-title">Los primeros <span class="lp-beta-highlight">5 usuarios</span><br>obtienen acceso gratuito</h2>
+      <p class="lp-beta-sub">1 agente completamente configurable · 7 días gratis · Sin tarjeta de crédito</p>
+      <div class="lp-beta-spots" id="beta-spots-block">
+        <div class="lp-beta-spots-bar">
+          <div class="lp-beta-spots-fill" id="beta-bar-fill" style="width:0%"></div>
+        </div>
+        <p class="lp-beta-spots-text" id="beta-spots-text">Cargando plazas…</p>
+      </div>
+      <div class="lp-beta-perks">
+        <div class="lp-beta-perk">✅ <span>1 agente con IA para tu negocio</span></div>
+        <div class="lp-beta-perk">✅ <span>Panel de configuración completo</span></div>
+        <div class="lp-beta-perk">✅ <span>Código de instalación listo para usar</span></div>
+        <div class="lp-beta-perk">✅ <span>Integración WhatsApp incluida</span></div>
+        <div class="lp-beta-perk">✅ <span>Sin suscripción durante 7 días</span></div>
+        <div class="lp-beta-perk">✅ <span>Soporte prioritario de fundadores</span></div>
+      </div>
+      <button class="lp-beta-cta" id="beta-cta-btn" onclick="showAuthRegister();document.getElementById('auth-screen')?.classList.remove('hidden')">
+        Quiero mi acceso gratuito →
+      </button>
+      <p class="lp-beta-disclaimer" id="beta-disclaimer">Quedan <strong id="beta-spots-left">…</strong> plazas disponibles. ¡No te quedes fuera!</p>
+    </div>
+  </section>
+
+  <!-- ══ PRICING ══ -->
+<!-- Sección de planes eliminada de la landing pública —
+     Los precios solo se muestran en el panel privado del owner -->
+
+  <!-- ══ FEATURES ══ -->
+  <section class="lp-features-section" id="lp-features">
+    <div class="lp-features-inner">
+
+      <!-- Intro con stats de impacto -->
+      <div class="lp-features-intro">
+        <div class="lp-features-intro-left reveal from-left">
+          <div class="lp-section-label">Por qué AIRMATE</div>
+          <h2>Tu negocio no puede<br>permitirse <em>perder un cliente</em></h2>
+          <p>Cada mensaje sin respuesta es una venta que se va a la competencia. AIRMATE atiende, asesora y cierra — a las 3 de la madrugada si hace falta.</p>
+          <button class="lp-btn-primary" onclick="openChat()" style="font-size:.9rem;padding:13px 28px;">Probarlo ahora — es gratis →</button>
+        </div>
+        <div class="lp-features-intro-right reveal from-right">
+          <div class="lp-feat-stat">
+            <div class="lp-feat-stat-num">+40%</div>
+            <div class="lp-feat-stat-label"><strong>Más conversiones</strong>Respuesta inmediata = cliente que no se enfría</div>
+          </div>
+          <div class="lp-feat-stat">
+            <div class="lp-feat-stat-num">×3</div>
+            <div class="lp-feat-stat-label"><strong>Más leads al día</strong>Sin ampliar equipo ni horario de atención</div>
+          </div>
+          <div class="lp-feat-stat">
+            <div class="lp-feat-stat-num">2'</div>
+            <div class="lp-feat-stat-label"><strong>De instalación</strong>2 líneas de código en cualquier web</div>
+          </div>
+          <div class="lp-feat-stat">
+            <div class="lp-feat-stat-num">24/7</div>
+            <div class="lp-feat-stat-label"><strong>Siempre activo</strong>Festivos, noches y fines de semana incluidos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de funcionalidades -->
+      <div class="lp-features-grid">
+        <div class="lp-feature-card reveal from-left">
+          <div class="lp-feature-icon">🎯</div>
+          <h4>Cierra ventas, no solo informa</h4>
+          <p>El agente maneja objeciones, propone alternativas y guía al cliente hacia la decisión — como haría tu mejor comercial.</p>
+        </div>
+        <div class="lp-feature-card reveal delay-1">
+          <div class="lp-feature-icon">⏰</div>
+          <h4>Disponible 24/7 sin coste extra</h4>
+          <p>A las 2 de la madrugada, en festivo o en Navidad. El agente nunca descansa, nunca se pone enfermo.</p>
+        </div>
+        <div class="lp-feature-card reveal from-right delay-2">
+          <div class="lp-feature-icon">💬</div>
+          <h4>Deriva a WhatsApp en el momento exacto</h4>
+          <p>Cuando el cliente está caliente, lo pasa a WhatsApp para cerrar. El bot no deja escapar la oportunidad.</p>
+        </div>
+        <div class="lp-feature-card reveal from-left delay-1">
+          <div class="lp-feature-icon">🧠</div>
+          <h4>Aprende de tu negocio al instante</h4>
+          <p>Le das tus productos, servicios y horarios — en minutos ya sabe todo lo que hay que saber sobre tu empresa.</p>
+        </div>
+        <div class="lp-feature-card reveal delay-2">
+          <div class="lp-feature-icon">⚡</div>
+          <h4>Sin código · Sin servidor · Sin riesgos</h4>
+          <p>Pega 2 líneas en WordPress, Wix, Shopify o HTML. Si no sabes, en 5 minutos te lo dejamos instalado.</p>
+        </div>
+        <div class="lp-feature-card reveal from-right delay-3">
+          <div class="lp-feature-icon">🎨</div>
+          <h4>Tu marca, tu identidad</h4>
+          <p>Color, nombre del agente y saludo personalizados. El cliente no nota que es automático — nota que es profesional.</p>
+        </div>
+        <div class="lp-feature-card reveal from-left delay-2">
+          <div class="lp-feature-icon">📊</div>
+          <h4>Panel de control completo</h4>
+          <p>Ve todo lo que preguntan tus clientes, detecta oportunidades y ajusta el agente con un clic desde el panel.</p>
+        </div>
+        <div class="lp-feature-card reveal delay-3">
+          <div class="lp-feature-icon">🔒</div>
+          <h4>Seguro y privado</h4>
+          <p>Tu clave de API nunca sale a la vista. Todo pasa por un proxy seguro. Datos de tus clientes protegidos.</p>
+        </div>
+        <div class="lp-feature-card reveal from-right delay-4">
+          <div class="lp-feature-icon">🌍</div>
+          <h4>Multiidioma automático</h4>
+          <p>El agente detecta el idioma del cliente y responde en el mismo al instante. Sin configurar nada.</p>
+          <div class="lp-lang-grid">
+            <span class="lp-lang">🇪🇸 Español</span>
+            <span class="lp-lang">🇬🇧 English</span>
+            <span class="lp-lang">🇫🇷 Français</span>
+            <span class="lp-lang">🇩🇪 Deutsch</span>
+            <span class="lp-lang">🇮🇹 Italiano</span>
+            <span class="lp-lang">🇵🇹 Português</span>
+            <span class="lp-lang">🇳🇱 Nederlands</span>
+            <span class="lp-lang">🇷🇺 Русский</span>
+            <span class="lp-lang">🇨🇳 中文</span>
+            <span class="lp-lang">🇯🇵 日本語</span>
+            <span class="lp-lang">🇦🇪 العربية</span>
+            <span class="lp-lang">+ más</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cierre con CTA y badges de confianza -->
+      <div class="lp-feature-cta-row reveal">
+        <button class="lp-btn-primary" onclick="openChat()" style="font-size:1rem;padding:16px 36px;">Quiero probar AIRMATE gratis →</button>
+        <p>Sin tarjeta de crédito · Sin permanencia · Listo en 2 minutos</p>
+        <div class="lp-feature-badge-row">
+          <div class="lp-feature-badge">✓ Instalación asistida</div>
+          <div class="lp-feature-badge">✓ Soporte en español</div>
+          <div class="lp-feature-badge">✓ Cancela cuando quieras</div>
+          <div class="lp-feature-badge">✓ Sin contrato</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="lp-testi-section">
+    <div class="lp-testi-inner">
+      <div class="reveal" style="text-align:center;">
+        <div class="lp-section-label">Testimonios</div>
+        <h2 class="lp-section-title lp-testi-title" style="text-align:center;">Lo que dicen<br>nuestros <em>clientes</em></h2>
+      </div>
+      <div class="lp-testi-grid">
+        <div class="lp-testi-card reveal from-left">
+          <div class="lp-testi-stars">★★★★★</div>
+          <p class="lp-testi-quote">"Lo instalé un viernes por la tarde. El lunes tenía 3 consultas de clientes que habían llegado el fin de semana. Antes esas oportunidades se perdían."</p>
+          <div class="lp-testi-author">
+            <img class="lp-testi-avatar" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&q=80" alt="María García" loading="lazy">
+            <div>
+              <div class="lp-testi-name">María García</div>
+              <div class="lp-testi-role">Dueña · Tienda de moda, Madrid</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-testi-card reveal delay-1">
+          <div class="lp-testi-stars">★★★★★</div>
+          <p class="lp-testi-quote">"El bot responde precios, disponibilidad y cómo llegar — exactamente lo que siempre nos preguntaban por teléfono. Ahora esas llamadas han bajado a la mitad."</p>
+          <div class="lp-testi-author">
+            <img class="lp-testi-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&q=80" alt="Carlos Ruiz" loading="lazy">
+            <div>
+              <div class="lp-testi-name">Carlos Ruiz</div>
+              <div class="lp-testi-role">Director · Centro médico, Barcelona</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-testi-card reveal from-right delay-2">
+          <div class="lp-testi-stars">★★★★★</div>
+          <p class="lp-testi-quote">"En 10 minutos estaba en marcha. Lo puse en la web del gimnasio y esa misma semana cerró 4 inscripciones que llegaron de noche. Por 30€ al mes es ridículamente barato."</p>
+          <div class="lp-testi-author">
+            <img class="lp-testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&q=80" alt="Jorge Pérez" loading="lazy">
+            <div>
+              <div class="lp-testi-name">Jorge Pérez</div>
+              <div class="lp-testi-role">Gerente · Gimnasio, Valencia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section style="background:#f8fafc;padding:100px 32px;">
+    <div style="max-width:720px;margin:0 auto;">
+      <div class="reveal" style="text-align:center;margin-bottom:56px;">
+        <div class="lp-section-label">Preguntas frecuentes</div>
+        <h2 class="lp-section-title" style="text-align:center;">Todo lo que<br>necesitas <em>saber</em></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <details class="lp-faq-item reveal" open>
+          <summary class="lp-faq-q">¿Funciona en cualquier web?</summary>
+          <p class="lp-faq-a">Sí. AIRMATE se instala con 2 líneas de código en WordPress, Wix, Shopify, Squarespace o cualquier web con HTML. Si no sabes cómo, te lo instalamos nosotros gratis.</p>
+        </details>
+
+        <details class="lp-faq-item reveal delay-1">
+          <summary class="lp-faq-q">¿Necesito conocimientos técnicos?</summary>
+          <p class="lp-faq-a">No. El panel es visual y en español. Escribes los productos, servicios y horarios de tu negocio — el agente aprende solo. La instalación en tu web es copiar y pegar.</p>
+        </details>
+
+        <details class="lp-faq-item reveal delay-2">
+          <summary class="lp-faq-q">¿Qué pasa si el bot no sabe responder algo?</summary>
+          <p class="lp-faq-a">El agente redirige al cliente a tu WhatsApp para que lo atiendas tú directamente. Nunca deja a un cliente sin respuesta ni inventa información.</p>
+        </details>
+
+        <details class="lp-faq-item reveal delay-3">
+          <summary class="lp-faq-q">¿Cuánto tiempo tarda en estar listo?</summary>
+          <p class="lp-faq-a">El panel de configuración tarda unos 10 minutos en rellenar. La instalación en tu web son 2 minutos. En menos de un cuarto de hora tu agente ya está atendiendo clientes.</p>
+        </details>
+
+        <details class="lp-faq-item reveal delay-1">
+          <summary class="lp-faq-q">¿Puedo cancelar cuando quiera?</summary>
+          <p class="lp-faq-a">Sí, sin permanencia ni penalizaciones. Cancelas desde el panel cuando quieras y se desactiva al final del período pagado.</p>
+        </details>
+
+        <details class="lp-faq-item reveal delay-2">
+          <summary class="lp-faq-q">¿Cuánto cuesta exactamente?</summary>
+          <p class="lp-faq-a">El Plan Ultimate parte de <strong>29,99€/mes</strong> (1 bot, 300 mensajes). El Plan PRO son <strong>39,99€/mes</strong> (2 bots, 1.000 mensajes). El Plan Advanced <strong>69,99€/mes</strong> (4 bots, 3.000 mensajes). Los primeros 5 usuarios tienen 7 días gratis sin tarjeta.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+  .lp-faq-item {
+    background:#fff;border-radius:16px;
+    box-shadow:0 2px 12px rgba(12,30,61,.06);
+    overflow:hidden;
+  }
+  .lp-faq-q {
+    list-style:none;padding:22px 26px;
+    font-size:15px;font-weight:700;color:#0c1e3d;
+    cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+    gap:16px;
+  }
+  .lp-faq-q::-webkit-details-marker{display:none;}
+  .lp-faq-q::after{content:'＋';font-size:18px;font-weight:400;color:#22c55e;flex-shrink:0;transition:transform .2s;}
+  details[open] .lp-faq-q::after{content:'－';}
+  .lp-faq-a {
+    padding:0 26px 22px;font-size:14px;
+    color:#5a6f88;line-height:1.75;
+    border-top:1px solid rgba(12,30,61,.06);
+    padding-top:16px;
+  }
+  </style>
+
+  <!-- ══ FINAL CTA ══ -->
+  <section class="lp-cta-section">
     <div class="reveal">
-      <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;font-weight:400;margin-bottom:12px;">¿Quieres este agente en tu web?</h2>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;margin-bottom:28px;">7 días gratis, sin tarjeta de crédito. Listo en 10 minutos.</p>
-      <button class="lp-btn-primary" onclick="switchPage('admin');showAuthRegister&&showAuthRegister();" style="font-size:1rem;padding:14px 36px;">Empezar gratis →</button>
-      <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,.25);">¿Dudas? <a href="https://wa.me/34646427613" target="_blank" style="color:rgba(255,255,255,.4);text-decoration:underline;">WhatsApp</a></p>
+      <h2 class="lp-cta-title">Empieza hoy.<br><em>Sin riesgos.</em></h2>
+      <p class="lp-cta-sub">Prueba el agente ahora mismo en la demo — sin registro ni tarjeta. Si te convence, estás a 10 minutos de tenerlo en tu web.</p>
+      <div class="lp-cta-btns">
+        <button class="lp-btn-primary" onclick="switchPage('admin');showAuthRegister&&showAuthRegister();" style="font-size:1rem;padding:16px 40px;">Empezar gratis — 7 días sin tarjeta →</button>
+      </div>
+      <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.3);">¿Tienes dudas? <a href="https://wa.me/34646427613?text=Hola%2C%20quiero%20contratar%20AIRMATE%20para%20mi%20negocio" target="_blank" style="color:rgba(255,255,255,.5);text-decoration:underline;">Escríbenos por WhatsApp</a> y te ayudamos.</p>
     </div>
   </section>
 
@@ -6055,7 +6354,7 @@ function renderUsersPanel() {
 </a>
 <script>
 
-/* ══ HERO NETWORK CANVAS ══ — eliminado */
+/* ══ HERO NETWORK CANVAS ══ */
 (function(){
   const canvas = document.getElementById('lp-hero-canvas');
   if (!canvas) return;
