@@ -2130,6 +2130,15 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   .lp-demo-grid { grid-template-columns:1fr 1fr !important; }
   .lp-section-title { font-size:1.6rem !important; }
 
+  /* ── Plan y pago — columna única en móvil ── */
+  #admin-plan [style*="repeat(3"],
+  #admin-plan [style*="grid-template-columns"] {
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+  #plan-card-starter { border-radius:14px !important; border-right:1.5px solid #edf0f7 !important; margin:0 !important; }
+  #plan-card-lan { border-radius:14px !important; margin:0 !important; z-index:1 !important; }
+  #plan-card-plus { border-radius:14px !important; border-left:1.5px solid #edf0f7 !important; margin:0 !important; }
   /* ── Planes upgrade — una columna en móvil ── */
   #acc-upgrade-block [style*="grid-template-columns"] {
     grid-template-columns:1fr !important;
@@ -2386,22 +2395,6 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 
   <!-- ══ HERO ══ -->
   <section class="lp-hero" id="lp-hero-section">
-    <div class="lp-hero-bg"></div>
-    <canvas id="lp-globe-bg" aria-hidden="true"></canvas>
-    <div class="lp-hero-glow"></div>
-    <canvas id="lp-hero-canvas" aria-hidden="true"></canvas>
-    <div class="lp-particles" aria-hidden="true">
-      <div class="lp-particle" style="width:5px;height:5px;top:12%;left:8%;--dur:5s;--del:0s;"></div>
-      <div class="lp-particle" style="width:3px;height:3px;top:25%;left:20%;--dur:7s;--del:1s;"></div>
-      <div class="lp-particle" style="width:6px;height:6px;top:60%;left:5%;--dur:6s;--del:.5s;"></div>
-      <div class="lp-particle" style="width:4px;height:4px;top:80%;left:15%;--dur:8s;--del:2s;"></div>
-      <div class="lp-particle" style="width:3px;height:3px;top:10%;left:88%;--dur:6s;--del:.2s;"></div>
-      <div class="lp-particle" style="width:5px;height:5px;top:40%;left:92%;--dur:7s;--del:1.5s;"></div>
-      <div class="lp-particle" style="width:4px;height:4px;top:70%;left:85%;--dur:5s;--del:.8s;"></div>
-      <div class="lp-particle" style="width:3px;height:3px;top:90%;left:75%;--dur:9s;--del:0s;"></div>
-      <div class="lp-particle" style="width:6px;height:6px;top:30%;left:50%;--dur:6s;--del:2.5s;"></div>
-      <div class="lp-particle" style="width:3px;height:3px;top:55%;left:62%;--dur:8s;--del:1s;"></div>
-    </div>
 
     <div class="lp-hero-inner">
       <div>
@@ -2537,7 +2530,18 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     </div>
   </section>
 
-  <!-- ══ HOW IT WORKS ══ -->
+  <!-- CTA simple -->
+  <section style="background:linear-gradient(160deg,#060d1a,#0c1e3d);padding:60px 24px;text-align:center;">
+    <div class="reveal">
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;font-weight:400;margin-bottom:12px;">¿Quieres este agente en tu web?</h2>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;margin-bottom:28px;">7 días gratis, sin tarjeta de crédito. Listo en 10 minutos.</p>
+      <button class="lp-btn-primary" onclick="switchPage('admin');showAuthRegister&&showAuthRegister();" style="font-size:1rem;padding:14px 36px;">Empezar gratis →</button>
+      <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,.25);">¿Dudas? <a href="https://wa.me/34646427613" target="_blank" style="color:rgba(255,255,255,.4);text-decoration:underline;">WhatsApp</a></p>
+    </div>
+  </section>
+
+  <!-- ══ HOW IT WORKS ══ (eliminado — simplificado) -->
+  <!--
   <section class="lp-how-section">
     <div class="lp-how-inner">
       <div class="reveal" style="text-align:center;margin-bottom:0;">
@@ -2838,6 +2842,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
       <p style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.3);">¿Tienes dudas? <a href="https://wa.me/34646427613?text=Hola%2C%20quiero%20contratar%20AIRMATE%20para%20mi%20negocio" target="_blank" style="color:rgba(255,255,255,.5);text-decoration:underline;">Escríbenos por WhatsApp</a> y te ayudamos.</p>
     </div>
   </section>
+  -->
 
 </div>
 
@@ -6354,7 +6359,7 @@ function renderUsersPanel() {
 </a>
 <script>
 
-/* ══ HERO NETWORK CANVAS ══ */
+/* ══ HERO NETWORK CANVAS ══ — eliminado */
 (function(){
   const canvas = document.getElementById('lp-hero-canvas');
   if (!canvas) return;
