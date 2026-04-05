@@ -3401,6 +3401,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
                   <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Mant. (€/mes)</th>
                   <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Estado</th>
                   <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Fecha</th>
+                  <th style="padding:10px 16px;text-align:left;color:#7a8ea8;font-weight:600;">Observaciones</th>
                   <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Acciones</th>
                 </tr>
               </thead>
@@ -5896,6 +5897,7 @@ async function renderOwnerDashboard() {
             <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1d4ed8;">${r.web_maintenance>0?r.web_maintenance+'€/mes':'—'}</td>
             <td style="padding:10px 16px;text-align:center;"><span class="pill ${statusPill[r.status]||'pill-orange'}">${statusLabel[r.status]||r.status}</span></td>
             <td style="padding:10px 16px;text-align:center;color:#8a97b0;font-size:12px">${new Date(r.created_at).toLocaleDateString('es-ES')}</td>
+            <td style="padding:10px 16px;font-size:12px;color:#64748b;max-width:160px;">${r.notes ? `<span title="${escHtml(r.notes)}" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(r.notes)}</span>` : '<span style="color:#c4cdd8;">—</span>'}</td>
             <td style="padding:10px 16px;">
               <button class="ow-btn ow-btn-edit" onclick="owOpenWebModal('${r.id}','${escHtml(r.business_name||'')}',${r.web_delivery_price||0},${r.web_maintenance||0},'${r.status||'pending'}','${escHtml(r.notes||'')}')">Editar</button>
             </td>
