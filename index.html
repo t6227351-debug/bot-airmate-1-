@@ -1598,60 +1598,6 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
 }
 #wa-float-btn:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(37,211,102,.65);}
 
-/* ── LOADER ── */
-#lp-loader{
-  position:fixed;inset:0;z-index:999999;
-  background:#060d1f;
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .9s ease,visibility .9s ease;
-  overflow:hidden;
-}
-#lp-loader-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
-#lp-loader.lp-loader-out{opacity:0;visibility:hidden;pointer-events:none;}
-.lp-loader-sweep{
-  position:absolute;inset:0;
-  background:linear-gradient(105deg,transparent 30%,rgba(34,197,94,.07) 50%,transparent 70%);
-  animation:lp-sweep 1.8s ease-in-out infinite;
-}
-@keyframes lp-sweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
-.lp-loader-inner{position:relative;z-index:2;text-align:center;}
-.lp-loader-icon{
-  width:72px;height:72px;border-radius:20px;
-  background:linear-gradient(135deg,#0c1e3d,#1a3560);
-  border:1px solid rgba(34,197,94,.3);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 20px;
-  box-shadow:0 0 40px rgba(34,197,94,.25);
-  animation:lp-icon-pulse 1.4s ease-in-out infinite;
-}
-@keyframes lp-icon-pulse{0%,100%{box-shadow:0 0 30px rgba(34,197,94,.2)}50%{box-shadow:0 0 60px rgba(34,197,94,.5)}}
-.lp-loader-name{
-  font-family:var(--font-body);font-size:1.1rem;font-weight:800;
-  color:#fff;letter-spacing:.25em;text-transform:uppercase;margin-bottom:6px;
-}
-.lp-loader-tag{
-  font-size:.75rem;color:rgba(255,255,255,.35);letter-spacing:.12em;
-  text-transform:uppercase;margin-bottom:32px;
-}
-.lp-loader-bar{
-  width:180px;height:2px;background:rgba(255,255,255,.08);
-  border-radius:99px;margin:0 auto;overflow:hidden;
-}
-.lp-loader-fill{
-  height:100%;background:linear-gradient(90deg,#22c55e,#4ade80);
-  border-radius:99px;width:0;animation:lp-fill 2.2s cubic-bezier(.4,0,.2,1) forwards;
-}
-@keyframes lp-fill{0%{width:0}60%{width:75%}100%{width:100%}}
-.lp-loader-dots{
-  display:flex;gap:8px;justify-content:center;margin-top:20px;
-}
-.lp-loader-dot{
-  width:5px;height:5px;border-radius:50%;background:var(--al-green);opacity:.3;
-  animation:lp-dot-pulse 1.2s ease-in-out infinite;
-}
-.lp-loader-dot:nth-child(2){animation-delay:.2s;}
-.lp-loader-dot:nth-child(3){animation-delay:.4s;}
-@keyframes lp-dot-pulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
 /* ── GLOBE ── */
 #lp-globe-container{
@@ -2207,28 +2153,6 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 
 </head>
 <body>
-
-<!-- LOADER -->
-<div id="lp-loader">
-  <canvas id="lp-loader-canvas"></canvas>
-  <div class="lp-loader-sweep"></div>
-  <div class="lp-loader-inner">
-    <div class="lp-loader-icon">
-      <svg viewBox="0 0 32 32" fill="none" width="36" height="36">
-        <path d="M6 21L16 6l10 15" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="16" cy="25" r="3" fill="#22c55e"/>
-      </svg>
-    </div>
-    <div class="lp-loader-name">AIRMATE</div>
-    <div class="lp-loader-tag">Tu agente comercial · 24/7</div>
-    <div class="lp-loader-bar"><div class="lp-loader-fill"></div></div>
-    <div class="lp-loader-dots">
-      <div class="lp-loader-dot"></div>
-      <div class="lp-loader-dot"></div>
-      <div class="lp-loader-dot"></div>
-    </div>
-  </div>
-</div>
 
 <!-- NAV -->
 <nav class="topnav">
@@ -6429,81 +6353,6 @@ function renderUsersPanel() {
   <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 <script>
-/* ══ LOADER ══ */
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    document.getElementById('lp-loader').classList.add('lp-loader-out');
-  }, 2600);
-});
-
-/* ══ LOADER NETWORK CANVAS ══ */
-(function(){
-  const canvas = document.getElementById('lp-loader-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const NODE_COUNT = 55, MAX_DIST = 200;
-  let nodes = [], pulses = [], alive = true;
-
-  function resize() {
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function initNodes() {
-    nodes = [];
-    for (let i = 0; i < NODE_COUNT; i++) {
-      nodes.push({ x:Math.random()*canvas.width, y:Math.random()*canvas.height,
-        vx:(Math.random()-.5)*.5, vy:(Math.random()-.5)*.5,
-        r:Math.random()*2+1.5, phase:Math.random()*Math.PI*2 });
-    }
-  }
-  function spawnPulse() {
-    for (let t=0;t<20;t++) {
-      const a=Math.floor(Math.random()*nodes.length), b=Math.floor(Math.random()*nodes.length);
-      if (a===b) continue;
-      const dx=nodes[b].x-nodes[a].x, dy=nodes[b].y-nodes[a].y;
-      if (Math.sqrt(dx*dx+dy*dy)<MAX_DIST) { pulses.push({from:a,to:b,t:0,speed:.014+Math.random()*.012}); return; }
-    }
-  }
-  function draw() {
-    if (!alive) return;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    nodes.forEach(n=>{ n.x+=n.vx; n.y+=n.vy; n.phase+=.025;
-      if(n.x<0||n.x>canvas.width) n.vx*=-1;
-      if(n.y<0||n.y>canvas.height) n.vy*=-1; });
-    for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++) {
-      const dx=nodes[j].x-nodes[i].x, dy=nodes[j].y-nodes[i].y;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      if (dist<MAX_DIST) {
-        ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y);
-        ctx.strokeStyle=`rgba(34,197,94,${(1-dist/MAX_DIST)*.35})`; ctx.lineWidth=.7; ctx.stroke();
-      }
-    }
-    nodes.forEach(n=>{ ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(34,197,94,${Math.sin(n.phase)*.2+.55})`; ctx.fill(); });
-    pulses=pulses.filter(p=>{
-      p.t+=p.speed; if(p.t>1) return false;
-      const na=nodes[p.from],nb=nodes[p.to];
-      const x=na.x+(nb.x-na.x)*p.t, y=na.y+(nb.y-na.y)*p.t;
-      const g=ctx.createRadialGradient(x,y,0,x,y,7);
-      g.addColorStop(0,'rgba(34,197,94,.95)'); g.addColorStop(1,'rgba(34,197,94,0)');
-      ctx.beginPath(); ctx.arc(x,y,7,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
-      ctx.beginPath(); ctx.arc(x,y,2,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,.95)'; ctx.fill();
-      return true;
-    });
-    requestAnimationFrame(draw);
-  }
-  initNodes();
-  for(let i=0;i<15;i++) spawnPulse();
-  setInterval(spawnPulse, 180);
-  draw();
-  document.getElementById('lp-loader').addEventListener('transitionend', function(){
-    alive = false;
-    canvas.style.display='none';
-  });
-})();
 
 /* ══ HERO NETWORK CANVAS ══ */
 (function(){
