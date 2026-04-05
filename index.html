@@ -3353,25 +3353,62 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
             <div class="stat-sub">69,99€/mes</div>
           </div>
         </div>
-        <div class="config-card" style="padding:0;overflow:hidden;">
-          <div style="padding:16px 20px;border-bottom:1px solid #edf0f7;">
-            <h3 style="margin:0;font-size:15px;">Clientes</h3>
+        <!-- TABLA CLIENTES CHATBOT -->
+        <div class="config-card" style="padding:0;overflow:hidden;margin-bottom:32px;">
+          <div style="padding:16px 20px;border-bottom:1px solid #edf0f7;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <h3 style="margin:0;font-size:15px;font-weight:700;color:var(--al-navy);">🤖 Clientes Chatbot</h3>
+              <p style="margin:2px 0 0;font-size:12px;color:#8a97b0;">Agente comercial — suscripciones activas</p>
+            </div>
           </div>
-          <table style="width:100%;border-collapse:collapse;font-size:13px;">
-            <thead>
-              <tr style="background:#f8fafc;border-bottom:1px solid #edf0f7;">
-                <th style="padding:10px 16px;text-align:left;color:#7a8ea8;font-weight:600;">Cliente</th>
-                <th style="padding:10px 16px;text-align:left;color:#7a8ea8;font-weight:600;">Email</th>
-                <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Plan</th>
-                <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Activo</th>
-                <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Registro</th>
-                <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="ow-clients-tbody">
-              <tr><td colspan="6" style="text-align:center;color:#8a97b0;padding:24px">Cargando…</td></tr>
-            </tbody>
-          </table>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead>
+                <tr style="background:#f8fafc;border-bottom:1px solid #edf0f7;">
+                  <th style="padding:10px 16px;text-align:left;color:#7a8ea8;font-weight:600;">Cliente</th>
+                  <th style="padding:10px 16px;text-align:left;color:#7a8ea8;font-weight:600;">Email</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Plan</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">€/mes</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Activo</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Registro</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="ow-clients-tbody">
+                <tr><td colspan="7" style="text-align:center;color:#8a97b0;padding:24px">Cargando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TABLA CLIENTES WEB -->
+        <div class="config-card" style="padding:0;overflow:hidden;">
+          <div style="padding:16px 20px;border-bottom:1px solid #edf0f7;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <h3 style="margin:0;font-size:15px;font-weight:700;color:var(--al-navy);">🌐 Clientes Web</h3>
+              <p style="margin:2px 0 0;font-size:12px;color:#8a97b0;">Diseño web — pagos y mantenimiento</p>
+            </div>
+            <div id="ow-web-mrr-badge" style="background:#eef6ff;border:1px solid #bfdbfe;border-radius:10px;padding:6px 14px;font-size:13px;font-weight:700;color:#1d4ed8;">MRR web: <span id="ow-web-mrr">0€</span></div>
+          </div>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead>
+                <tr style="background:#f8fafc;border-bottom:1px solid #edf0f7;">
+                  <th style="padding:10px 16px;text-align:left;color:#7a8ea8;font-weight:600;">Negocio</th>
+                  <th style="padding:10px 16px;text-align:left;color:#7a8ea8;font-weight:600;">Contacto</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Tipo</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Entrega (€)</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Mant. (€/mes)</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Estado</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Fecha</th>
+                  <th style="padding:10px 16px;text-align:center;color:#7a8ea8;font-weight:600;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="ow-web-tbody">
+                <tr><td colspan="8" style="text-align:center;color:#8a97b0;padding:24px">Cargando…</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div id="ow-new-client-form" style="display:none;margin-top:24px;">
           <div class="config-card">
@@ -3482,6 +3519,41 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
           <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end;">
             <button class="ow-btn ow-btn-delete" onclick="ownerCloseModal()">Cancelar</button>
             <button class="ow-btn ow-btn-edit" style="padding:8px 20px;font-size:13px;" onclick="ownerSaveEdit()">Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL EDITAR CLIENTE WEB -->
+      <div id="ow-web-edit-modal" class="ow-modal-overlay" style="display:none;" onclick="if(event.target===this)owCloseWebModal()">
+        <div class="ow-modal">
+          <h3 style="font-size:17px;margin-bottom:6px;">Editar cliente web</h3>
+          <p style="font-size:12px;color:#8a97b0;margin-bottom:20px;" id="ow-web-edit-biz"></p>
+          <input type="hidden" id="ow-web-edit-id">
+          <div class="config-grid">
+            <div class="form-group">
+              <label class="form-label">Pago entrega web (€)</label>
+              <input class="form-input" id="ow-web-edit-delivery" type="number" min="0" step="0.01" placeholder="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mantenimiento mensual (€/mes)</label>
+              <input class="form-input" id="ow-web-edit-maint" type="number" min="0" step="0.01" placeholder="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estado</label>
+              <select class="form-select" id="ow-web-edit-status">
+                <option value="pending">Pendiente</option>
+                <option value="in_progress">En proceso</option>
+                <option value="done">Entregada</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Notas internas</label>
+              <input class="form-input" id="ow-web-edit-notes" type="text" placeholder="Observaciones...">
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end;">
+            <button class="ow-btn ow-btn-delete" onclick="owCloseWebModal()">Cancelar</button>
+            <button class="ow-btn ow-btn-edit" style="padding:8px 20px;font-size:13px;" onclick="owSaveWebEdit()">Guardar cambios</button>
           </div>
         </div>
       </div>
@@ -5758,14 +5830,20 @@ async function renderOwnerDashboard() {
     set('ow-count-pro',     pro.length);
     set('ow-count-adv',     adv.length);
 
+    const planPrice = { starter: 29.99, lan: 39.99, plus: 69.99, beta: 0 };
+    const planLabel = { starter: 'ULTIMATE', lan: 'PRO', plus: 'ADVANCED', beta: 'BETA' };
+    const planPill  = { starter: 'pill-green', lan: 'pill-blue', plus: 'pill-orange', beta: 'pill-gray' };
+
     const tbody = document.getElementById('ow-clients-tbody');
     if (tbody) {
       tbody.innerHTML = all.length === 0
-        ? '<tr><td colspan="6" style="text-align:center;color:#8a97b0;padding:24px">Aún no hay clientes</td></tr>'
+        ? '<tr><td colspan="7" style="text-align:center;color:#8a97b0;padding:24px">Aún no hay clientes</td></tr>'
         : all.map(c => `
           <tr style="border-bottom:1px solid #f0f3f8;">
-            <td style="padding:10px 16px;"><strong>${escHtml(c.name||'—')}</strong></td>
-            <td style="padding:10px 16px;text-align:center;"><span class="pill ${c.plan==='beta'?'pill-orange':c.plan==='plus'?'pill-blue':'pill-green'}">${c.plan==='beta'?'BETA':c.plan==='plus'?'ADVANCED':c.plan==='starter'?'ULTIMATE':'PRO'}</span></td>
+            <td style="padding:10px 16px;"><strong>${escHtml(c.name||'—')}</strong><br><span style="font-size:11px;color:#8a97b0;">${escHtml(c.email||'')}</span></td>
+            <td style="padding:10px 16px;font-size:12px;color:#64748b;">${escHtml(c.email||'—')}</td>
+            <td style="padding:10px 16px;text-align:center;"><span class="pill ${planPill[c.plan]||'pill-green'}">${planLabel[c.plan]||c.plan}</span></td>
+            <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1d4ed8;">${(planPrice[c.plan]||0).toFixed(2)}€</td>
             <td style="padding:10px 16px;text-align:center;">
               <button class="ow-btn ow-btn-toggle ${c.active?'':'off'}" onclick="ownerToggleActive('${c.id}',${c.active})">${c.active?'Activo':'Inactivo'}</button>
             </td>
@@ -5784,6 +5862,77 @@ async function renderOwnerDashboard() {
     if (formEl) formEl.style.display = 'block';
   } catch(e) {
     showToast('Error cargando datos de clientes');
+  }
+
+  /* ── Tabla clientes web ── */
+  try {
+    const { data: webRows } = await _SB.from('web_requests').select('*').order('created_at', { ascending: false });
+    const wr = webRows || [];
+
+    const webMrr = wr.reduce((acc, r) => acc + (parseFloat(r.web_maintenance) || 0), 0);
+    const mrrEl = document.getElementById('ow-web-mrr');
+    if (mrrEl) mrrEl.textContent = webMrr.toFixed(2) + '€';
+
+    const statusLabel = { pending: 'Pendiente', in_progress: 'En proceso', done: 'Entregada' };
+    const statusPill  = { pending: 'pill-orange', in_progress: 'pill-blue', done: 'pill-green' };
+
+    const wtbody = document.getElementById('ow-web-tbody');
+    if (wtbody) {
+      wtbody.innerHTML = wr.length === 0
+        ? '<tr><td colspan="8" style="text-align:center;color:#8a97b0;padding:24px">Aún no hay solicitudes web</td></tr>'
+        : wr.map(r => `
+          <tr style="border-bottom:1px solid #f0f3f8;">
+            <td style="padding:10px 16px;"><strong>${escHtml(r.business_name||'—')}</strong></td>
+            <td style="padding:10px 16px;font-size:12px;color:#64748b;">${escHtml(r.email||'')} ${r.phone?'· '+escHtml(r.phone):''}</td>
+            <td style="padding:10px 16px;text-align:center;font-size:12px;color:#64748b;">${escHtml(r.business_type||'—')}</td>
+            <td style="padding:10px 16px;text-align:center;font-weight:700;color:#15803d;">${r.web_delivery_price>0?r.web_delivery_price+'€':'—'}</td>
+            <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1d4ed8;">${r.web_maintenance>0?r.web_maintenance+'€/mes':'—'}</td>
+            <td style="padding:10px 16px;text-align:center;"><span class="pill ${statusPill[r.status]||'pill-orange'}">${statusLabel[r.status]||r.status}</span></td>
+            <td style="padding:10px 16px;text-align:center;color:#8a97b0;font-size:12px">${new Date(r.created_at).toLocaleDateString('es-ES')}</td>
+            <td style="padding:10px 16px;">
+              <button class="ow-btn ow-btn-edit" onclick="owOpenWebModal('${r.id}','${escHtml(r.business_name||'')}',${r.web_delivery_price||0},${r.web_maintenance||0},'${r.status||'pending'}','${escHtml(r.notes||'')}')">Editar</button>
+            </td>
+          </tr>`).join('');
+    }
+  } catch(e) {
+    console.error('Error cargando clientes web:', e);
+  }
+}
+
+function owOpenWebModal(id, biz, delivery, maint, status, notes) {
+  document.getElementById('ow-web-edit-id').value    = id;
+  document.getElementById('ow-web-edit-biz').textContent = biz;
+  document.getElementById('ow-web-edit-delivery').value = delivery;
+  document.getElementById('ow-web-edit-maint').value    = maint;
+  document.getElementById('ow-web-edit-status').value   = status;
+  document.getElementById('ow-web-edit-notes').value    = notes;
+  document.getElementById('ow-web-edit-modal').style.display = 'flex';
+}
+
+function owCloseWebModal() {
+  document.getElementById('ow-web-edit-modal').style.display = 'none';
+}
+
+async function owSaveWebEdit() {
+  const id       = document.getElementById('ow-web-edit-id').value;
+  const delivery = parseFloat(document.getElementById('ow-web-edit-delivery').value) || 0;
+  const maint    = parseFloat(document.getElementById('ow-web-edit-maint').value) || 0;
+  const status   = document.getElementById('ow-web-edit-status').value;
+  const notes    = document.getElementById('ow-web-edit-notes').value.trim();
+  try {
+    const { error } = await _SB.from('web_requests').update({
+      web_delivery_price: delivery,
+      web_maintenance: maint,
+      status,
+      notes
+    }).eq('id', id);
+    if (error) throw error;
+    showToast('✅ Cliente web actualizado');
+    owCloseWebModal();
+    renderOwnerDashboard();
+  } catch(e) {
+    showToast('⚠️ Error al guardar');
+    console.error(e);
   }
 }
 
