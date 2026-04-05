@@ -3406,7 +3406,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
                 </tr>
               </thead>
               <tbody id="ow-web-tbody">
-                <tr><td colspan="8" style="text-align:center;color:#8a97b0;padding:24px">Cargando…</td></tr>
+                <tr><td colspan="9" style="text-align:center;color:#8a97b0;padding:24px">Cargando…</td></tr>
               </tbody>
             </table>
           </div>
@@ -5869,6 +5869,7 @@ async function renderOwnerDashboard() {
   try {
     const { data: webRows } = await _SB.from('web_requests').select('*').order('created_at', { ascending: false });
     const wr = webRows || [];
+    _owWebRows = wr;
 
     const webMrr = wr.reduce((acc, r) => acc + (parseFloat(r.web_maintenance) || 0), 0);
     const mrrEl = document.getElementById('ow-web-mrr');
@@ -5887,19 +5888,19 @@ async function renderOwnerDashboard() {
     const wtbody = document.getElementById('ow-web-tbody');
     if (wtbody) {
       wtbody.innerHTML = wr.length === 0
-        ? '<tr><td colspan="8" style="text-align:center;color:#8a97b0;padding:24px">Aún no hay solicitudes web</td></tr>'
+        ? '<tr><td colspan="9" style="text-align:center;color:#8a97b0;padding:24px">Aún no hay solicitudes web</td></tr>'
         : wr.map(r => `
-          <tr style="border-bottom:1px solid #f0f3f8;">
+          <tr style="border-bottom:1px solid #f0f3f8;" data-wr-id="${r.id}">
             <td style="padding:10px 16px;"><strong>${escHtml(r.business_name||'—')}</strong></td>
-            <td style="padding:10px 16px;font-size:12px;color:#64748b;">${escHtml(r.email||'')} ${r.phone?'· '+escHtml(r.phone):''}</td>
+            <td style="padding:10px 16px;font-size:12px;color:#64748b;">${escHtml(r.email||'')}${r.phone?' · '+escHtml(r.phone):''}</td>
             <td style="padding:10px 16px;text-align:center;font-size:12px;color:#64748b;">${escHtml(r.business_type||'—')}</td>
-            <td style="padding:10px 16px;text-align:center;font-weight:700;color:#15803d;">${r.web_delivery_price>0?r.web_delivery_price+'€':'—'}</td>
-            <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1d4ed8;">${r.web_maintenance>0?r.web_maintenance+'€/mes':'—'}</td>
+            <td style="padding:10px 16px;text-align:center;font-weight:700;color:#15803d;">${r.web_delivery_price>0?Number(r.web_delivery_price).toFixed(2)+'€':'—'}</td>
+            <td style="padding:10px 16px;text-align:center;font-weight:700;color:#1d4ed8;">${r.web_maintenance>0?Number(r.web_maintenance).toFixed(2)+'€/mes':'—'}</td>
             <td style="padding:10px 16px;text-align:center;"><span class="pill ${statusPill[r.status]||'pill-orange'}">${statusLabel[r.status]||r.status}</span></td>
             <td style="padding:10px 16px;text-align:center;color:#8a97b0;font-size:12px">${new Date(r.created_at).toLocaleDateString('es-ES')}</td>
-            <td style="padding:10px 16px;font-size:12px;color:#64748b;max-width:160px;">${r.notes ? `<span title="${escHtml(r.notes)}" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(r.notes)}</span>` : '<span style="color:#c4cdd8;">—</span>'}</td>
+            <td style="padding:10px 16px;font-size:12px;color:#64748b;max-width:180px;">${r.notes?`<span title="${escHtml(r.notes)}" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(r.notes)}</span>`:'<span style="color:#c4cdd8;">—</span>'}</td>
             <td style="padding:10px 16px;">
-              <button class="ow-btn ow-btn-edit" onclick="owOpenWebModal('${r.id}','${escHtml(r.business_name||'')}',${r.web_delivery_price||0},${r.web_maintenance||0},'${r.status||'pending'}','${escHtml(r.notes||'')}')">Editar</button>
+              <button class="ow-btn ow-btn-edit" onclick="owOpenWebModalById('${r.id}')">Editar</button>
             </td>
           </tr>`).join('');
     }
@@ -5908,13 +5909,17 @@ async function renderOwnerDashboard() {
   }
 }
 
-function owOpenWebModal(id, biz, delivery, maint, status, notes) {
-  document.getElementById('ow-web-edit-id').value    = id;
-  document.getElementById('ow-web-edit-biz').textContent = biz;
-  document.getElementById('ow-web-edit-delivery').value = delivery;
-  document.getElementById('ow-web-edit-maint').value    = maint;
-  document.getElementById('ow-web-edit-status').value   = status;
-  document.getElementById('ow-web-edit-notes').value    = notes;
+let _owWebRows = [];
+
+function owOpenWebModalById(id) {
+  const r = _owWebRows.find(x => String(x.id) === String(id));
+  if (!r) return;
+  document.getElementById('ow-web-edit-id').value         = r.id;
+  document.getElementById('ow-web-edit-biz').textContent  = r.business_name || '';
+  document.getElementById('ow-web-edit-delivery').value   = r.web_delivery_price || 0;
+  document.getElementById('ow-web-edit-maint').value      = r.web_maintenance || 0;
+  document.getElementById('ow-web-edit-status').value     = r.status || 'pending';
+  document.getElementById('ow-web-edit-notes').value      = r.notes || '';
   document.getElementById('ow-web-edit-modal').style.display = 'flex';
 }
 
