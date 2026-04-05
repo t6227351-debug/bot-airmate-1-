@@ -1878,7 +1878,376 @@ body { background: #f5f5f7; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4 { letter-spacing: -.01em; }
 .admin-header h2 { font-size: 32px !important; letter-spacing: -.02em !important; }
 
+/* ════ PAGE INICIO ════ */
+#page-inicio { background:#060d1a; }
+
+/* Video hero */
+.inicio-hero {
+  position:relative; height:100vh; min-height:600px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.inicio-hero-video {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center; z-index:0;
+}
+.inicio-hero-overlay {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(160deg,rgba(6,13,26,.82) 0%,rgba(12,30,61,.65) 60%,rgba(6,13,26,.75) 100%);
+}
+.inicio-hero-content {
+  position:relative; z-index:2;
+  text-align:center; padding:40px 24px;
+  max-width:900px; margin:0 auto;
+}
+.inicio-hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--al-green); background:rgba(34,197,94,.1);
+  border:1px solid rgba(34,197,94,.28); border-radius:99px;
+  padding:7px 18px; margin-bottom:32px;
+  animation:fadeUp .8s .2s both;
+}
+.inicio-hero-eyebrow-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--al-green);
+  box-shadow:0 0 8px rgba(34,197,94,.8); animation:glow 2s infinite;
+}
+.inicio-hero-title {
+  font-family:var(--font-display); font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:400; color:#fff; line-height:1.06;
+  margin-bottom:24px; animation:fadeUp .9s .35s both;
+}
+.inicio-hero-title em { font-style:italic; color:var(--al-green); }
+.inicio-hero-sub {
+  font-size:clamp(1rem,2vw,1.2rem); color:rgba(255,255,255,.6);
+  max-width:580px; margin:0 auto 40px; line-height:1.75;
+  animation:fadeUp .9s .5s both;
+}
+.inicio-hero-btns {
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  animation:fadeUp .9s .65s both;
+}
+.inicio-btn-primary {
+  padding:16px 38px; background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));
+  color:#fff; font-size:1rem; font-weight:700; border:none; border-radius:12px;
+  cursor:pointer; box-shadow:0 6px 28px rgba(34,197,94,.4);
+  transition:all .25s; letter-spacing:.01em;
+}
+.inicio-btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(34,197,94,.6); }
+.inicio-btn-ghost {
+  padding:16px 38px; background:rgba(255,255,255,.08);
+  color:#fff; font-size:1rem; font-weight:600; border:1.5px solid rgba(255,255,255,.2);
+  border-radius:12px; cursor:pointer; transition:all .25s; letter-spacing:.01em;
+}
+.inicio-btn-ghost:hover { background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.4); }
+.inicio-scroll-hint {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%); z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  color:rgba(255,255,255,.35); font-size:11px; letter-spacing:.08em;
+  animation:fadeIn 1s 1.5s both;
+}
+.inicio-scroll-arrow {
+  width:20px; height:20px; border-right:2px solid rgba(255,255,255,.3);
+  border-bottom:2px solid rgba(255,255,255,.3);
+  transform:rotate(45deg); animation:floatY 1.5s infinite;
+}
+
+/* Services section */
+.inicio-services {
+  padding:100px 40px; max-width:1160px; margin:0 auto;
+}
+.inicio-services-title {
+  font-family:var(--font-display); font-size:clamp(2rem,4vw,3rem);
+  color:#fff; text-align:center; margin-bottom:16px; font-weight:400;
+}
+.inicio-services-title em { font-style:italic; color:var(--al-green); }
+.inicio-services-sub {
+  text-align:center; color:rgba(255,255,255,.45); font-size:1rem;
+  max-width:480px; margin:0 auto 70px;
+}
+.inicio-services-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:28px;
+}
+@media(max-width:768px){ .inicio-services-grid{ grid-template-columns:1fr; } }
+.inicio-service-card {
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09);
+  border-radius:24px; padding:44px 40px;
+  position:relative; overflow:hidden; cursor:pointer;
+  transition:all .35s cubic-bezier(.22,1,.36,1);
+}
+.inicio-service-card::before {
+  content:''; position:absolute; inset:0; border-radius:24px;
+  background:linear-gradient(135deg,rgba(34,197,94,.06),transparent);
+  opacity:0; transition:opacity .35s;
+}
+.inicio-service-card:hover { transform:translateY(-8px); border-color:rgba(34,197,94,.3); box-shadow:0 24px 64px rgba(34,197,94,.12); }
+.inicio-service-card:hover::before { opacity:1; }
+.inicio-service-tag {
+  display:inline-block; font-size:10px; font-weight:800;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--al-green); background:rgba(34,197,94,.12);
+  border:1px solid rgba(34,197,94,.2); border-radius:99px;
+  padding:5px 14px; margin-bottom:24px;
+}
+.inicio-service-icon {
+  font-size:3rem; margin-bottom:20px; display:block;
+  filter:drop-shadow(0 0 20px rgba(34,197,94,.3));
+}
+.inicio-service-card h3 {
+  font-family:var(--font-display); font-size:1.9rem; font-weight:400;
+  color:#fff; margin-bottom:14px; line-height:1.15;
+}
+.inicio-service-card p {
+  font-size:15px; color:rgba(255,255,255,.5); line-height:1.7; margin-bottom:28px;
+}
+.inicio-service-link {
+  display:inline-flex; align-items:center; gap:8px;
+  color:var(--al-green); font-size:14px; font-weight:700;
+  letter-spacing:.02em; transition:gap .2s;
+}
+.inicio-service-card:hover .inicio-service-link { gap:14px; }
+
+/* Stats row */
+.inicio-stats-row {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:rgba(255,255,255,.06);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+@media(max-width:600px){ .inicio-stats-row{ grid-template-columns:repeat(2,1fr); } }
+.inicio-stat-box {
+  padding:48px 24px; text-align:center; background:#060d1a;
+  transition:background .2s;
+}
+.inicio-stat-box:hover { background:rgba(34,197,94,.04); }
+.inicio-stat-num {
+  font-family:var(--font-display); font-size:3.2rem; font-style:italic;
+  color:var(--al-green); line-height:1; margin-bottom:8px;
+}
+.inicio-stat-label { font-size:13px; color:rgba(255,255,255,.4); line-height:1.4; }
+
+/* Visual marquee */
+.inicio-marquee-wrap {
+  overflow:hidden; background:rgba(255,255,255,.03);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:18px 0;
+}
+.inicio-marquee {
+  display:flex; gap:60px; width:max-content;
+  animation:marqueeScroll 18s linear infinite;
+}
+.inicio-marquee-item {
+  display:flex; align-items:center; gap:10px;
+  font-size:13px; font-weight:600; color:rgba(255,255,255,.35);
+  letter-spacing:.06em; text-transform:uppercase; white-space:nowrap;
+}
+.inicio-marquee-item span { color:var(--al-green); font-size:16px; }
+@keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* CTA section */
+.inicio-cta-section {
+  padding:100px 40px; text-align:center;
+}
+.inicio-cta-section h2 {
+  font-family:var(--font-display); font-size:clamp(2rem,5vw,4rem);
+  color:#fff; font-weight:400; margin-bottom:20px; line-height:1.1;
+}
+.inicio-cta-section h2 em { font-style:italic; color:var(--al-green); }
+.inicio-cta-section p { color:rgba(255,255,255,.45); font-size:1.05rem; margin-bottom:40px; max-width:480px; margin-left:auto; margin-right:auto; }
+
+/* ════ PORTFOLIO IFRAMES ════ */
+.browser-mockup {
+  border-radius:14px; overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,.35);
+  background:#1a1a2e; border:1px solid rgba(255,255,255,.1);
+}
+.browser-bar {
+  background:#1e1e2e; padding:10px 14px;
+  display:flex; align-items:center; gap:8px;
+}
+.browser-dot { width:10px; height:10px; border-radius:50%; }
+.browser-iframe {
+  width:100%; height:360px; border:none; display:block;
+  pointer-events:none; transform-origin:top left;
+}
+.portfolio-launch-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));
+  color:#fff; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+  padding:6px 16px; border-radius:99px;
+  box-shadow:0 4px 18px rgba(34,197,94,.4);
+  animation:glow 2s infinite;
+}
+
+/* ════ COMMERCIAL WIDGET (AIRMATE ADVISOR) ════ */
+#advisor-widget {
+  position:fixed; bottom:28px; left:28px; z-index:9990;
+  display:flex; flex-direction:column; align-items:flex-start; gap:0;
+}
+#advisor-btn {
+  width:60px; height:60px; border-radius:50%; border:none; cursor:pointer;
+  background:linear-gradient(135deg,#7c3aed,#5b21b6);
+  box-shadow:0 6px 24px rgba(124,58,237,.5);
+  display:flex; align-items:center; justify-content:center;
+  transition:all .25s; flex-shrink:0; position:relative;
+  animation:advisorPop .6s 2s both;
+}
+#advisor-btn:hover { transform:scale(1.1); box-shadow:0 10px 36px rgba(124,58,237,.65); }
+#advisor-btn-pulse {
+  position:absolute; inset:-4px; border-radius:50%;
+  border:2px solid rgba(124,58,237,.4); animation:advisorPulse 2s infinite;
+}
+@keyframes advisorPop { from{opacity:0;transform:scale(0) translateY(20px)} 60%{transform:scale(1.15) translateY(-4px)} to{opacity:1;transform:scale(1) translateY(0)} }
+@keyframes advisorPulse { 0%,100%{transform:scale(1);opacity:.6} 50%{transform:scale(1.3);opacity:0} }
+.advisor-robot {
+  animation:robotBounce 2.4s cubic-bezier(.36,.07,.19,.97) infinite;
+}
+@keyframes robotBounce {
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  20%{ transform:translateY(-8px) rotate(-3deg); }
+  40%{ transform:translateY(-14px) rotate(3deg); }
+  60%{ transform:translateY(-8px) rotate(-2deg); }
+  80%{ transform:translateY(-3px) rotate(1deg); }
+}
+#advisor-bubble {
+  position:absolute; bottom:72px; left:0;
+  background:#fff; border-radius:16px 16px 16px 4px;
+  padding:10px 16px; font-size:13px; font-weight:600; color:#1a1a2e;
+  box-shadow:0 8px 30px rgba(0,0,0,.15); white-space:nowrap;
+  animation:advisorBubble 3s 3s both; pointer-events:none;
+}
+@keyframes advisorBubble {
+  0%{opacity:0;transform:translateY(8px)} 15%{opacity:1;transform:translateY(0)}
+  75%{opacity:1} 100%{opacity:0;transform:translateY(-4px)}
+}
+#advisor-panel {
+  position:fixed; bottom:100px; left:28px; z-index:9991;
+  width:340px; max-height:520px;
+  background:#fff; border-radius:20px;
+  box-shadow:0 24px 64px rgba(0,0,0,.18), 0 6px 20px rgba(0,0,0,.08);
+  display:none; flex-direction:column; overflow:hidden;
+  animation:scaleIn .25s cubic-bezier(.22,1,.36,1);
+}
+#advisor-panel.open { display:flex; }
+.advisor-header {
+  padding:16px 18px; display:flex; align-items:center; gap:12px;
+  background:linear-gradient(135deg,#7c3aed,#5b21b6);
+}
+.advisor-header-avatar {
+  width:38px; height:38px; border-radius:50%;
+  background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center;
+  font-size:1.2rem;
+}
+.advisor-header-info { flex:1; }
+.advisor-header-name { font-size:14px; font-weight:700; color:#fff; }
+.advisor-header-status { font-size:11px; color:rgba(255,255,255,.65); }
+.advisor-close { background:none; border:none; color:rgba(255,255,255,.7); cursor:pointer; font-size:18px; padding:4px; transition:color .15s; }
+.advisor-close:hover { color:#fff; }
+.advisor-messages {
+  flex:1; overflow-y:auto; padding:16px;
+  display:flex; flex-direction:column; gap:10px; background:#f8fafc;
+  scrollbar-width:thin; scrollbar-color:rgba(0,0,0,.1) transparent;
+}
+.advisor-msg {
+  max-width:86%; padding:10px 14px; border-radius:16px;
+  font-size:13px; line-height:1.55;
+}
+.advisor-msg.bot {
+  background:#fff; color:#1a1a2e;
+  border-radius:4px 16px 16px 16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.07);
+  align-self:flex-start;
+}
+.advisor-msg.user {
+  background:linear-gradient(135deg,#7c3aed,#5b21b6);
+  color:#fff; border-radius:16px 4px 16px 16px;
+  align-self:flex-end;
+}
+.advisor-typing {
+  display:flex; gap:5px; align-items:center;
+  padding:10px 14px; background:#fff; border-radius:4px 16px 16px 16px;
+  align-self:flex-start; box-shadow:0 2px 8px rgba(0,0,0,.07);
+  width:fit-content;
+}
+.advisor-typing span {
+  width:6px; height:6px; background:#7c3aed; border-radius:50%;
+  animation:typingDot .9s infinite;
+}
+.advisor-typing span:nth-child(2){ animation-delay:.15s; }
+.advisor-typing span:nth-child(3){ animation-delay:.3s; }
+@keyframes typingDot { 0%,80%,100%{transform:scale(0.7);opacity:.4} 40%{transform:scale(1.1);opacity:1} }
+.advisor-input-wrap {
+  padding:12px; border-top:1px solid #f0f0f0; display:flex; gap:8px; background:#fff;
+}
+.advisor-input {
+  flex:1; padding:10px 14px; border:1.5px solid #e8e8e3; border-radius:10px;
+  font-size:13px; font-family:var(--font-body); outline:none;
+  transition:border-color .15s;
+}
+.advisor-input:focus { border-color:#7c3aed; }
+.advisor-send {
+  width:38px; height:38px; border:none; border-radius:10px; cursor:pointer;
+  background:linear-gradient(135deg,#7c3aed,#5b21b6); color:#fff;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  transition:all .18s;
+}
+.advisor-send:hover { transform:scale(1.08); }
+
+/* ════ MOBILE RESPONSIVE ════ */
+@media(max-width:768px){
+  /* Nav */
+  .topnav { padding:0 16px !important; }
+  .topnav-logo-name span:last-child { display:none; }
+  .topnav-tabs { gap:1px; padding:3px !important; }
+  .topnav-tab { padding:7px 10px !important; font-size:11px !important; }
+  #nav-public-actions .nav-btn-ghost { display:none; }
+  .nav-btn-primary { padding:8px 14px !important; font-size:12px !important; }
+
+  /* Inicio hero */
+  .inicio-hero { height:100svh; }
+  .inicio-hero-title { font-size:2.2rem; }
+  .inicio-hero-sub { font-size:0.95rem; }
+  .inicio-hero-btns { flex-direction:column; align-items:center; }
+  .inicio-btn-primary, .inicio-btn-ghost { width:100%; max-width:300px; text-align:center; }
+  .inicio-services { padding:60px 20px; }
+  .inicio-stats-row { grid-template-columns:repeat(2,1fr); }
+  .inicio-stat-num { font-size:2.2rem; }
+  .inicio-cta-section { padding:60px 20px; }
+
+  /* Webs page */
+  .webs-section { padding:40px 16px; }
+  .portfolio-grid { grid-template-columns:1fr; }
+  .browser-iframe { height:240px; }
+  .webs-form-wrap { padding:24px 16px; }
+  .webs-hero h1 { font-size:1.8rem; }
+
+  /* Commercial advisor */
+  #advisor-panel {
+    left:12px; right:12px; width:auto;
+    bottom:88px; max-height:70svh;
+  }
+  #advisor-widget { left:16px; bottom:20px; }
+
+  /* Main bot widget — smaller on mobile */
+  #airmate-panel {
+    width:calc(100vw - 24px) !important;
+    right:12px !important; left:12px !important;
+    bottom:80px !important;
+    max-height:70svh !important;
+  }
+  #airmate-widget { right:12px !important; bottom:12px !important; }
+
+  /* Landing */
+  .lp-hero-inner { flex-direction:column !important; }
+  .landing { padding:0 16px 80px !important; }
+}
+
+@media(max-width:480px){
+  .topnav-tab:nth-child(2) { display:none; }/* Hide Webs on very small, show on scroll */
+}
 </style>
+
 </head>
 <body>
 
@@ -1907,7 +2276,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <!-- NAV -->
 <nav class="topnav">
   <!-- Logo -->
-  <a class="topnav-logo" href="#" onclick="switchPage('landing');return false;">
+  <a class="topnav-logo" href="#" onclick="switchPage('inicio');return false;">
     <div class="topnav-logo-dot">
       <svg viewBox="0 0 16 16" fill="none"><path d="M3 10.5L8 3l5 7.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="12.5" r="1.5" fill="white"/></svg>
     </div>
@@ -1919,9 +2288,9 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 
   <!-- Tab buttons principales -->
   <div class="topnav-tabs" id="nav-tabs">
-    <button class="topnav-tab active" id="tab-landing" onclick="switchPage('landing')">Inicio</button>
+    <button class="topnav-tab active" id="tab-inicio" onclick="switchPage('inicio')">Inicio</button>
     <button class="topnav-tab" id="tab-webs" onclick="switchPage('webs')">🌐 AIRMATE Webs</button>
-    <button class="topnav-tab" id="tab-bot" onclick="switchPage('landing');setTimeout(()=>{if(!state.chatOpen)toggleChat();},300)">🤖 AIRMATE Bot</button>
+    <button class="topnav-tab" id="tab-bot" onclick="switchPage('landing')">🤖 AIRMATE Bot</button>
     <button class="topnav-tab" id="tab-admin" onclick="switchPage('admin')">⚙️ Mi Panel</button>
   </div>
 
@@ -2005,8 +2374,119 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   </div>
 </div>
 
-<!-- LANDING -->
-<div id="page-landing" class="page active">
+<!-- INICIO -->
+<div id="page-inicio" class="page active">
+
+  <!-- HERO VIDEO -->
+  <section class="inicio-hero">
+    <video class="inicio-hero-video" autoplay muted loop playsinline>
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="inicio-hero-overlay"></div>
+    <div class="inicio-hero-content">
+      <div class="inicio-hero-eyebrow">
+        <span class="inicio-hero-eyebrow-dot"></span>
+        Agencia digital para negocios locales
+      </div>
+      <h1 class="inicio-hero-title">La tecnología que<br><em>transforma</em> negocios</h1>
+      <p class="inicio-hero-sub">Webs que venden. Agentes de IA que atienden. Tu negocio funcionando 24/7 sin que estés pendiente de nada.</p>
+      <div class="inicio-hero-btns">
+        <button class="inicio-btn-primary" onclick="switchPage('webs')">🌐 Quiero mi web gratis →</button>
+        <button class="inicio-btn-ghost" onclick="switchPage('landing')">🤖 Ver el agente en acción</button>
+      </div>
+    </div>
+    <div class="inicio-scroll-hint">
+      <span>SCROLL</span>
+      <div class="inicio-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="inicio-marquee-wrap">
+    <div class="inicio-marquee">
+      <div class="inicio-marquee-item"><span>✦</span> Webs profesionales</div>
+      <div class="inicio-marquee-item"><span>✦</span> Agentes con IA</div>
+      <div class="inicio-marquee-item"><span>✦</span> Dominio incluido</div>
+      <div class="inicio-marquee-item"><span>✦</span> Disponible 24/7</div>
+      <div class="inicio-marquee-item"><span>✦</span> +150 negocios</div>
+      <div class="inicio-marquee-item"><span>✦</span> Lista en 20 minutos</div>
+      <div class="inicio-marquee-item"><span>✦</span> Sin código</div>
+      <div class="inicio-marquee-item"><span>✦</span> Webs profesionales</div>
+      <div class="inicio-marquee-item"><span>✦</span> Agentes con IA</div>
+      <div class="inicio-marquee-item"><span>✦</span> Dominio incluido</div>
+      <div class="inicio-marquee-item"><span>✦</span> Disponible 24/7</div>
+      <div class="inicio-marquee-item"><span>✦</span> +150 negocios</div>
+      <div class="inicio-marquee-item"><span>✦</span> Lista en 20 minutos</div>
+      <div class="inicio-marquee-item"><span>✦</span> Sin código</div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="inicio-stats-row">
+    <div class="inicio-stat-box reveal">
+      <div class="inicio-stat-num">+150</div>
+      <div class="inicio-stat-label">Negocios confían<br>en AIRMATE</div>
+    </div>
+    <div class="inicio-stat-box reveal delay-1">
+      <div class="inicio-stat-num">20'</div>
+      <div class="inicio-stat-label">Para tener tu web<br>funcionando</div>
+    </div>
+    <div class="inicio-stat-box reveal delay-2">
+      <div class="inicio-stat-num">24/7</div>
+      <div class="inicio-stat-label">Tu agente de ventas<br>siempre activo</div>
+    </div>
+    <div class="inicio-stat-box reveal delay-3">
+      <div class="inicio-stat-num">+40%</div>
+      <div class="inicio-stat-label">Más conversiones<br>con IA</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="inicio-services">
+    <div class="reveal" style="text-align:center;margin-bottom:0;">
+      <div style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);border-radius:99px;padding:6px 18px;margin-bottom:24px;">Nuestros servicios</div>
+    </div>
+    <h2 class="inicio-services-title reveal" style="margin-bottom:16px;">Todo lo que tu negocio<br><em>necesita digitalmente</em></h2>
+    <p class="inicio-services-sub reveal delay-1">Dos servicios. Un solo objetivo: que tu negocio crezca en digital sin complicaciones.</p>
+
+    <div class="inicio-services-grid">
+      <div class="inicio-service-card reveal from-left" onclick="switchPage('webs')" style="cursor:pointer;">
+        <div class="inicio-service-tag">🌐 AIRMATE Webs</div>
+        <span class="inicio-service-icon">🖥️</span>
+        <h3>Tu web lista<br>en 20 minutos</h3>
+        <p>Diseñamos tu web profesional gratis. Solo pagas si te gusta. Dominio .es incluido el primer año. Sin mensualidades.</p>
+        <span class="inicio-service-link">Ver portafolio → <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div style="position:absolute;top:20px;right:24px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);padding:3px 10px;border-radius:99px;">Diseño Gratis</div>
+      </div>
+
+      <div class="inicio-service-card reveal from-right" onclick="switchPage('landing')" style="cursor:pointer;">
+        <div class="inicio-service-tag">🤖 AIRMATE Bot</div>
+        <span class="inicio-service-icon">🧠</span>
+        <h3>Tu agente de ventas<br>con IA · 24/7</h3>
+        <p>Un chatbot que atiende a tus clientes, responde preguntas, agenda citas y cierra ventas mientras tú duermes.</p>
+        <span class="inicio-service-link">Probar demo gratis → <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div style="position:absolute;top:20px;right:24px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#60a5fa;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);padding:3px 10px;border-radius:99px;">Desde 29,99€/mes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="inicio-cta-section">
+    <div class="reveal">
+      <h2>¿Empezamos hoy?<br><em>Es gratis.</em></h2>
+      <p>Diseño de web gratis, agente de IA con 7 días de prueba. Sin tarjeta de crédito, sin compromiso.</p>
+      <div class="inicio-hero-btns">
+        <button class="inicio-btn-primary" onclick="switchPage('webs');setTimeout(()=>document.getElementById('webs-form-section')?.scrollIntoView({behavior:'smooth'}),300)">Solicitar diseño gratis →</button>
+        <button class="inicio-btn-ghost" onclick="switchPage('admin');showAuthRegister&&showAuthRegister()">Probar el bot gratis →</button>
+      </div>
+      <p style="margin-top:24px;font-size:13px;color:rgba(255,255,255,.25);">¿Tienes dudas? <a href="https://wa.me/34646427613" target="_blank" style="color:rgba(255,255,255,.45);text-decoration:underline;">Escríbenos por WhatsApp</a></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- LANDING — AIRMATE BOT DEMO -->
+<div id="page-landing" class="page">
 
   <!-- ══ HERO ══ -->
   <section class="lp-hero" id="lp-hero-section">
@@ -2520,42 +3000,90 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 </div>
 
 <div class="webs-section">
+  <div style="text-align:center;margin-bottom:20px;">
+    <span class="portfolio-launch-badge">⚡ Lista y entregada en 20 minutos</span>
+  </div>
   <h2 class="webs-section-title">Webs que hemos creado</h2>
-  <p class="webs-section-sub">Cada web es única, diseñada a medida para el negocio y su identidad de marca.</p>
+  <p class="webs-section-sub">Cada web es única, diseñada a medida. Haz clic para ver la web real.</p>
 
   <div class="portfolio-grid">
-    <a class="portfolio-card" href="https://airmateai.github.io/AmaEs/" target="_blank">
-      <div class="portfolio-card-img-placeholder" style="background:linear-gradient(135deg,#f5efe6,#e8d5c0);">🧴</div>
-      <div class="portfolio-card-body">
-        <div class="portfolio-card-name">AMA Essentials</div>
-        <div class="portfolio-card-type">Skincare · Beige/Marrón</div>
-        <div class="portfolio-card-location">📍 Tenerife</div>
+
+    <div class="reveal from-left">
+      <div class="browser-mockup" style="margin-bottom:14px;">
+        <div class="browser-bar">
+          <div class="browser-dot" style="background:#ff5f57;"></div>
+          <div class="browser-dot" style="background:#ffbd2e;"></div>
+          <div class="browser-dot" style="background:#28c840;"></div>
+          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">airmateai.github.io/AmaEs/</div>
+        </div>
+        <iframe class="browser-iframe" src="https://airmateai.github.io/AmaEs/" loading="lazy" title="AMA Essentials"></iframe>
       </div>
-    </a>
-    <a class="portfolio-card" href="https://airmateai.github.io/cecilia-rubez/" target="_blank">
-      <div class="portfolio-card-img-placeholder" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d);">📷</div>
-      <div class="portfolio-card-body">
-        <div class="portfolio-card-name">Cecilia Rubez</div>
-        <div class="portfolio-card-type">Fotografía de bodas · Oro/Negro</div>
-        <div class="portfolio-card-location">📍 Madrid</div>
+      <a href="https://airmateai.github.io/AmaEs/" target="_blank" class="portfolio-card" style="border-radius:12px;">
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-name">AMA Essentials · Skincare</div>
+          <div class="portfolio-card-type">Paleta Beige/Marrón · Ver web completa →</div>
+          <div class="portfolio-card-location">📍 Tenerife</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal from-right delay-1">
+      <div class="browser-mockup" style="margin-bottom:14px;">
+        <div class="browser-bar">
+          <div class="browser-dot" style="background:#ff5f57;"></div>
+          <div class="browser-dot" style="background:#ffbd2e;"></div>
+          <div class="browser-dot" style="background:#28c840;"></div>
+          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">airmateai.github.io/cecilia-rubez/</div>
+        </div>
+        <iframe class="browser-iframe" src="https://airmateai.github.io/cecilia-rubez/" loading="lazy" title="Cecilia Rubez"></iframe>
       </div>
-    </a>
-    <a class="portfolio-card" href="https://airmateai.github.io/KULUKULU/" target="_blank">
-      <div class="portfolio-card-img-placeholder" style="background:linear-gradient(135deg,#1a2e1a,#2d4a2d);">🍽️</div>
-      <div class="portfolio-card-body">
-        <div class="portfolio-card-name">KuluKulu</div>
-        <div class="portfolio-card-type">Catering premium · Verde/Oro</div>
-        <div class="portfolio-card-location">📍 Málaga</div>
+      <a href="https://airmateai.github.io/cecilia-rubez/" target="_blank" class="portfolio-card" style="border-radius:12px;">
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-name">Cecilia Rubez · Fotografía</div>
+          <div class="portfolio-card-type">Paleta Oro/Negro · Ver web completa →</div>
+          <div class="portfolio-card-location">📍 Madrid</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal from-left delay-1">
+      <div class="browser-mockup" style="margin-bottom:14px;">
+        <div class="browser-bar">
+          <div class="browser-dot" style="background:#ff5f57;"></div>
+          <div class="browser-dot" style="background:#ffbd2e;"></div>
+          <div class="browser-dot" style="background:#28c840;"></div>
+          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">airmateai.github.io/KULUKULU/</div>
+        </div>
+        <iframe class="browser-iframe" src="https://airmateai.github.io/KULUKULU/" loading="lazy" title="KuluKulu"></iframe>
       </div>
-    </a>
-    <a class="portfolio-card" href="https://olmocabreragomez.github.io/peluqieria-josep/" target="_blank">
-      <div class="portfolio-card-img-placeholder" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);">✂️</div>
-      <div class="portfolio-card-body">
-        <div class="portfolio-card-name">Peluquería Josep</div>
-        <div class="portfolio-card-type">Peluquería de lujo · Negro/Oro</div>
-        <div class="portfolio-card-location">📍 Tenerife</div>
+      <a href="https://airmateai.github.io/KULUKULU/" target="_blank" class="portfolio-card" style="border-radius:12px;">
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-name">KuluKulu · Catering premium</div>
+          <div class="portfolio-card-type">Paleta Verde/Oro · Ver web completa →</div>
+          <div class="portfolio-card-location">📍 Málaga</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal from-right delay-2">
+      <div class="browser-mockup" style="margin-bottom:14px;">
+        <div class="browser-bar">
+          <div class="browser-dot" style="background:#ff5f57;"></div>
+          <div class="browser-dot" style="background:#ffbd2e;"></div>
+          <div class="browser-dot" style="background:#28c840;"></div>
+          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">olmocabreragomez.github.io/peluqieria-josep/</div>
+        </div>
+        <iframe class="browser-iframe" src="https://olmocabreragomez.github.io/peluqieria-josep/" loading="lazy" title="Peluquería Josep"></iframe>
       </div>
-    </a>
+      <a href="https://olmocabreragomez.github.io/peluqieria-josep/" target="_blank" class="portfolio-card" style="border-radius:12px;">
+        <div class="portfolio-card-body">
+          <div class="portfolio-card-name">Peluquería Josep · Lujo</div>
+          <div class="portfolio-card-type">Paleta Negro/Oro · Ver web completa →</div>
+          <div class="portfolio-card-location">📍 Tenerife</div>
+        </div>
+      </a>
+    </div>
+
   </div>
 
   <div class="webs-social-proof">
@@ -3364,6 +3892,56 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   </div>
 </div>
 
+<!-- ADVISOR WIDGET — AIRMATE COMERCIAL -->
+<div id="advisor-widget">
+  <div id="advisor-bubble">👋 ¿En qué puedo ayudarte?</div>
+  <button id="advisor-btn" onclick="toggleAdvisor()" aria-label="Abrir asesor AIRMATE">
+    <div id="advisor-btn-pulse"></div>
+    <svg class="advisor-robot" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cabeza -->
+      <rect x="8" y="3" width="14" height="11" rx="3" fill="white" opacity=".95"/>
+      <!-- Ojos -->
+      <circle cx="12" cy="8" r="1.8" fill="#7c3aed"/>
+      <circle cx="18" cy="8" r="1.8" fill="#7c3aed"/>
+      <!-- Boca sonrisa -->
+      <path d="M11.5 11.5 Q15 14 18.5 11.5" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      <!-- Antena -->
+      <line x1="15" y1="3" x2="15" y2="0.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="15" cy="0" r="1.2" fill="#a78bfa"/>
+      <!-- Cuerpo -->
+      <rect x="7" y="15" width="16" height="11" rx="3" fill="white" opacity=".9"/>
+      <!-- Botones pecho -->
+      <circle cx="12" cy="20" r="1.5" fill="#a78bfa"/>
+      <circle cx="15" cy="20" r="1.5" fill="#7c3aed"/>
+      <circle cx="18" cy="20" r="1.5" fill="#a78bfa"/>
+      <!-- Brazos -->
+      <rect x="2" y="16" width="4" height="7" rx="2" fill="white" opacity=".85"/>
+      <rect x="24" y="16" width="4" height="7" rx="2" fill="white" opacity=".85"/>
+      <!-- Piernas -->
+      <rect x="9" y="26" width="4" height="4" rx="2" fill="white" opacity=".85"/>
+      <rect x="17" y="26" width="4" height="4" rx="2" fill="white" opacity=".85"/>
+    </svg>
+  </button>
+</div>
+
+<div id="advisor-panel">
+  <div class="advisor-header">
+    <div class="advisor-header-avatar">🤖</div>
+    <div class="advisor-header-info">
+      <div class="advisor-header-name">Asesor AIRMATE</div>
+      <div class="advisor-header-status">En línea · Te ayudo ahora</div>
+    </div>
+    <button class="advisor-close" onclick="toggleAdvisor()">✕</button>
+  </div>
+  <div class="advisor-messages" id="advisor-msgs"></div>
+  <div class="advisor-input-wrap">
+    <input class="advisor-input" id="advisor-input" type="text" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter')sendAdvisorMsg()">
+    <button class="advisor-send" onclick="sendAdvisorMsg()">
+      <svg viewBox="0 0 16 16" fill="none" width="14" height="14"><path d="M14 2L7.5 8.5M14 2l-4.5 12-2.5-5.5L2 6l12-4z" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</div>
+
 <!-- CHAT WIDGET FLOTANTE — AIRMATE -->
 <div id="airmate-widget">
   <div id="airmate-panel">
@@ -3589,13 +4167,14 @@ function switchPage(p) {
   document.getElementById('page-'+p)?.classList.add('active');
   /* Actualizar tab activo en nav */
   document.querySelectorAll('.topnav-tab').forEach(t => t.classList.remove('active'));
-  const tabMap = { landing:'tab-landing', webs:'tab-webs', admin:'tab-admin' };
+  const tabMap = { inicio:'tab-inicio', landing:'tab-bot', webs:'tab-webs', admin:'tab-admin' };
   if (tabMap[p]) document.getElementById(tabMap[p])?.classList.add('active');
   /* Mostrar/ocultar nav links según página */
   const navLinks = document.getElementById('nav-links-public');
-  if (navLinks) navLinks.style.display = (p === 'landing' || p === 'webs') ? 'flex' : 'none';
+  if (navLinks) navLinks.style.display = (p === 'inicio' || p === 'landing' || p === 'webs') ? 'flex' : 'none';
   if (p === 'admin') { refreshAdmin(); if (!authState.isOwner && authState.currentUser) renderAccountSection(); }
   if (p === 'landing') { _betaSpotsLoaded = false; ensureBetaSpots(); }
+  if (p === 'inicio') { triggerReveal(); }
 }
 function showAdminSection(id, btn) {
   document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));
@@ -5134,10 +5713,10 @@ function enterPublicMode() {
   if (nav) nav.style.removeProperty('display');
   document.querySelectorAll('.page').forEach(p => p.style.removeProperty('display'));
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-landing')?.classList.add('active');
+  document.getElementById('page-inicio')?.classList.add('active');
   /* Nav buttons */
   document.querySelectorAll('.topnav-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.topnav-tab')[0]?.classList.add('active');
+  document.getElementById('tab-inicio')?.classList.add('active');
   document.getElementById('nav-public-actions')?.style.setProperty('display','flex');
   document.getElementById('nav-private-actions')?.style.setProperty('display','none');
   showAuthLogin();
@@ -5179,8 +5758,8 @@ function enterPrivateMode(user) {
     document.getElementById('page-admin')?.classList.add('active');
     document.querySelectorAll('.topnav-tab')[1]?.classList.add('active');
   } else {
-    document.getElementById('page-landing')?.classList.add('active');
-    document.querySelectorAll('.topnav-tab')[0]?.classList.add('active');
+    document.getElementById('page-inicio')?.classList.add('active');
+    document.getElementById('tab-inicio')?.classList.add('active');
   }
 
   /* Nav badge */
@@ -5915,11 +6494,11 @@ function renderUsersPanel() {
     const nav = document.querySelector('.topnav');
     if (nav) nav.style.removeProperty('display');
     document.querySelectorAll('.page').forEach(p => { p.style.removeProperty('display'); p.classList.remove('active'); });
-    document.getElementById('page-landing')?.classList.add('active');
+    document.getElementById('page-inicio')?.classList.add('active');
     document.getElementById('nav-public-actions')?.style.setProperty('display','flex');
     document.getElementById('nav-private-actions')?.style.setProperty('display','none');
     document.querySelectorAll('.topnav-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.topnav-tab')[0]?.classList.add('active');
+    document.getElementById('tab-inicio')?.classList.add('active');
   }
 
   /* Mostrar badge DEMO o REAL en el widget */
@@ -6217,6 +6796,84 @@ window.addEventListener('load', function() {
   }
   if(document.readyState==='complete') initGlobe(); else window.addEventListener('load',initGlobe);
 })();
+
+/* ════ REVEAL helper ════ */
+function triggerReveal() {
+  const els = document.querySelectorAll('#page-inicio .reveal');
+  setTimeout(() => {
+    els.forEach(el => el.classList.add('is-visible'));
+  }, 80);
+}
+
+/* ════ ADVISOR WIDGET ════ */
+let advisorOpen = false;
+let advisorHistory = [];
+const ADVISOR_SYSTEM = `Eres el asesor comercial de AIRMATE, una agencia digital española especializada en webs para negocios locales y chatbots con IA. Tu nombre es AIRMATE Advisor.
+Servicios que ofreces:
+1. AIRMATE Webs: diseño web profesional GRATIS (solo pagan si les gusta), precio único negociado personalmente, dominio .es o .com incluido 1 año, lista en 20 minutos, mantenimiento opcional.
+2. AIRMATE Bot: chatbot con IA para negocios locales desde 29,99€/mes, 7 días gratis sin tarjeta. Responde 24/7, instala en cualquier web con 2 líneas de código.
+Portafolio: AMA Essentials (skincare Tenerife), Cecilia Rubez (fotógrafa bodas Madrid), KuluKulu (catering Málaga), Peluquería Josep (Tenerife).
+Responde siempre en español, de forma breve, cálida y profesional. Máximo 2-3 frases por respuesta. Incentiva a solicitar el diseño gratis o probar el bot. WhatsApp para dudas: +34 646 427 613.`;
+
+function toggleAdvisor() {
+  advisorOpen = !advisorOpen;
+  const panel = document.getElementById('advisor-panel');
+  if (advisorOpen) {
+    panel.classList.add('open');
+    if (advisorHistory.length === 0) {
+      setTimeout(() => addAdvisorMsg('bot', '¡Hola! 👋 Soy tu asesor de AIRMATE. ¿Te ayudo con tu web o con el agente de IA?'), 300);
+    }
+    document.getElementById('advisor-input')?.focus();
+  } else {
+    panel.classList.remove('open');
+  }
+}
+
+function addAdvisorMsg(role, text) {
+  const msgs = document.getElementById('advisor-msgs');
+  if (!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'advisor-msg ' + role;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  advisorHistory.push({ role: role === 'bot' ? 'assistant' : 'user', content: text });
+}
+
+async function sendAdvisorMsg() {
+  const input = document.getElementById('advisor-input');
+  const text = input?.value.trim();
+  if (!text) return;
+  input.value = '';
+  addAdvisorMsg('user', text);
+
+  /* Typing indicator */
+  const msgs = document.getElementById('advisor-msgs');
+  const typing = document.createElement('div');
+  typing.className = 'advisor-typing';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+
+  try {
+    const messages = [
+      { role: 'system', content: ADVISOR_SYSTEM },
+      ...advisorHistory.slice(-8).filter(m => m.role !== 'system')
+    ];
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages, business_id: 'airmate-advisor' })
+    });
+    const data = await res.json();
+    typing.remove();
+    const reply = data.reply || data.content || 'Escríbenos por WhatsApp para ayudarte mejor 😊';
+    addAdvisorMsg('bot', reply);
+  } catch(e) {
+    typing.remove();
+    addAdvisorMsg('bot', '¡Hola! Para hablar con nosotros escríbenos a WhatsApp: +34 646 427 613 😊');
+  }
+}
 
 /* ════ AIRMATE WEBS — Solicitud de diseño ════ */
 async function submitWebRequest() {
