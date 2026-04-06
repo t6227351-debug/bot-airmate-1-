@@ -2636,89 +2636,194 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   <!-- ══ PLANES ══ -->
   <section class="lp-planes-section" id="lp-planes">
     <div class="lp-planes-inner">
-      <div class="reveal" style="text-align:center;margin-bottom:60px;">
+
+      <!-- Cabecera -->
+      <div class="reveal" style="text-align:center;margin-bottom:20px;">
         <div class="lp-section-label">Planes y precios</div>
-        <h2 class="lp-section-title" style="text-align:center;">Elige tu plan.<br><em>Sin permanencia. Sin sorpresas.</em></h2>
-        <p class="lp-section-sub" style="margin:12px auto 0;text-align:center;">Todos incluyen web profesional + asistente con IA + integración WhatsApp.</p>
+        <h2 class="lp-section-title" style="text-align:center;">Una web que trabaja por ti.<br><em>Elige cómo de activa la quieres.</em></h2>
+        <p class="lp-section-sub" style="margin:12px auto 0;max-width:560px;text-align:center;">Todos los planes incluyen web profesional generada con IA, dominio incluido y entrega en 24h. La diferencia está en si quieres que también capture clientes mientras tú descansas.</p>
       </div>
+
+      <!-- Toggle explicativo sin/con agente -->
+      <div class="reveal lp-agente-explain">
+        <div class="lp-agente-explain-box lp-agente-explain-sin">
+          <div class="lp-agente-explain-icon">🌐</div>
+          <div>
+            <strong>Solo web</strong>
+            <span>Presencia profesional online. El cliente te encuentra — tú cierras la venta.</span>
+          </div>
+        </div>
+        <div class="lp-agente-explain-vs">vs</div>
+        <div class="lp-agente-explain-box lp-agente-explain-con">
+          <div class="lp-agente-explain-icon">🤖</div>
+          <div>
+            <strong>Web + Agente IA</strong>
+            <span>El agente habla con el cliente, lo asesora y lo envía a tu WhatsApp listo para comprar. 24/7.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards de planes -->
       <div class="lp-planes-grid">
 
         <!-- START -->
         <div class="lp-plan-card reveal from-left">
+          <div class="lp-plan-tier-badge lp-tier-start">Para empezar</div>
           <div class="lp-plan-name">START</div>
-          <div class="lp-plan-price"><span class="lp-plan-eur">€</span>29,99<span class="lp-plan-period">/mes</span></div>
-          <p class="lp-plan-desc">Para negocios que necesitan presencia digital y un asistente básico funcionando.</p>
+          <p class="lp-plan-desc">Presencia online rápida y profesional. Lo esencial para que tus clientes te encuentren.</p>
           <ul class="lp-plan-features">
             <li>✓ Web profesional personalizada</li>
-            <li>✓ Dominio .es el primer año</li>
-            <li>✓ Asistente con IA básico</li>
-            <li>✓ Responde preguntas frecuentes</li>
-            <li>✓ Deriva a WhatsApp</li>
-            <li>✓ Soporte por email</li>
+            <li>✓ Dominio .es incluido</li>
+            <li>✓ Diseño adaptado a tu negocio</li>
+            <li>✓ Optimizada para móvil</li>
+            <li>✓ Lista en 24 horas</li>
           </ul>
-          <a href="https://wa.me/34646427613?text=Hola%2C%20me%20interesa%20el%20plan%20START%20de%20AIRMATE" target="_blank" class="lp-plan-btn">Quiero el plan START →</a>
+          <div class="lp-plan-pricing-block">
+            <div class="lp-pricing-row lp-pricing-sin">
+              <div class="lp-pricing-label">Solo web</div>
+              <div class="lp-pricing-price">19,99<span>/mes</span></div>
+              <a href="https://wa.me/34646427613?text=Hola%2C%20me%20interesa%20el%20plan%20START%20solo%20web" target="_blank" class="lp-pricing-cta lp-cta-ghost">Ver demo →</a>
+            </div>
+            <div class="lp-pricing-divider"></div>
+            <div class="lp-pricing-row lp-pricing-con">
+              <div class="lp-pricing-label lp-pricing-label-ai">Web + Agente IA <span class="lp-ai-tag">recomendado</span></div>
+              <div class="lp-pricing-price lp-pricing-price-ai">29,99<span>/mes</span></div>
+              <a href="https://buy.stripe.com/8x214p7OQ64P1zt1SE4c804" target="_blank" class="lp-pricing-cta lp-cta-solid">Empezar ahora →</a>
+            </div>
+          </div>
         </div>
 
         <!-- GROWTH (recomendado) -->
         <div class="lp-plan-card lp-plan-featured reveal">
-          <div class="lp-plan-badge">⭐ MÁS POPULAR</div>
+          <div class="lp-plan-badge">⭐ MÁS ELEGIDO</div>
+          <div class="lp-plan-tier-badge lp-tier-growth">Más elegido</div>
           <div class="lp-plan-name">GROWTH</div>
-          <div class="lp-plan-price"><span class="lp-plan-eur">€</span>39,99<span class="lp-plan-period">/mes</span></div>
-          <p class="lp-plan-desc">Para negocios que quieren captar contactos activamente y no perder ninguna oportunidad.</p>
+          <p class="lp-plan-desc">Pensado para que te contacten. Web y agente configurados para generar clientes, no solo visitas.</p>
           <ul class="lp-plan-features">
-            <li>✓ Todo lo del plan START</li>
-            <li>✓ Asistente avanzado con cualificación</li>
-            <li>✓ Captación activa de leads</li>
-            <li>✓ Respuestas personalizadas por servicio</li>
-            <li>✓ Integración con formularios</li>
-            <li>✓ Soporte prioritario WhatsApp</li>
+            <li>✓ Web adaptada a tu negocio</li>
+            <li>✓ Dominio .es incluido</li>
+            <li>✓ Copy enfocado en captar contactos</li>
+            <li>✓ Secciones de confianza y testimonios</li>
+            <li>✓ Lista en 24 horas</li>
           </ul>
-          <a href="https://wa.me/34646427613?text=Hola%2C%20me%20interesa%20el%20plan%20GROWTH%20de%20AIRMATE" target="_blank" class="lp-plan-btn lp-plan-btn-featured">Quiero el plan GROWTH →</a>
+          <div class="lp-plan-pricing-block">
+            <div class="lp-pricing-row lp-pricing-sin">
+              <div class="lp-pricing-label">Solo web</div>
+              <div class="lp-pricing-price">27,99<span>/mes</span></div>
+              <a href="https://wa.me/34646427613?text=Hola%2C%20me%20interesa%20el%20plan%20GROWTH%20solo%20web" target="_blank" class="lp-pricing-cta lp-cta-ghost">Ver demo →</a>
+            </div>
+            <div class="lp-pricing-divider"></div>
+            <div class="lp-pricing-row lp-pricing-con">
+              <div class="lp-pricing-label lp-pricing-label-ai">Web + Agente IA <span class="lp-ai-tag">recomendado</span></div>
+              <div class="lp-pricing-price lp-pricing-price-ai">39,99<span>/mes</span></div>
+              <a href="https://buy.stripe.com/14A5kF3yA50L5PJ68U4c801" target="_blank" class="lp-pricing-cta lp-cta-featured">Empezar ahora →</a>
+            </div>
+          </div>
         </div>
 
         <!-- PRO -->
         <div class="lp-plan-card reveal from-right">
+          <div class="lp-plan-tier-badge lp-tier-pro">Máximo rendimiento</div>
           <div class="lp-plan-name">PRO</div>
-          <div class="lp-plan-price"><span class="lp-plan-eur">€</span>69,99<span class="lp-plan-period">/mes</span></div>
-          <p class="lp-plan-desc">Para negocios que quieren máxima conversión y un seguimiento cercano cada mes.</p>
+          <p class="lp-plan-desc">Para negocios que quieren mejorar resultados mes a mes. Revisión y optimización continua incluidas.</p>
           <ul class="lp-plan-features">
-            <li>✓ Todo lo del plan GROWTH</li>
-            <li>✓ Asistente de alta conversión</li>
-            <li>✓ Revisión y optimización mensual</li>
-            <li>✓ Seguimiento activo de clientes</li>
-            <li>✓ Reunión mensual de seguimiento</li>
-            <li>✓ Soporte personalizado WhatsApp</li>
+            <li>✓ Web de alta conversión</li>
+            <li>✓ Dominio .es incluido</li>
+            <li>✓ Copy optimizado para vender</li>
+            <li>✓ Revisión mensual de resultados</li>
+            <li>✓ Lista en 24 horas</li>
           </ul>
-          <a href="https://wa.me/34646427613?text=Hola%2C%20me%20interesa%20el%20plan%20PRO%20de%20AIRMATE" target="_blank" class="lp-plan-btn">Quiero el plan PRO →</a>
+          <div class="lp-plan-pricing-block">
+            <div class="lp-pricing-row lp-pricing-sin">
+              <div class="lp-pricing-label">Solo web</div>
+              <div class="lp-pricing-price">49,99<span>/mes</span></div>
+              <a href="https://wa.me/34646427613?text=Hola%2C%20me%20interesa%20el%20plan%20PRO%20solo%20web" target="_blank" class="lp-pricing-cta lp-cta-ghost">Ver demo →</a>
+            </div>
+            <div class="lp-pricing-divider"></div>
+            <div class="lp-pricing-row lp-pricing-con">
+              <div class="lp-pricing-label lp-pricing-label-ai">Web + Agente IA <span class="lp-ai-tag">recomendado</span></div>
+              <div class="lp-pricing-price lp-pricing-price-ai">69,99<span>/mes</span></div>
+              <a href="https://buy.stripe.com/6oU6oJfhictda5Z7cY4c803" target="_blank" class="lp-pricing-cta lp-cta-solid">Empezar ahora →</a>
+            </div>
+          </div>
         </div>
 
       </div>
-      <p class="reveal" style="text-align:center;margin-top:32px;font-size:13px;color:rgba(255,255,255,.3);">Sin permanencia. Cancela cuando quieras. Precios sin IVA.</p>
+
+      <!-- Pie de sección -->
+      <div class="reveal lp-planes-footer">
+        <p>Sin permanencia · Cancela cuando quieras · Precios sin IVA</p>
+        <p style="margin-top:8px;font-size:12px;opacity:.4;">¿Tienes dudas sobre qué plan es el tuyo? <a href="https://wa.me/34646427613?text=Hola%2C%20necesito%20ayuda%20para%20elegir%20plan" target="_blank" style="color:var(--al-green);text-decoration:none;">Escríbenos por WhatsApp →</a></p>
+      </div>
+
     </div>
   </section>
 
   <style>
+  /* ── Pricing section ── */
   .lp-planes-section{background:#060d1a;padding:100px 32px;}
-  .lp-planes-inner{max-width:1100px;margin:0 auto;}
-  .lp-planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
-  @media(max-width:860px){.lp-planes-grid{grid-template-columns:1fr;}}
-  .lp-plan-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:36px 32px;position:relative;transition:transform .3s,border-color .3s;}
-  .lp-plan-card:hover{transform:translateY(-6px);border-color:rgba(34,197,94,.3);}
-  .lp-plan-featured{background:rgba(34,197,94,.07);border-color:rgba(34,197,94,.4);transform:scale(1.04);}
-  .lp-plan-featured:hover{transform:scale(1.04) translateY(-6px);}
-  .lp-plan-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);border-radius:99px;padding:4px 12px;margin-bottom:16px;}
-  .lp-plan-name{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px;}
-  .lp-plan-price{font-size:3rem;font-weight:800;color:#fff;line-height:1;margin-bottom:16px;}
-  .lp-plan-eur{font-size:1.4rem;vertical-align:top;margin-top:8px;display:inline-block;color:var(--al-green);}
-  .lp-plan-period{font-size:1rem;font-weight:400;color:rgba(255,255,255,.4);}
-  .lp-plan-desc{font-size:.9rem;color:rgba(255,255,255,.5);margin-bottom:24px;line-height:1.6;}
-  .lp-plan-features{list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:10px;}
-  .lp-plan-features li{font-size:.9rem;color:rgba(255,255,255,.75);}
-  .lp-plan-btn{display:block;text-align:center;padding:14px 24px;border-radius:12px;font-weight:700;font-size:.9rem;text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;transition:all .25s;}
-  .lp-plan-btn:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);}
-  .lp-plan-btn-featured{background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));border-color:transparent;box-shadow:0 6px 24px rgba(34,197,94,.4);}
-  .lp-plan-btn-featured:hover{box-shadow:0 10px 32px rgba(34,197,94,.6);}
+  .lp-planes-inner{max-width:1120px;margin:0 auto;}
+  .lp-planes-footer{text-align:center;margin-top:40px;font-size:13px;color:rgba(255,255,255,.3);}
 
+  /* Explicación sin/con agente */
+  .lp-agente-explain{display:flex;align-items:center;gap:20px;max-width:780px;margin:0 auto 56px;padding:24px 28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;}
+  @media(max-width:700px){.lp-agente-explain{flex-direction:column;gap:12px;}}
+  .lp-agente-explain-box{display:flex;align-items:flex-start;gap:14px;flex:1;}
+  .lp-agente-explain-icon{font-size:1.8rem;flex-shrink:0;line-height:1;}
+  .lp-agente-explain-box strong{display:block;font-size:.9rem;font-weight:700;color:#fff;margin-bottom:4px;}
+  .lp-agente-explain-box span{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.5;}
+  .lp-agente-explain-vs{font-size:.75rem;font-weight:800;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase;flex-shrink:0;}
+
+  /* Grid de planes */
+  .lp-planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
+  @media(max-width:900px){.lp-planes-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}}
+
+  /* Card base */
+  .lp-plan-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 28px;position:relative;transition:transform .3s,border-color .3s;}
+  .lp-plan-card:hover{transform:translateY(-6px);border-color:rgba(34,197,94,.25);}
+  .lp-plan-featured{background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.4);transform:scale(1.03);}
+  .lp-plan-featured:hover{transform:scale(1.03) translateY(-6px);}
+
+  /* Badges */
+  .lp-plan-badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);border-radius:99px;padding:4px 12px;margin-bottom:8px;}
+  .lp-plan-tier-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px;margin-bottom:14px;}
+  .lp-tier-start{color:rgba(255,255,255,.5);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);}
+  .lp-tier-growth{color:var(--al-green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);}
+  .lp-tier-pro{color:#a78bfa;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);}
+  .lp-plan-featured .lp-plan-tier-badge{display:none;} /* badge "más elegido" ya lo cubre .lp-plan-badge */
+
+  /* Nombre y descripción */
+  .lp-plan-name{font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:.02em;}
+  .lp-plan-desc{font-size:.87rem;color:rgba(255,255,255,.45);margin-bottom:20px;line-height:1.65;}
+
+  /* Features */
+  .lp-plan-features{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:9px;}
+  .lp-plan-features li{font-size:.87rem;color:rgba(255,255,255,.7);}
+
+  /* Bloque de precios sin/con agente */
+  .lp-plan-pricing-block{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden;}
+  .lp-pricing-row{padding:16px 18px;}
+  .lp-pricing-sin{opacity:.7;}
+  .lp-pricing-con{background:rgba(34,197,94,.05);}
+  .lp-pricing-divider{height:1px;background:rgba(255,255,255,.07);}
+  .lp-pricing-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;}
+  .lp-pricing-label-ai{color:rgba(34,197,94,.8);}
+  .lp-ai-tag{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.15);border-radius:99px;padding:2px 7px;margin-left:6px;vertical-align:middle;}
+  .lp-pricing-price{font-size:1.8rem;font-weight:800;color:rgba(255,255,255,.5);line-height:1;margin-bottom:12px;}
+  .lp-pricing-price span{font-size:.85rem;font-weight:400;color:rgba(255,255,255,.3);}
+  .lp-pricing-price-ai{color:#fff;}
+  .lp-pricing-price-ai span{color:rgba(255,255,255,.4);}
+
+  /* CTAs dentro del bloque de precios */
+  .lp-pricing-cta{display:block;text-align:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:.82rem;text-decoration:none;transition:all .25s;}
+  .lp-cta-ghost{background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);}
+  .lp-cta-ghost:hover{border-color:rgba(255,255,255,.3);color:#fff;}
+  .lp-cta-solid{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:var(--al-green);}
+  .lp-cta-solid:hover{background:rgba(34,197,94,.25);border-color:rgba(34,197,94,.5);}
+  .lp-cta-featured{background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));border:none;color:#fff;box-shadow:0 4px 20px rgba(34,197,94,.4);}
+  .lp-cta-featured:hover{box-shadow:0 8px 28px rgba(34,197,94,.6);}
+
+  /* Problema section */
   .lp-problema-section{background:#080f1f;padding:100px 32px;}
   .lp-problema-inner{max-width:1100px;margin:0 auto;}
   .lp-problema-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
