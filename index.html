@@ -2867,48 +2867,80 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <!-- WEBS PAGE -->
 <div id="page-webs" class="page">
 <style>
-.webs-hero{background:linear-gradient(160deg,#060d1a 0%,#0c1e3d 55%,#0d2744 100%);padding:90px 24px 80px;text-align:center;position:relative;overflow:hidden;}
-.webs-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(34,197,94,.12) 0%,transparent 70%);pointer-events:none;}
-.webs-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,197,94,.4),transparent);}
-.webs-hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:99px;padding:6px 16px;margin-bottom:28px;}
-.webs-hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:400;color:#fff;line-height:1.12;margin-bottom:20px;max-width:760px;margin-left:auto;margin-right:auto;}
+/* ══ WEBS PAGE — FULL REDESIGN ══ */
+.webs-hero{background:linear-gradient(160deg,#060d1a 0%,#0c1e3d 55%,#0d2744 100%);padding:100px 24px 90px;text-align:center;position:relative;overflow:hidden;}
+.webs-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(34,197,94,.14) 0%,transparent 70%);pointer-events:none;}
+.webs-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,197,94,.5),transparent);}
+.webs-hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:99px;padding:7px 18px;margin-bottom:32px;}
+.webs-hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:400;color:#fff;line-height:1.1;margin-bottom:22px;max-width:780px;margin-left:auto;margin-right:auto;}
 .webs-hero h1 em{font-style:italic;color:var(--al-green);}
-.webs-hero p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:560px;margin:0 auto 36px;}
-.webs-hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));color:#fff;font-size:1rem;font-weight:700;padding:14px 34px;border-radius:12px;text-decoration:none;cursor:pointer;border:none;box-shadow:0 6px 24px rgba(34,197,94,.4);transition:all .2s;}
-.webs-hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(34,197,94,.55);}
-.webs-section{max-width:1100px;margin:0 auto;padding:60px 32px;}
-.webs-section-title{font-family:var(--font-display);font-size:2rem;font-weight:400;color:var(--al-navy);text-align:center;margin-bottom:8px;}
-.webs-section-sub{text-align:center;color:var(--gray-500);font-size:1rem;margin-bottom:48px;}
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:24px;}
-.portfolio-card{border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md);background:#fff;transition:transform .2s,box-shadow .2s;text-decoration:none;display:block;}
-.portfolio-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
-.portfolio-card-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:#e8e8e3;}
-.portfolio-card-img-placeholder{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
-.portfolio-card-body{padding:18px 20px;}
-.portfolio-card-name{font-weight:700;font-size:15px;color:var(--al-navy);margin-bottom:4px;}
-.portfolio-card-type{font-size:12px;color:var(--gray-500);}
-.portfolio-card-location{font-size:12px;color:var(--gray-400);margin-top:2px;}
-.webs-social-proof{text-align:center;padding:32px;background:linear-gradient(135deg,#0c1e3d,#162d58);border-radius:20px;color:#fff;margin-bottom:60px;}
-.webs-social-proof h3{font-size:2rem;font-weight:800;color:var(--al-green);}
-.webs-social-proof p{color:rgba(255,255,255,.65);margin-top:8px;}
-.webs-props{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:60px;}
-.webs-prop-card{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow-sm);border:1px solid var(--gray-100);}
-.webs-prop-icon{width:42px;height:42px;border-radius:10px;background:var(--al-green-light);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;}
-.webs-prop-title{font-weight:700;color:var(--al-navy);margin-bottom:6px;}
-.webs-prop-desc{font-size:13px;color:var(--gray-500);line-height:1.5;}
-.webs-form-wrap{background:#fff;border-radius:20px;box-shadow:var(--shadow-md);padding:40px;max-width:680px;margin:0 auto 80px;}
-.webs-form-wrap h2{font-family:var(--font-display);font-size:1.8rem;color:var(--al-navy);margin-bottom:8px;}
-.webs-form-wrap p{color:var(--gray-500);font-size:14px;margin-bottom:28px;}
+.webs-hero p{font-size:1.15rem;color:rgba(255,255,255,.6);max-width:540px;margin:0 auto 40px;}
+.webs-hero-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));color:#fff;font-size:1rem;font-weight:700;padding:15px 36px;border-radius:12px;text-decoration:none;cursor:pointer;border:none;box-shadow:0 6px 28px rgba(34,197,94,.45);transition:all .25s;}
+.webs-hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(34,197,94,.6);}
+
+/* ── Portfolio section dark ── */
+.webs-section{background:#060d1a;padding:80px 32px 60px;}
+.webs-section-inner{max-width:1160px;margin:0 auto;}
+.webs-section-header{text-align:center;margin-bottom:60px;}
+.webs-section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:#fff;margin-bottom:12px;}
+.webs-section-title em{font-style:italic;color:var(--al-green);}
+.webs-section-sub{color:rgba(255,255,255,.45);font-size:1rem;max-width:480px;margin:0 auto;}
+
+/* ── Portfolio grid ── */
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:32px;}
+@media(max-width:860px){.portfolio-grid{grid-template-columns:1fr;}}
+
+/* ── Portfolio card (unified dark) ── */
+.pf-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
+.pf-card:hover{transform:translateY(-8px);border-color:rgba(34,197,94,.35);box-shadow:0 20px 60px rgba(34,197,94,.15);}
+.pf-card-browser{background:#111827;padding:10px 14px 0;display:flex;align-items:center;gap:6px;}
+.pf-card-dots{display:flex;gap:5px;}
+.pf-card-dot{width:9px;height:9px;border-radius:50%;}
+.pf-card-url{flex:1;background:rgba(255,255,255,.07);border-radius:6px;height:20px;margin-left:10px;display:flex;align-items:center;padding:0 10px;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.02em;overflow:hidden;white-space:nowrap;}
+.pf-card-preview{width:100%;aspect-ratio:16/9;border:none;display:block;background:#0f172a;pointer-events:none;transform-origin:top left;}
+.pf-card-preview-placeholder{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#0f172a,#1e2d4a);color:rgba(255,255,255,.25);font-size:13px;}
+.pf-card-preview-placeholder-icon{font-size:2.8rem;opacity:.4;}
+.pf-card-body{padding:22px 24px 26px;}
+.pf-card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.pf-card-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:rgba(34,197,94,.1);color:var(--al-green);border:1px solid rgba(34,197,94,.2);}
+.pf-card-tag.gray{background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);border-color:rgba(255,255,255,.1);}
+.pf-card-name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;color:#fff;margin-bottom:6px;}
+.pf-card-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:18px;}
+.pf-card-footer{display:flex;align-items:center;justify-content:space-between;}
+.pf-card-location{font-size:12px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:5px;}
+.pf-card-link{font-size:12px;font-weight:700;color:var(--al-green);text-decoration:none;display:flex;align-items:center;gap:4px;transition:gap .2s;}
+.pf-card-link:hover{gap:8px;}
+.pf-card-link-soon{font-size:12px;font-weight:600;color:rgba(255,255,255,.25);letter-spacing:.06em;text-transform:uppercase;}
+
+/* ── Stats bar ── */
+.webs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:16px;overflow:hidden;margin-bottom:64px;}
+.webs-stat{background:#060d1a;padding:32px 20px;text-align:center;}
+.webs-stat-num{font-family:var(--font-display);font-size:2.4rem;font-weight:400;color:var(--al-green);line-height:1;}
+.webs-stat-label{font-size:13px;color:rgba(255,255,255,.4);margin-top:6px;}
+@media(max-width:600px){.webs-stats{grid-template-columns:1fr;}}
+
+/* ── Props ── */
+.webs-props{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:64px;}
+.webs-prop-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:26px;}
+.webs-prop-icon{width:44px;height:44px;border-radius:12px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px;}
+.webs-prop-title{font-weight:700;color:#fff;margin-bottom:8px;font-size:15px;}
+.webs-prop-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;}
+
+/* ── Form ── */
+.webs-form-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:44px;max-width:700px;margin:0 auto 40px;}
+.webs-form-wrap h2{font-family:var(--font-display);font-size:1.9rem;color:#fff;margin-bottom:8px;}
+.webs-form-wrap p{color:rgba(255,255,255,.45);font-size:14px;margin-bottom:32px;}
 .webs-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:600px){.webs-form-grid{grid-template-columns:1fr;}}
 .webs-form-group{display:flex;flex-direction:column;gap:6px;}
 .webs-form-group.full{grid-column:1/-1;}
-.webs-form-label{font-size:13px;font-weight:600;color:var(--gray-700);}
-.webs-form-input,.webs-form-textarea{padding:11px 14px;border:1.5px solid var(--gray-100);border-radius:10px;font-size:14px;font-family:var(--font-body);color:var(--al-navy);outline:none;transition:border-color .15s;background:#fafaf8;}
-.webs-form-input:focus,.webs-form-textarea:focus{border-color:var(--al-green);}
+.webs-form-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.55);}
+.webs-form-input,.webs-form-textarea{padding:12px 15px;border:1.5px solid rgba(255,255,255,.1);border-radius:10px;font-size:14px;font-family:var(--font-body);color:#fff;outline:none;transition:border-color .15s;background:rgba(255,255,255,.06);}
+.webs-form-input::placeholder,.webs-form-textarea::placeholder{color:rgba(255,255,255,.25);}
+.webs-form-input:focus,.webs-form-textarea:focus{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.04);}
 .webs-form-textarea{resize:vertical;min-height:90px;}
-.webs-submit-btn{width:100%;margin-top:24px;padding:14px;background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));color:#fff;font-size:15px;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(34,197,94,.35);}
-.webs-submit-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(34,197,94,.5);}
+.webs-submit-btn{width:100%;margin-top:24px;padding:15px;background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));color:#fff;font-size:15px;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(34,197,94,.35);}
+.webs-submit-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(34,197,94,.5);}
 </style>
 
 <div class="webs-hero">
@@ -2919,109 +2951,209 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 </div>
 
 <div class="webs-section">
-  <div style="text-align:center;margin-bottom:20px;">
-    <span class="portfolio-launch-badge">⚡ Lista y entregada en 20 minutos</span>
-  </div>
-  <h2 class="webs-section-title">Webs que hemos creado</h2>
-  <p class="webs-section-sub">Cada web es única, diseñada a medida. Haz clic para ver la web real.</p>
+  <div class="webs-section-inner">
 
-  <div class="portfolio-grid">
-
-    <div class="reveal from-left">
-      <div class="browser-mockup" style="margin-bottom:14px;">
-        <div class="browser-bar">
-          <div class="browser-dot" style="background:#ff5f57;"></div>
-          <div class="browser-dot" style="background:#ffbd2e;"></div>
-          <div class="browser-dot" style="background:#28c840;"></div>
-          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">airmateai.github.io/AmaEs/</div>
-        </div>
-        <iframe class="browser-iframe" src="https://airmateai.github.io/AmaEs/" loading="lazy" title="AMA Essentials"></iframe>
+    <div class="webs-section-header reveal">
+      <div style="text-align:center;margin-bottom:18px;">
+        <span class="portfolio-launch-badge">⚡ Lista y entregada en 20 minutos</span>
       </div>
-      <a href="https://airmateai.github.io/AmaEs/" target="_blank" class="portfolio-card" style="border-radius:12px;">
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">AMA Essentials · Skincare</div>
-          <div class="portfolio-card-type">Paleta Beige/Marrón · Ver web completa →</div>
-          <div class="portfolio-card-location">📍 Tenerife</div>
-        </div>
-      </a>
+      <h2 class="webs-section-title">Webs que hemos <em>creado</em></h2>
+      <p class="webs-section-sub">Cada web es única, diseñada a medida para el negocio. Haz clic para ver la web real.</p>
     </div>
 
-    <div class="reveal from-right delay-1">
-      <div class="browser-mockup" style="margin-bottom:14px;">
-        <div class="browser-bar">
-          <div class="browser-dot" style="background:#ff5f57;"></div>
-          <div class="browser-dot" style="background:#ffbd2e;"></div>
-          <div class="browser-dot" style="background:#28c840;"></div>
-          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">airmateai.github.io/cecilia-rubez/</div>
+    <div class="portfolio-grid">
+
+      <!-- AMA Essentials -->
+      <div class="pf-card reveal from-left">
+        <div class="pf-card-browser">
+          <div class="pf-card-dots">
+            <div class="pf-card-dot" style="background:#ff5f57;"></div>
+            <div class="pf-card-dot" style="background:#ffbd2e;"></div>
+            <div class="pf-card-dot" style="background:#28c840;"></div>
+          </div>
+          <div class="pf-card-url">airmateai.github.io/AmaEs/</div>
         </div>
-        <iframe class="browser-iframe" src="https://airmateai.github.io/cecilia-rubez/" loading="lazy" title="Cecilia Rubez"></iframe>
+        <iframe class="pf-card-preview" src="https://airmateai.github.io/AmaEs/" loading="lazy" title="AMA Essentials"></iframe>
+        <div class="pf-card-body">
+          <div class="pf-card-tags">
+            <span class="pf-card-tag">Skincare</span>
+            <span class="pf-card-tag gray">Beige · Marrón</span>
+          </div>
+          <div class="pf-card-name">AMA Essentials</div>
+          <div class="pf-card-desc">Tienda de skincare con diseño cálido y elegante, orientada a conversión.</div>
+          <div class="pf-card-footer">
+            <span class="pf-card-location">📍 Tenerife</span>
+            <a href="https://airmateai.github.io/AmaEs/" target="_blank" class="pf-card-link">Ver web →</a>
+          </div>
+        </div>
       </div>
-      <a href="https://airmateai.github.io/cecilia-rubez/" target="_blank" class="portfolio-card" style="border-radius:12px;">
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">Cecilia Rubez · Fotografía</div>
-          <div class="portfolio-card-type">Paleta Oro/Negro · Ver web completa →</div>
-          <div class="portfolio-card-location">📍 Madrid</div>
-        </div>
-      </a>
-    </div>
 
-    <div class="reveal from-left delay-1">
-      <div class="browser-mockup" style="margin-bottom:14px;">
-        <div class="browser-bar">
-          <div class="browser-dot" style="background:#ff5f57;"></div>
-          <div class="browser-dot" style="background:#ffbd2e;"></div>
-          <div class="browser-dot" style="background:#28c840;"></div>
-          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">airmateai.github.io/KULUKULU/</div>
+      <!-- Cecilia Rubez -->
+      <div class="pf-card reveal from-right delay-1">
+        <div class="pf-card-browser">
+          <div class="pf-card-dots">
+            <div class="pf-card-dot" style="background:#ff5f57;"></div>
+            <div class="pf-card-dot" style="background:#ffbd2e;"></div>
+            <div class="pf-card-dot" style="background:#28c840;"></div>
+          </div>
+          <div class="pf-card-url">airmateai.github.io/cecilia-rubez/</div>
         </div>
-        <iframe class="browser-iframe" src="https://airmateai.github.io/KULUKULU/" loading="lazy" title="KuluKulu"></iframe>
+        <iframe class="pf-card-preview" src="https://airmateai.github.io/cecilia-rubez/" loading="lazy" title="Cecilia Rubez"></iframe>
+        <div class="pf-card-body">
+          <div class="pf-card-tags">
+            <span class="pf-card-tag">Fotografía</span>
+            <span class="pf-card-tag gray">Oro · Negro</span>
+          </div>
+          <div class="pf-card-name">Cecilia Rubez</div>
+          <div class="pf-card-desc">Portfolio fotográfico con estética lujosa en negro y dorado.</div>
+          <div class="pf-card-footer">
+            <span class="pf-card-location">📍 Madrid</span>
+            <a href="https://airmateai.github.io/cecilia-rubez/" target="_blank" class="pf-card-link">Ver web →</a>
+          </div>
+        </div>
       </div>
-      <a href="https://airmateai.github.io/KULUKULU/" target="_blank" class="portfolio-card" style="border-radius:12px;">
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">KuluKulu · Catering premium</div>
-          <div class="portfolio-card-type">Paleta Verde/Oro · Ver web completa →</div>
-          <div class="portfolio-card-location">📍 Málaga</div>
-        </div>
-      </a>
-    </div>
 
-    <div class="reveal from-right delay-2">
-      <div class="browser-mockup" style="margin-bottom:14px;">
-        <div class="browser-bar">
-          <div class="browser-dot" style="background:#ff5f57;"></div>
-          <div class="browser-dot" style="background:#ffbd2e;"></div>
-          <div class="browser-dot" style="background:#28c840;"></div>
-          <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:22px;margin-left:8px;display:flex;align-items:center;padding:0 10px;font-size:10px;color:rgba(255,255,255,.4);">olmocabreragomez.github.io/peluqieria-josep/</div>
+      <!-- KuluKulu -->
+      <div class="pf-card reveal from-left delay-1">
+        <div class="pf-card-browser">
+          <div class="pf-card-dots">
+            <div class="pf-card-dot" style="background:#ff5f57;"></div>
+            <div class="pf-card-dot" style="background:#ffbd2e;"></div>
+            <div class="pf-card-dot" style="background:#28c840;"></div>
+          </div>
+          <div class="pf-card-url">airmateai.github.io/KULUKULU/</div>
         </div>
-        <iframe class="browser-iframe" src="https://olmocabreragomez.github.io/peluqieria-josep/" loading="lazy" title="Peluquería Josep"></iframe>
+        <iframe class="pf-card-preview" src="https://airmateai.github.io/KULUKULU/" loading="lazy" title="KuluKulu"></iframe>
+        <div class="pf-card-body">
+          <div class="pf-card-tags">
+            <span class="pf-card-tag">Catering</span>
+            <span class="pf-card-tag gray">Verde · Oro</span>
+          </div>
+          <div class="pf-card-name">KuluKulu</div>
+          <div class="pf-card-desc">Catering premium con diseño exuberante que transmite lujo y sabor.</div>
+          <div class="pf-card-footer">
+            <span class="pf-card-location">📍 Málaga</span>
+            <a href="https://airmateai.github.io/KULUKULU/" target="_blank" class="pf-card-link">Ver web →</a>
+          </div>
+        </div>
       </div>
-      <a href="https://olmocabreragomez.github.io/peluqieria-josep/" target="_blank" class="portfolio-card" style="border-radius:12px;">
-        <div class="portfolio-card-body">
-          <div class="portfolio-card-name">Peluquería Josep · Lujo</div>
-          <div class="portfolio-card-type">Paleta Negro/Oro · Ver web completa →</div>
-          <div class="portfolio-card-location">📍 Tenerife</div>
+
+      <!-- Peluquería Josep -->
+      <div class="pf-card reveal from-right delay-2">
+        <div class="pf-card-browser">
+          <div class="pf-card-dots">
+            <div class="pf-card-dot" style="background:#ff5f57;"></div>
+            <div class="pf-card-dot" style="background:#ffbd2e;"></div>
+            <div class="pf-card-dot" style="background:#28c840;"></div>
+          </div>
+          <div class="pf-card-url">olmocabreragomez.github.io/peluqieria-josep/</div>
         </div>
-      </a>
+        <iframe class="pf-card-preview" src="https://olmocabreragomez.github.io/peluqieria-josep/" loading="lazy" title="Peluquería Josep"></iframe>
+        <div class="pf-card-body">
+          <div class="pf-card-tags">
+            <span class="pf-card-tag">Peluquería</span>
+            <span class="pf-card-tag gray">Negro · Oro</span>
+          </div>
+          <div class="pf-card-name">Peluquería Josep</div>
+          <div class="pf-card-desc">Salón de lujo con una identidad visual potente en negro y dorado.</div>
+          <div class="pf-card-footer">
+            <span class="pf-card-location">📍 Tenerife</span>
+            <a href="https://olmocabreragomez.github.io/peluqieria-josep/" target="_blank" class="pf-card-link">Ver web →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solarium Torrelavega -->
+      <div class="pf-card reveal from-left delay-2">
+        <div class="pf-card-browser">
+          <div class="pf-card-dots">
+            <div class="pf-card-dot" style="background:#ff5f57;"></div>
+            <div class="pf-card-dot" style="background:#ffbd2e;"></div>
+            <div class="pf-card-dot" style="background:#28c840;"></div>
+          </div>
+          <div class="pf-card-url">Solarium Torrelavega</div>
+        </div>
+        <div class="pf-card-preview-placeholder">
+          <div class="pf-card-preview-placeholder-icon">☀️</div>
+          <span>Preview próximamente</span>
+        </div>
+        <div class="pf-card-body">
+          <div class="pf-card-tags">
+            <span class="pf-card-tag">Belleza</span>
+            <span class="pf-card-tag gray">Naranja · Dorado</span>
+          </div>
+          <div class="pf-card-name">Solarium Torrelavega</div>
+          <div class="pf-card-desc">El mejor centro de bronceado de Cantabria. Diseño vibrante y cálido.</div>
+          <div class="pf-card-footer">
+            <span class="pf-card-location">📍 Torrelavega, Cantabria</span>
+            <span class="pf-card-link-soon">En publicación</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empleo Tenerife -->
+      <div class="pf-card reveal from-right delay-3">
+        <div class="pf-card-browser">
+          <div class="pf-card-dots">
+            <div class="pf-card-dot" style="background:#ff5f57;"></div>
+            <div class="pf-card-dot" style="background:#ffbd2e;"></div>
+            <div class="pf-card-dot" style="background:#28c840;"></div>
+          </div>
+          <div class="pf-card-url">Empleo Tenerife</div>
+        </div>
+        <div class="pf-card-preview-placeholder">
+          <div class="pf-card-preview-placeholder-icon">💼</div>
+          <span>Preview próximamente</span>
+        </div>
+        <div class="pf-card-body">
+          <div class="pf-card-tags">
+            <span class="pf-card-tag">Empleo</span>
+            <span class="pf-card-tag gray">Azul · Verde</span>
+          </div>
+          <div class="pf-card-name">Empleo Tenerife</div>
+          <div class="pf-card-desc">Portal de empleo local para encontrar trabajo en la isla. Moderno y funcional.</div>
+          <div class="pf-card-footer">
+            <span class="pf-card-location">📍 Tenerife</span>
+            <span class="pf-card-link-soon">En publicación</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-  </div>
-
-  <div class="webs-social-proof">
-    <h3>+150 negocios</h3>
-    <p>confían en AIRMATE para su presencia digital en España</p>
-  </div>
-
-  <div class="webs-props">
-    <div class="webs-prop-card">
-      <div class="webs-prop-icon">🎁</div>
-      <div class="webs-prop-title">Diseño 100% gratis</div>
-      <div class="webs-prop-desc">Creamos el diseño completo de tu web sin ningún coste inicial. Solo pagas si te gusta.</div>
+    <!-- Stats -->
+    <div class="webs-stats reveal">
+      <div class="webs-stat">
+        <div class="webs-stat-num">+150</div>
+        <div class="webs-stat-label">Negocios con web activa</div>
+      </div>
+      <div class="webs-stat">
+        <div class="webs-stat-num">20'</div>
+        <div class="webs-stat-label">Entrega media</div>
+      </div>
+      <div class="webs-stat">
+        <div class="webs-stat-num">100%</div>
+        <div class="webs-stat-label">Diseño gratis</div>
+      </div>
     </div>
-    <div class="webs-prop-card">
-      <div class="webs-prop-icon">🌐</div>
-      <div class="webs-prop-title">Dominio incluido 1 año</div>
-      <div class="webs-prop-desc">Tu dominio .es o .com incluido el primer año. Sin costes ocultos ni sorpresas.</div>
+
+    <div class="webs-props">
+      <div class="webs-prop-card reveal">
+        <div class="webs-prop-icon">🎁</div>
+        <div class="webs-prop-title">Diseño 100% gratis</div>
+        <div class="webs-prop-desc">Creamos el diseño completo de tu web sin ningún coste inicial. Solo pagas si te gusta.</div>
+      </div>
+      <div class="webs-prop-card reveal delay-1">
+        <div class="webs-prop-icon">🌐</div>
+        <div class="webs-prop-title">Dominio incluido 1 año</div>
+        <div class="webs-prop-desc">Tu dominio .es o .com incluido el primer año. Sin costes ocultos ni sorpresas.</div>
+      </div>
+      <div class="webs-prop-card reveal delay-2">
+        <div class="webs-prop-icon">⚡</div>
+        <div class="webs-prop-title">Lista en 20 minutos</div>
+        <div class="webs-prop-desc">Diseñamos y publicamos tu web en tiempo récord. Tu negocio online hoy mismo.</div>
+      </div>
     </div>
-  </div>
 
   <div class="webs-form-wrap" id="webs-form-section">
     <h2>Solicita tu diseño gratis</h2>
