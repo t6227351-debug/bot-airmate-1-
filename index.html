@@ -5869,7 +5869,6 @@ function enterPrivateMode(user) {
   if (user.role === 'owner') {
     document.getElementById('page-admin')?.classList.add('active');
     document.getElementById('tab-admin')?.classList.add('active');
-    setTimeout(refreshAdmin, 100);
   } else {
     document.getElementById('page-inicio')?.classList.add('active');
     document.getElementById('tab-inicio')?.classList.add('active');
@@ -5943,6 +5942,13 @@ function enterPrivateMode(user) {
   if (authState.isOwner) {
     renderOwnerDashboard();
     showAdminSection('owner-dashboard', document.querySelector('#owner-sidebar-section .sidebar-item'));
+    /* Safety-net: re-aplicar estado después de que todo el DOM esté listo */
+    setTimeout(() => {
+      if (!document.getElementById('admin-owner-dashboard')?.classList.contains('active')) {
+        showAdminSection('owner-dashboard', document.querySelector('#owner-sidebar-section .sidebar-item'));
+      }
+      refreshAdmin();
+    }, 400);
   }
 
   if (user.plan === 'beta' && isBetaExpired(user)) {
