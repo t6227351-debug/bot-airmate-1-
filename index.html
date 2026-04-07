@@ -5490,8 +5490,27 @@ function selectPlan(planId) {
    1. Stripe redirige a ?paid=PAYMENT_TOKEN tras el pago (detectado en init)
    2. El owner añade al cliente con active:true en el array CLIENTS
 ════════════════════════════════════════════ */
+/* Links de mensualidad por plan (para mostrar paso 2 tras setup web) */
+const MAINTENANCE_LINKS = {
+  start:  'https://buy.stripe.com/6oU28r31535O3MO3vH2Ry05',
+  growth: 'https://buy.stripe.com/dRmbJ1315ayg4QSd6h2Ry04',
+  pro:    'https://buy.stripe.com/fZubJ17hl21K5UW4zL2Ry06',
+};
+
+/* Links de setup web (para detectar si el click es de setup) */
+const SETUP_LINKS = [
+  'eVq6oH31535O', // START setup
+  '9B68wP0SXeOw', // GROWTH setup
+  '5kQbJ16dhdKs', // PRO setup
+];
+
 function handleStripeClick(e, planKey) {
   applyConfigToState();
+
+  // Detectar si es un click de setup web (pago único)
+  const href = e?.currentTarget?.href || '';
+  const isSetup = SETUP_LINKS.some(id => href.includes(id));
+
   if (planKey) {
     state.selectedPlan = planKey;
     state.activePlan   = planKey;
@@ -5501,18 +5520,64 @@ function handleStripeClick(e, planKey) {
       authState.currentUser.plan   = planKey;
       authState.currentUser.active = true;
     }
-    // Stripe abre en nueva pestaña; redirigimos al panel de configuración
-    setTimeout(() => {
-      switchPage('admin');
+
+    if (isSetup) {
+      // Setup web: mostrar modal paso 2 tras un momento
+      setTimeout(() => showSetupStep2Modal(planKey), 800);
+    } else {
+      // Solo Agente / Mensualidad: ir al panel
       setTimeout(() => {
-        showAdminSection('config', null);
-        renderConfigPlanSections && renderConfigPlanSections();
-        showToast('✅ Plan ' + planKey.toUpperCase() + ' activado — configura tu bot');
-      }, 300);
-    }, 400);
+        switchPage('admin');
+        setTimeout(() => {
+          showAdminSection('config', null);
+          renderConfigPlanSections && renderConfigPlanSections();
+          showToast('✅ Plan ' + planKey.toUpperCase() + ' activado — configura tu bot');
+        }, 300);
+      }, 400);
+    }
   } else {
     showToast('Redirigiendo a Stripe…');
   }
+}
+
+function showSetupStep2Modal(planKey) {
+  const labels = { start:'START', growth:'GROWTH', pro:'PRO' };
+  const prices  = { start:'39€/mes', growth:'59€/mes', pro:'99€/mes' };
+  const link    = MAINTENANCE_LINKS[planKey];
+  const label   = labels[planKey] || planKey.toUpperCase();
+  const price   = prices[planKey] || '';
+
+  // Eliminar modal anterior si existe
+  document.getElementById('setup-step2-modal')?.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'setup-step2-modal';
+  modal.style.cssText = `
+    position:fixed;inset:0;z-index:99999;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.75);backdrop-filter:blur(6px);
+    padding:24px;
+  `;
+  modal.innerHTML = `
+    <div style="background:#0c1e3d;border:2px solid #22c55e;border-radius:20px;padding:36px 32px;max-width:420px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.6);">
+      <div style="font-size:2.2rem;margin-bottom:12px;">✅</div>
+      <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 10px;">¡Setup completado!</h3>
+      <p style="font-size:.9rem;color:rgba(255,255,255,.6);margin:0 0 24px;line-height:1.6;">
+        Ahora activa el mantenimiento mensual para que tu web y tu agente estén siempre activos.<br>
+        <strong style="color:#22c55e;">Paso 2 de 2 — ${label} · ${price}</strong>
+      </p>
+      <a href="${link}" target="_blank"
+        onclick="document.getElementById('setup-step2-modal').remove();switchPage('admin');setTimeout(()=>{showAdminSection('config',null);renderConfigPlanSections&&renderConfigPlanSections();},300);"
+        style="display:block;padding:14px 24px;background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;font-weight:800;font-size:1rem;border-radius:12px;text-decoration:none;margin-bottom:12px;box-shadow:0 6px 20px rgba(34,197,94,.4);">
+        Activar mensualidad ${label} →
+      </a>
+      <button onclick="document.getElementById('setup-step2-modal').remove();switchPage('admin');setTimeout(()=>{showAdminSection('config',null);renderConfigPlanSections&&renderConfigPlanSections();},300);"
+        style="background:transparent;border:none;color:rgba(255,255,255,.35);font-size:.8rem;cursor:pointer;padding:8px;">
+        Lo haré más tarde
+      </button>
+    </div>
+  `;
+  document.body.appendChild(modal);
 }
 
 /* ════════════════════════════════════════════

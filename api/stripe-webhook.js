@@ -9,24 +9,23 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-// Mapeo: importe en céntimos → plan + tipo
-const AMOUNT_MAP = {
-  2999:  { plan: 'start',  type: 'agent' },        // 29,99€ Solo Agente START
-  3999:  { plan: 'growth', type: 'agent' },         // 39,99€ Solo Agente GROWTH
-  6999:  { plan: 'pro',    type: 'agent' },         // 69,99€ Solo Agente PRO
-  3900:  { plan: 'start',  type: 'maintenance' },   // 39€/mes mantenimiento START
-  5900:  { plan: 'growth', type: 'maintenance' },   // 59€/mes mantenimiento GROWTH
-  9900:  { plan: 'pro',    type: 'maintenance' },   // 99€/mes mantenimiento PRO
-  25000: { plan: 'start',  type: 'setup' },         // 250€ setup START
-  40000: { plan: 'growth', type: 'setup' },         // 400€ setup GROWTH
-  80000: { plan: 'pro',    type: 'setup' },         // 800€ setup PRO
-};
-
-// Link de mensualidad por plan (se abre tras el setup)
-const MAINTENANCE_LINKS = {
-  start:  'https://buy.stripe.com/6oU28r31535O3MO3vH2Ry05',
-  growth: 'https://buy.stripe.com/dRmbJ1315ayg4QSd6h2Ry04',
-  pro:    'https://buy.stripe.com/fZubJ17hl21K5UW4zL2Ry06',
+// Mapeo: importe en céntimos → plan
+// Solo Agente (recurrente)
+// 29,99€ = 2999 | 39,99€ = 3999 | 69,99€ = 6999
+// Mantenimiento web (recurrente)
+// 39€ = 3900 | 59€ = 5900 | 99€ = 9900
+// Setup web (único)
+// 250€ = 25000 | 400€ = 40000 | 800€ = 80000
+const AMOUNT_TO_PLAN = {
+  2999:  'start',
+  3999:  'growth',
+  6999:  'pro',
+  3900:  'start',
+  5900:  'growth',
+  9900:  'pro',
+  25000: 'start',
+  40000: 'growth',
+  80000: 'pro',
 };
 
 async function getRawBody(req) {
@@ -52,60 +51,37 @@ export default async function handler(req, res) {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
+  // ── Pago completado ──────────────────────────────────────
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-    const email = session.customer_details?.email;
+    const email  = session.customer_details?.email?.toLowerCase();
     const amount = session.amount_total;
-    const mode = session.mode; // 'payment' | 'subscription'
+    const plan   = AMOUNT_TO_PLAN[amount];
 
-    console.log(`Pago recibido: email=${email} amount=${amount} mode=${mode}`);
+    console.log(`✅ Pago: email=${email} amount=${amount} plan=${plan}`);
 
-    const planInfo = AMOUNT_MAP[amount];
-    if (!planInfo || !email) {
-      console.log('No se pudo mapear el pago a un plan.');
-      return res.status(200).json({ received: true });
-    }
+    if (email && plan) {
+      const { error } = await supabase
+        .from('clients')
+        .update({ active: true, plan })
+        .eq('email', email);
 
-    const { plan, type } = planInfo;
-
-    // Activar el plan en Supabase
-    const { error } = await supabase
-      .from('clients')
-      .update({ active: true, plan })
-      .eq('email', email.toLowerCase());
-
-    if (error) {
-      console.error('Error Supabase:', error);
-    } else {
-      console.log(`✅ Plan ${plan} activado para ${email} (tipo: ${type})`);
-    }
-
-    // Si es un setup de web, guardar en la tabla que hay que enviar el link de mensualidad
-    if (type === 'setup') {
-      await supabase.from('pending_maintenance').upsert({
-        email: email.toLowerCase(),
-        plan,
-        maintenance_link: MAINTENANCE_LINKS[plan],
-        created_at: new Date().toISOString(),
-        sent: false,
-      });
-      console.log(`📧 Pendiente enviar link mantenimiento ${plan} a ${email}`);
+      if (error) console.error('Supabase error:', error);
+      else console.log(`✅ Plan ${plan} activado para ${email}`);
     }
   }
 
+  // ── Suscripción cancelada ────────────────────────────────
   if (event.type === 'customer.subscription.deleted') {
     const sub = event.data.object;
-    const customerId = sub.customer;
-
-    // Obtener email del cliente de Stripe
-    const customer = await stripe.customers.retrieve(customerId);
-    const email = customer.email;
+    const customer = await stripe.customers.retrieve(sub.customer);
+    const email = customer.email?.toLowerCase();
 
     if (email) {
       await supabase
         .from('clients')
         .update({ active: false })
-        .eq('email', email.toLowerCase());
+        .eq('email', email);
       console.log(`❌ Plan cancelado para ${email}`);
     }
   }
