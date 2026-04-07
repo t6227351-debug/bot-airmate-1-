@@ -2400,7 +2400,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
       <h2>Tu negocio merece<br><em>no perder más clientes.</em></h2>
       <p>Web profesional + asistente que trabaja por ti 24/7. Planes desde 29,99€/mes. Sin permanencia. Sin complicaciones.</p>
       <div class="inicio-hero-btns">
-        <button class="inicio-btn-primary" onclick="switchPage('landing');setTimeout(()=>document.getElementById('lp-planes')?.scrollIntoView({behavior:'smooth'}),300)">Ver planes y precios →</button>
+        <button class="inicio-btn-primary" onclick="switchPage('planes')">Ver planes y precios →</button>
         <button class="inicio-btn-ghost" onclick="window.open('https://wa.me/34646427613?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20AIRMATE','_blank')">Hablar por WhatsApp</button>
       </div>
       <p style="margin-top:24px;font-size:13px;color:rgba(255,255,255,.25);">Sin tarjeta de crédito · Respuesta en menos de 1 hora</p>
@@ -2440,7 +2440,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
         <h1 class="lp-hero-title anim-up">Tu negocio consigue clientes<br><em>aunque no estés mirando el móvil</em></h1>
         <p class="lp-hero-sub anim-up">Una web que convierte y un asistente que responde, asesora y manda al cliente directo a tu WhatsApp. Las 24 horas, sin que tú muevas un dedo.</p>
         <div class="lp-hero-cta anim-up">
-          <button class="lp-btn-primary" onclick="document.getElementById('lp-planes').scrollIntoView({behavior:'smooth'})">Ver planes y precios →</button>
+          <button class="lp-btn-primary" onclick="switchPage('planes')">Ver planes y precios →</button>
           <button class="lp-btn-secondary" onclick="document.getElementById('lp-demo').scrollIntoView({behavior:'smooth'})">Ver cómo funciona ↓</button>
         </div>
         <a href="https://wa.me/34646427613?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20AIRMATE%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn-wa-hero anim-up">
@@ -2635,250 +2635,6 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     </div>
   </section>
 
-  <!-- ══ PLANES ══ -->
-  <!-- ══ PRICING ══ -->
-  <section class="lp-planes-section" id="lp-planes">
-    <div class="lp-planes-inner">
-
-      <div class="reveal" style="text-align:center;margin-bottom:56px;">
-        <div class="lp-section-label">Planes y precios</div>
-        <h2 class="lp-section-title" style="text-align:center;">Elige lo que necesitas.<br><em>Nada más. Nada menos.</em></h2>
-        <p class="lp-section-sub" style="margin:14px auto 0;max-width:540px;text-align:center;">Web profesional, agente que responde a tus clientes, o las dos cosas juntas. Tú decides según lo que necesite tu negocio ahora mismo.</p>
-      </div>
-
-      <!-- Leyenda de opciones -->
-      <div class="reveal pr-legend">
-        <div class="pr-legend-item">
-          <span class="pr-legend-icon">🌐</span>
-          <div><strong>Solo Web</strong> — Tu presencia online</div>
-        </div>
-        <div class="pr-legend-sep">+</div>
-        <div class="pr-legend-item">
-          <span class="pr-legend-icon">🤖</span>
-          <div><strong>Solo Agente</strong> — Asistente que responde a tus clientes y los envía a WhatsApp automáticamente</div>
-        </div>
-        <div class="pr-legend-sep">=</div>
-        <div class="pr-legend-item pr-legend-combo">
-          <span class="pr-legend-icon">⚡</span>
-          <div><strong>Web + Agente</strong> — Sistema completo para captar y convertir clientes</div>
-        </div>
-      </div>
-
-      <!-- Grid de 3 planes -->
-      <div class="pr-plans-grid">
-
-        <!-- ── START ── -->
-        <div class="pr-plan reveal from-left">
-          <div class="pr-plan-header">
-            <div class="pr-plan-tag pr-tag-start">Para empezar</div>
-            <div class="pr-plan-name">START</div>
-            <p class="pr-plan-desc">Básico, rápido y efectivo. Lo que necesitas para tener presencia profesional online desde hoy.</p>
-          </div>
-
-          <div class="pr-options">
-            <!-- Solo Web -->
-            <div class="pr-option">
-              <div class="pr-opt-label"><span>🌐</span> Solo Web</div>
-              <div class="pr-opt-price"><span class="pr-setup">250€</span> <span class="pr-setup-tag">setup</span><br><span class="pr-monthly">39€/mes</span></div>
-              <div class="pr-opt-feat">✓ Web personalizada · Dominio .es gratis · Lista en 24h</div>
-              <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
-            </div>
-
-            <!-- Solo Agente -->
-            <div class="pr-option">
-              <div class="pr-opt-label"><span>🤖</span> Solo Agente</div>
-              <div class="pr-opt-price"><span class="pr-setup">29,99€</span><span class="pr-monthly">/mes</span></div>
-              <div class="pr-opt-feat">✓ Para tu web actual · Responde 24/7 · Envía a WhatsApp</div>
-              <a href="https://buy.stripe.com/8x214p7OQ64P1zt1SE4c804" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
-            </div>
-
-            <!-- Web + Agente — DESTACADO -->
-            <div class="pr-option pr-option-combo">
-              <div class="pr-combo-top-row">
-                <div class="pr-combo-badge">⭐ Recomendado</div>
-                <div class="pr-combo-save">Ahorras 29,99€/mes</div>
-              </div>
-              <div class="pr-opt-label pr-opt-label-combo"><span>⚡</span> Web + Agente</div>
-              <div class="pr-opt-price pr-opt-price-combo">
-                <span class="pr-setup">250€</span> <span class="pr-setup-tag pr-setup-tag-combo">setup</span>
-                <br><span class="pr-monthly pr-monthly-combo">39€/mes</span>
-                <span class="pr-price-crossed">68,99€</span>
-              </div>
-              <div class="pr-opt-feat pr-opt-feat-combo">✓ Web + Agente · Dominio .es gratis · Agente incluido en el mantenimiento</div>
-              <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" class="pr-btn pr-btn-combo">Obtener ahora →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── GROWTH ── -->
-        <div class="pr-plan pr-plan-featured reveal">
-          <div class="pr-plan-top-badge">⭐ MÁS ELEGIDO</div>
-          <div class="pr-plan-header">
-            <div class="pr-plan-tag pr-tag-growth">Más elegido</div>
-            <div class="pr-plan-name">GROWTH</div>
-            <p class="pr-plan-desc">Adaptado a tu negocio y pensado para generar contactos. No solo estar online, sino que te llamen.</p>
-          </div>
-
-          <div class="pr-options">
-            <!-- Solo Web -->
-            <div class="pr-option">
-              <div class="pr-opt-label"><span>🌐</span> Solo Web</div>
-              <div class="pr-opt-price"><span class="pr-setup">400€</span> <span class="pr-setup-tag">setup</span><br><span class="pr-monthly">59€/mes</span></div>
-              <div class="pr-opt-feat">✓ Web enfocada en contactos · Dominio .es gratis · Copy optimizado</div>
-              <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
-            </div>
-
-            <!-- Solo Agente -->
-            <div class="pr-option">
-              <div class="pr-opt-label"><span>🤖</span> Solo Agente</div>
-              <div class="pr-opt-price"><span class="pr-setup">39,99€</span><span class="pr-monthly">/mes</span></div>
-              <div class="pr-opt-feat">✓ Para tu web actual · Cualificación de leads · Envía a WhatsApp</div>
-              <a href="https://buy.stripe.com/14A5kF3yA50L5PJ68U4c801" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
-            </div>
-
-            <!-- Web + Agente — DESTACADO -->
-            <div class="pr-option pr-option-combo">
-              <div class="pr-combo-top-row">
-                <div class="pr-combo-badge">⭐ Recomendado</div>
-                <div class="pr-combo-save">Ahorras 39,99€/mes</div>
-              </div>
-              <div class="pr-opt-label pr-opt-label-combo"><span>⚡</span> Web + Agente</div>
-              <div class="pr-opt-price pr-opt-price-combo">
-                <span class="pr-setup">400€</span> <span class="pr-setup-tag pr-setup-tag-combo">setup</span>
-                <br><span class="pr-monthly pr-monthly-combo">59€/mes</span>
-                <span class="pr-price-crossed">98,99€</span>
-              </div>
-              <div class="pr-opt-feat pr-opt-feat-combo">✓ Web + Agente avanzado · Dominio .es gratis · Agente incluido en el mantenimiento</div>
-              <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" class="pr-btn pr-btn-combo">Obtener ahora →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── PRO ── -->
-        <div class="pr-plan reveal from-right">
-          <div class="pr-plan-header">
-            <div class="pr-plan-tag pr-tag-pro">Máximo rendimiento</div>
-            <div class="pr-plan-name">PRO</div>
-            <p class="pr-plan-desc">Para negocios que quieren optimizar resultados mes a mes. Revisión continua incluida.</p>
-          </div>
-
-          <div class="pr-options">
-            <!-- Solo Web -->
-            <div class="pr-option">
-              <div class="pr-opt-label"><span>🌐</span> Solo Web</div>
-              <div class="pr-opt-price"><span class="pr-setup">800€</span> <span class="pr-setup-tag">setup</span><br><span class="pr-monthly">99€/mes</span></div>
-              <div class="pr-opt-feat">✓ Web de alta conversión · Dominio .es gratis · Revisión mensual</div>
-              <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
-            </div>
-
-            <!-- Solo Agente -->
-            <div class="pr-option">
-              <div class="pr-opt-label"><span>🤖</span> Solo Agente</div>
-              <div class="pr-opt-price"><span class="pr-setup">69,99€</span><span class="pr-monthly">/mes</span></div>
-              <div class="pr-opt-feat">✓ Para tu web actual · Alta conversión · Optimización mensual</div>
-              <a href="https://buy.stripe.com/6oU6oJfhictda5Z7cY4c803" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
-            </div>
-
-            <!-- Web + Agente — DESTACADO -->
-            <div class="pr-option pr-option-combo">
-              <div class="pr-combo-top-row">
-                <div class="pr-combo-badge">⭐ Recomendado</div>
-                <div class="pr-combo-save">Ahorras 69,99€/mes</div>
-              </div>
-              <div class="pr-opt-label pr-opt-label-combo"><span>⚡</span> Web + Agente</div>
-              <div class="pr-opt-price pr-opt-price-combo">
-                <span class="pr-setup">800€</span> <span class="pr-setup-tag pr-setup-tag-combo">setup</span>
-                <br><span class="pr-monthly pr-monthly-combo">99€/mes</span>
-                <span class="pr-price-crossed">168,99€</span>
-              </div>
-              <div class="pr-opt-feat pr-opt-feat-combo">✓ Web PRO + Agente PRO · Dominio .es gratis · Agente incluido en el mantenimiento</div>
-              <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" class="pr-btn pr-btn-combo">Obtener ahora →</a>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /pr-plans-grid -->
-
-      <div class="reveal" style="text-align:center;margin-top:44px;font-size:13px;color:rgba(255,255,255,.3);">
-        <p>Precios sin IVA · Sin permanencia · Cancela cuando quieras · Dominio .es gratis con cualquier plan web</p>
-      </div>
-
-    </div>
-  </section>
-
-  <style>
-  /* ── Pricing section ── */
-  .lp-planes-section{background:#060d1a;padding:100px 32px;}
-  .lp-planes-inner{max-width:1180px;margin:0 auto;}
-
-  /* Leyenda */
-  .pr-legend{display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;padding:20px 28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;max-width:860px;margin-left:auto;margin-right:auto;}
-  .pr-legend-item{display:flex;align-items:center;gap:10px;font-size:.85rem;color:rgba(255,255,255,.55);}
-  .pr-legend-item strong{color:#fff;}
-  .pr-legend-icon{font-size:1.3rem;}
-  .pr-legend-sep{font-size:1.2rem;font-weight:800;color:rgba(255,255,255,.2);}
-  .pr-legend-combo{color:rgba(34,197,94,.9);}
-  .pr-legend-combo strong{color:var(--al-green);}
-  @media(max-width:700px){.pr-legend{flex-direction:column;align-items:flex-start;gap:12px;} .pr-legend-sep{display:none;}}
-
-  /* Grid de planes */
-  .pr-plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
-  @media(max-width:960px){.pr-plans-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto;}}
-
-  /* Card plan */
-  .pr-plan{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:22px;overflow:hidden;position:relative;transition:transform .3s,border-color .3s;}
-  .pr-plan:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.18);}
-  .pr-plan-featured{background:rgba(34,197,94,.05);border-color:rgba(34,197,94,.35);transform:scale(1.02);}
-  .pr-plan-featured:hover{transform:scale(1.02) translateY(-4px);}
-  .pr-plan-top-badge{text-align:center;background:rgba(34,197,94,.18);color:var(--al-green);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:7px 0;}
-
-  /* Cabecera del plan */
-  .pr-plan-header{padding:24px 24px 16px;}
-  .pr-plan-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 10px;margin-bottom:10px;}
-  .pr-tag-start{color:rgba(255,255,255,.5);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);}
-  .pr-tag-growth{color:var(--al-green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);}
-  .pr-tag-pro{color:#a78bfa;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);}
-  .pr-plan-name{font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:.02em;margin-bottom:8px;}
-  .pr-plan-desc{font-size:.83rem;color:rgba(255,255,255,.4);line-height:1.6;margin:0;}
-
-  /* Opciones dentro del plan */
-  .pr-options{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.07);}
-  .pr-option{padding:18px 24px;border-bottom:1px solid rgba(255,255,255,.06);transition:background .2s;}
-  .pr-option:last-child{border-bottom:none;}
-  .pr-option:hover{background:rgba(255,255,255,.025);}
-
-  /* Opción combo destacada */
-  .pr-option-combo{background:rgba(34,197,94,.05);border-top:1px solid rgba(34,197,94,.2) !important;border-bottom:none !important;position:relative;}
-  .pr-option-combo:hover{background:rgba(34,197,94,.08);}
-  .pr-combo-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;}
-  .pr-combo-badge{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.25);border-radius:99px;padding:2px 8px;}
-  .pr-combo-save{font-size:10px;font-weight:800;color:#fff;background:rgba(34,197,94,.25);border-radius:99px;padding:2px 9px;white-space:nowrap;}
-  .pr-price-crossed{font-size:.78rem;color:rgba(255,255,255,.25);text-decoration:line-through;margin-left:8px;vertical-align:middle;}
-
-  /* Etiqueta de opción */
-  .pr-opt-label{font-size:.82rem;font-weight:700;color:rgba(255,255,255,.45);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
-  .pr-opt-label span{font-size:1rem;}
-  .pr-opt-label-combo{color:rgba(34,197,94,.9);}
-
-  /* Precio */
-  .pr-opt-price{margin-bottom:8px;line-height:1.3;}
-  .pr-setup{font-size:1.6rem;font-weight:800;color:#fff;}
-  .pr-setup-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.08);color:rgba(255,255,255,.35);border-radius:4px;padding:2px 6px;vertical-align:middle;margin-left:4px;}
-  .pr-setup-tag-combo{background:rgba(34,197,94,.15);color:rgba(34,197,94,.8);}
-  .pr-monthly{font-size:.85rem;color:rgba(255,255,255,.35);display:block;margin-top:2px;}
-  .pr-opt-price-combo .pr-setup{color:#fff;}
-  .pr-monthly-combo{color:rgba(34,197,94,.7);}
-
-  /* Feature line */
-  .pr-opt-feat{font-size:.77rem;color:rgba(255,255,255,.35);margin-bottom:12px;line-height:1.5;}
-  .pr-opt-feat-combo{color:rgba(34,197,94,.6);}
-
-  /* Botones */
-  .pr-btn{display:block;text-align:center;padding:10px 16px;border-radius:10px;font-weight:700;font-size:.82rem;text-decoration:none;transition:all .22s;}
-  .pr-btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.5);}
-  .pr-btn-ghost:hover{border-color:rgba(255,255,255,.3);color:#fff;}
-  .pr-btn-combo{background:linear-gradient(135deg,var(--al-green),var(--al-green-dark));color:#fff;border:none;box-shadow:0 3px 16px rgba(34,197,94,.35);}
-  .pr-btn-combo:hover{box-shadow:0 6px 24px rgba(34,197,94,.55);}
 
   /* Problema section */
   .lp-problema-section{background:#080f1f;padding:100px 32px;}
@@ -3236,117 +2992,272 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 </div>
 
 <!-- PLANES PAGE -->
-<div id="page-planes" class="page" style="background:#060d1a;min-height:100vh;">
+<div id="page-planes" class="page" style="background:#060d1a;min-height:100vh;overflow:hidden;">
 
-  <!-- Cabecera -->
-  <div style="text-align:center;padding:80px 32px 0;">
-    <div class="lp-section-label">Planes y precios</div>
-    <h2 class="lp-section-title" style="text-align:center;">Elige lo que necesitas.<br><em>Nada más. Nada menos.</em></h2>
-    <p class="lp-section-sub" style="margin:14px auto 0;max-width:540px;text-align:center;">Web profesional, agente que responde a tus clientes, o las dos cosas juntas. Tú decides.</p>
+  <style>
+    /* page-planes specific styles */
+    #page-planes { position:relative; }
+
+    /* Animated gradient orbs */
+    .pp-orb { position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;animation:ppOrb 8s ease-in-out infinite; }
+    .pp-orb-1 { width:600px;height:600px;background:radial-gradient(circle,rgba(34,197,94,.14),transparent 70%);top:-200px;left:-200px;animation-delay:0s; }
+    .pp-orb-2 { width:500px;height:500px;background:radial-gradient(circle,rgba(42,92,255,.12),transparent 70%);top:200px;right:-150px;animation-delay:-3s; }
+    .pp-orb-3 { width:400px;height:400px;background:radial-gradient(circle,rgba(124,58,237,.1),transparent 70%);bottom:200px;left:50%;transform:translateX(-50%);animation-delay:-6s; }
+    @keyframes ppOrb { 0%,100%{transform:scale(1) translate(0,0)} 33%{transform:scale(1.1) translate(20px,-15px)} 66%{transform:scale(.95) translate(-15px,20px)} }
+    .pp-orb-2 { animation-name:ppOrb2; }
+    @keyframes ppOrb2 { 0%,100%{transform:scale(1) translate(0,0)} 33%{transform:scale(1.08) translate(-20px,15px)} 66%{transform:scale(1.03) translate(10px,-10px)} }
+
+    /* Hero */
+    .pp-hero { position:relative;z-index:1;text-align:center;padding:90px 32px 0; }
+    .pp-hero-eyebrow { display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--al-green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:99px;padding:5px 16px;margin-bottom:28px; }
+    .pp-hero h1 { font-size:clamp(2.2rem,6vw,3.6rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.02em;margin:0 0 20px; }
+    .pp-hero h1 em { font-style:normal;background:linear-gradient(135deg,#22c55e,#2a5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    .pp-hero-sub { font-size:1rem;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto 48px;line-height:1.7; }
+
+    /* Stats bar */
+    .pp-stats { display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;max-width:700px;margin:0 auto 56px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.03);backdrop-filter:blur(12px); }
+    .pp-stat { flex:1;min-width:140px;padding:20px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.07); }
+    .pp-stat:last-child { border-right:none; }
+    .pp-stat-num { font-size:1.6rem;font-weight:900;color:#fff;line-height:1; }
+    .pp-stat-lbl { font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;text-transform:uppercase;letter-spacing:.07em; }
+    @media(max-width:600px){ .pp-stat { min-width:120px; } .pp-stat-num { font-size:1.3rem; } }
+
+    /* Legend */
+    .pp-legend { display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;max-width:820px;margin:0 auto 52px;padding:18px 28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px; }
+    .pp-legend-item { display:flex;align-items:center;gap:10px;font-size:.83rem;color:rgba(255,255,255,.5); }
+    .pp-legend-item strong { color:#fff; }
+    .pp-legend-sep { font-size:1.1rem;font-weight:900;color:rgba(255,255,255,.15); }
+    .pp-legend-combo { color:rgba(34,197,94,.8); }
+    .pp-legend-combo strong { color:var(--al-green); }
+    @media(max-width:680px){ .pp-legend { flex-direction:column;gap:10px;align-items:flex-start; } .pp-legend-sep { display:none; } }
+
+    /* Plan cards */
+    .pp-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;max-width:1180px;margin:0 auto;padding:0 32px; }
+    @media(max-width:1020px){ .pp-grid { grid-template-columns:1fr;max-width:520px;margin:0 auto; } }
+
+    .pp-card { background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;overflow:hidden;position:relative;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s; }
+    .pp-card:hover { transform:translateY(-6px);border-color:rgba(255,255,255,.2);box-shadow:0 24px 60px rgba(0,0,0,.5); }
+    .pp-card-featured { border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.04);box-shadow:0 0 0 1px rgba(34,197,94,.2),0 20px 48px rgba(0,0,0,.4); }
+    .pp-card-featured:hover { border-color:rgba(34,197,94,.6);box-shadow:0 0 0 1px rgba(34,197,94,.3),0 28px 64px rgba(34,197,94,.15); }
+
+    .pp-card-badge { text-align:center;padding:8px 0;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase; }
+    .pp-badge-green { background:rgba(34,197,94,.2);color:var(--al-green); }
+
+    .pp-card-head { padding:28px 26px 20px; }
+    .pp-card-tag { display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:3px 11px;margin-bottom:12px; }
+    .pp-tag-start { color:rgba(255,255,255,.5);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1); }
+    .pp-tag-growth { color:var(--al-green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25); }
+    .pp-tag-pro { color:#a78bfa;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25); }
+    .pp-card-name { font-size:1.75rem;font-weight:900;color:#fff;letter-spacing:.02em;margin-bottom:8px; }
+    .pp-card-desc { font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.65;margin:0; }
+
+    /* Options inside card */
+    .pp-opts { border-top:1px solid rgba(255,255,255,.07); }
+    .pp-opt { padding:18px 26px;border-bottom:1px solid rgba(255,255,255,.06);transition:background .2s; }
+    .pp-opt:last-child { border-bottom:none; }
+    .pp-opt:hover { background:rgba(255,255,255,.025); }
+    .pp-opt-combo { background:rgba(34,197,94,.05);border-top:2px solid rgba(34,197,94,.22) !important;border-bottom:none !important;position:relative; }
+    .pp-opt-combo:hover { background:rgba(34,197,94,.09); }
+
+    .pp-opt-top { display:flex;align-items:center;justify-content:space-between;margin-bottom:8px; }
+    .pp-opt-label { font-size:.81rem;font-weight:700;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px; }
+    .pp-opt-label-combo { color:rgba(34,197,94,.9); }
+    .pp-opt-save { font-size:10px;font-weight:800;color:#fff;background:rgba(34,197,94,.25);border-radius:99px;padding:2px 9px;white-space:nowrap; }
+
+    .pp-price { margin-bottom:8px;line-height:1.25; }
+    .pp-price-main { font-size:1.65rem;font-weight:900;color:#fff; }
+    .pp-price-main-combo { color:#fff; }
+    .pp-price-sub { font-size:.8rem;font-weight:500;color:rgba(255,255,255,.32); }
+    .pp-price-sub-combo { color:rgba(34,197,94,.7); }
+    .pp-price-old { font-size:.78rem;color:rgba(255,255,255,.22);text-decoration:line-through;margin-left:8px;vertical-align:middle; }
+
+    .pp-opt-feat { font-size:.77rem;color:rgba(255,255,255,.33);margin-bottom:12px;line-height:1.5; }
+    .pp-opt-feat-combo { color:rgba(34,197,94,.6); }
+
+    .pp-btn { display:block;text-align:center;padding:10px 16px;border-radius:11px;font-weight:700;font-size:.81rem;text-decoration:none;transition:all .22s;cursor:pointer; }
+    .pp-btn-ghost { background:transparent;border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.5); }
+    .pp-btn-ghost:hover { border-color:rgba(255,255,255,.32);color:#fff;background:rgba(255,255,255,.05); }
+    .pp-btn-combo { background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;border:none;box-shadow:0 4px 18px rgba(34,197,94,.38); }
+    .pp-btn-combo:hover { box-shadow:0 8px 28px rgba(34,197,94,.55);transform:translateY(-1px); }
+    .pp-btn-pro { background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border:none;box-shadow:0 4px 18px rgba(124,58,237,.3); }
+    .pp-btn-pro:hover { box-shadow:0 8px 28px rgba(124,58,237,.5);transform:translateY(-1px); }
+
+    /* Glow dot animation on featured card */
+    .pp-glow-dot { position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,.2),transparent 70%);top:-60px;right:-60px;pointer-events:none;animation:ppGlow 4s ease-in-out infinite; }
+    @keyframes ppGlow { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
+
+    /* FAQ */
+    .pp-faq { max-width:700px;margin:80px auto 0;padding:0 32px 96px;position:relative;z-index:1; }
+    .pp-faq h3 { text-align:center;font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:8px; }
+    .pp-faq-sub { text-align:center;font-size:.85rem;color:rgba(255,255,255,.3);margin-bottom:32px; }
+    .pp-faq-list { display:flex;flex-direction:column;gap:10px; }
+    .pp-faq-item { background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;transition:border-color .2s; }
+    .pp-faq-item[open] { border-color:rgba(255,255,255,.14); }
+    .pp-faq-q { padding:16px 20px;font-size:.88rem;font-weight:700;color:rgba(255,255,255,.8);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between; }
+    .pp-faq-q::after { content:'＋';font-size:1rem;color:rgba(255,255,255,.3);flex-shrink:0;margin-left:12px; }
+    .pp-faq-item[open] .pp-faq-q::after { content:'－'; }
+    .pp-faq-a { padding:0 20px 16px;font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7;margin:0; }
+    .pp-footer-note { text-align:center;margin-top:24px;font-size:12px;color:rgba(255,255,255,.2); }
+  </style>
+
+  <!-- Background orbs -->
+  <div class="pp-orb pp-orb-1"></div>
+  <div class="pp-orb pp-orb-2"></div>
+  <div class="pp-orb pp-orb-3"></div>
+
+  <!-- HERO -->
+  <div class="pp-hero reveal">
+    <div class="pp-hero-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M6 4v2l1.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Sin permanencia · Sin sorpresas
+    </div>
+    <h1>El plan que<br><em>tu negocio merece</em></h1>
+    <p class="pp-hero-sub">Web profesional, agente IA que responde 24/7, o ambos juntos. Tú eliges. Nosotros lo entregamos en 24h.</p>
   </div>
 
-  <!-- Leyenda -->
-  <div style="max-width:860px;margin:40px auto 0;padding:0 32px;">
-    <div class="pr-legend reveal">
-      <div class="pr-legend-item"><span class="pr-legend-icon">🌐</span><div><strong>Solo Web</strong> — Tu presencia online</div></div>
-      <div class="pr-legend-sep">+</div>
-      <div class="pr-legend-item"><span class="pr-legend-icon">🤖</span><div><strong>Solo Agente</strong> — Asistente automático en tu web actual</div></div>
-      <div class="pr-legend-sep">=</div>
-      <div class="pr-legend-item pr-legend-combo"><span class="pr-legend-icon">⚡</span><div><strong>Web + Agente</strong> — Sistema completo para captar y convertir clientes</div></div>
+  <!-- Stats -->
+  <div style="padding:0 32px;position:relative;z-index:1;">
+    <div class="pp-stats reveal delay-1">
+      <div class="pp-stat">
+        <div class="pp-stat-num">24h</div>
+        <div class="pp-stat-lbl">Entrega web</div>
+      </div>
+      <div class="pp-stat">
+        <div class="pp-stat-num">24/7</div>
+        <div class="pp-stat-lbl">Agente activo</div>
+      </div>
+      <div class="pp-stat">
+        <div class="pp-stat-num">.es</div>
+        <div class="pp-stat-lbl">Dominio gratis</div>
+      </div>
+      <div class="pp-stat">
+        <div class="pp-stat-num">0€</div>
+        <div class="pp-stat-lbl">Permanencia</div>
+      </div>
     </div>
   </div>
 
-  <!-- Grid de planes -->
-  <div style="max-width:1180px;margin:0 auto;padding:48px 32px 0;">
-    <div class="pr-plans-grid">
+  <!-- Legend -->
+  <div style="padding:0 32px;position:relative;z-index:1;">
+    <div class="pp-legend reveal delay-2">
+      <div class="pp-legend-item"><span style="font-size:1.2rem;">🌐</span> <div><strong>Solo Web</strong> — Tu presencia online profesional</div></div>
+      <div class="pp-legend-sep">+</div>
+      <div class="pp-legend-item"><span style="font-size:1.2rem;">🤖</span> <div><strong>Solo Agente</strong> — IA que responde en tu web actual</div></div>
+      <div class="pp-legend-sep">=</div>
+      <div class="pp-legend-item pp-legend-combo"><span style="font-size:1.2rem;">⚡</span> <div><strong>Web + Agente</strong> — Sistema completo. El agente va incluido gratis.</div></div>
+    </div>
+  </div>
+
+  <!-- GRID DE PLANES -->
+  <div style="position:relative;z-index:1;padding-top:8px;padding-bottom:0;">
+    <div class="pp-grid">
 
       <!-- START -->
-      <div class="pr-plan reveal from-left">
-        <div class="pr-plan-header">
-          <div class="pr-plan-tag pr-tag-start">Para empezar</div>
-          <div class="pr-plan-name">START</div>
-          <p class="pr-plan-desc">Básico, rápido y efectivo. Lo que necesitas para tener presencia profesional online desde hoy.</p>
+      <div class="pp-card reveal from-left">
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-start">Para empezar</div>
+          <div class="pp-card-name">START</div>
+          <p class="pp-card-desc">Básico, rápido y efectivo. Presencia profesional online desde hoy mismo.</p>
         </div>
-        <div class="pr-options">
-          <div class="pr-option">
-            <div class="pr-opt-label"><span>🌐</span> Solo Web</div>
-            <div class="pr-opt-price"><span class="pr-setup">250€</span> <span class="pr-setup-tag">setup</span><br><span class="pr-monthly">39€/mes</span></div>
-            <div class="pr-opt-feat">✓ Web personalizada · Dominio .es gratis · Lista en 24h</div>
-            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
+        <div class="pp-opts">
+          <div class="pp-opt">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label"><span>🤖</span> Solo Agente</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main">29,99€</span><span class="pp-price-sub">/mes · Sin setup</span></div>
+            <div class="pp-opt-feat">✓ Para tu web actual · Responde 24/7 · Deriva a WhatsApp</div>
+            <a href="https://buy.stripe.com/8x214p7OQ64P1zt1SE4c804" target="_blank" onclick="handleStripeClick(event,'start')" class="pp-btn pp-btn-ghost">Elegir →</a>
           </div>
-          <div class="pr-option">
-            <div class="pr-opt-label"><span>🤖</span> Solo Agente</div>
-            <div class="pr-opt-price"><span class="pr-setup">29,99€</span><span class="pr-monthly">/mes</span></div>
-            <div class="pr-opt-feat">✓ Para tu web actual · Responde 24/7 · Envía a WhatsApp</div>
-            <a href="https://buy.stripe.com/8x214p7OQ64P1zt1SE4c804" target="_blank" onclick="handleStripeClick(event,'start')" class="pr-btn pr-btn-ghost">Elegir plan →</a>
+          <div class="pp-opt">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label"><span>🌐</span> Solo Web</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main">250€</span><span class="pp-price-sub"> setup + 39€/mes</span></div>
+            <div class="pp-opt-feat">✓ Web personalizada · Dominio .es gratis · Lista en 24h</div>
+            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" class="pp-btn pp-btn-ghost">Elegir →</a>
           </div>
-          <div class="pr-option pr-option-combo">
-            <div class="pr-combo-top-row"><div class="pr-combo-badge">⭐ Recomendado</div><div class="pr-combo-save">Ahorras 29,99€/mes</div></div>
-            <div class="pr-opt-label pr-opt-label-combo"><span>⚡</span> Web + Agente</div>
-            <div class="pr-opt-price pr-opt-price-combo"><span class="pr-setup">250€</span> <span class="pr-setup-tag pr-setup-tag-combo">setup</span><br><span class="pr-monthly pr-monthly-combo">39€/mes</span> <span class="pr-price-crossed">68,99€</span></div>
-            <div class="pr-opt-feat pr-opt-feat-combo">✓ Web + Agente · Dominio .es gratis · Agente incluido en el mantenimiento</div>
-            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" onclick="handleStripeClick(event,'start')" class="pr-btn pr-btn-combo">Obtener ahora →</a>
+          <div class="pp-opt pp-opt-combo">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label pp-opt-label-combo"><span>⚡</span> Web + Agente</div>
+              <div class="pp-opt-save">Ahorra 29,99€/mes</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main pp-price-main-combo">250€</span><span class="pp-price-sub pp-price-sub-combo"> setup + 39€/mes <span class="pp-price-old">68,99€</span></span></div>
+            <div class="pp-opt-feat pp-opt-feat-combo">✓ Web + Agente incluido · Dominio .es gratis · Todo en uno</div>
+            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" onclick="handleStripeClick(event,'start')" class="pp-btn pp-btn-combo">Obtener ahora →</a>
           </div>
         </div>
       </div>
 
-      <!-- GROWTH -->
-      <div class="pr-plan pr-plan-featured reveal">
-        <div class="pr-plan-top-badge">⭐ MÁS ELEGIDO</div>
-        <div class="pr-plan-header">
-          <div class="pr-plan-tag pr-tag-growth">Más elegido</div>
-          <div class="pr-plan-name">GROWTH</div>
-          <p class="pr-plan-desc">Adaptado a tu negocio y pensado para generar contactos. No solo estar online, sino que te llamen.</p>
+      <!-- GROWTH — FEATURED -->
+      <div class="pp-card pp-card-featured reveal">
+        <div class="pp-glow-dot"></div>
+        <div class="pp-card-badge pp-badge-green">🔥 MÁS ELEGIDO</div>
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-growth">Más elegido</div>
+          <div class="pp-card-name">GROWTH</div>
+          <p class="pp-card-desc">No solo estar online. Pensado para que los clientes te contacten y tú los conviertas.</p>
         </div>
-        <div class="pr-options">
-          <div class="pr-option">
-            <div class="pr-opt-label"><span>🌐</span> Solo Web</div>
-            <div class="pr-opt-price"><span class="pr-setup">400€</span> <span class="pr-setup-tag">setup</span><br><span class="pr-monthly">59€/mes</span></div>
-            <div class="pr-opt-feat">✓ Web enfocada en contactos · Dominio .es gratis · Copy optimizado</div>
-            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
+        <div class="pp-opts">
+          <div class="pp-opt">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label"><span>🤖</span> Solo Agente</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main">39,99€</span><span class="pp-price-sub">/mes · Sin setup</span></div>
+            <div class="pp-opt-feat">✓ Cualificación de leads · Responde 24/7 · Deriva a WhatsApp</div>
+            <a href="https://buy.stripe.com/14A5kF3yA50L5PJ68U4c801" target="_blank" onclick="handleStripeClick(event,'growth')" class="pp-btn pp-btn-ghost">Elegir →</a>
           </div>
-          <div class="pr-option">
-            <div class="pr-opt-label"><span>🤖</span> Solo Agente</div>
-            <div class="pr-opt-price"><span class="pr-setup">39,99€</span><span class="pr-monthly">/mes</span></div>
-            <div class="pr-opt-feat">✓ Para tu web actual · Cualificación de leads · Envía a WhatsApp</div>
-            <a href="https://buy.stripe.com/14A5kF3yA50L5PJ68U4c801" target="_blank" onclick="handleStripeClick(event,'growth')" class="pr-btn pr-btn-ghost">Elegir plan →</a>
+          <div class="pp-opt">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label"><span>🌐</span> Solo Web</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main">400€</span><span class="pp-price-sub"> setup + 59€/mes</span></div>
+            <div class="pp-opt-feat">✓ Web enfocada en contactos · Copy optimizado · Dominio .es gratis</div>
+            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" class="pp-btn pp-btn-ghost">Elegir →</a>
           </div>
-          <div class="pr-option pr-option-combo">
-            <div class="pr-combo-top-row"><div class="pr-combo-badge">⭐ Recomendado</div><div class="pr-combo-save">Ahorras 39,99€/mes</div></div>
-            <div class="pr-opt-label pr-opt-label-combo"><span>⚡</span> Web + Agente</div>
-            <div class="pr-opt-price pr-opt-price-combo"><span class="pr-setup">400€</span> <span class="pr-setup-tag pr-setup-tag-combo">setup</span><br><span class="pr-monthly pr-monthly-combo">59€/mes</span> <span class="pr-price-crossed">98,99€</span></div>
-            <div class="pr-opt-feat pr-opt-feat-combo">✓ Web + Agente avanzado · Dominio .es gratis · Agente incluido</div>
-            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" onclick="handleStripeClick(event,'growth')" class="pr-btn pr-btn-combo">Obtener ahora →</a>
+          <div class="pp-opt pp-opt-combo">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label pp-opt-label-combo"><span>⚡</span> Web + Agente</div>
+              <div class="pp-opt-save">Ahorra 39,99€/mes</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main pp-price-main-combo">400€</span><span class="pp-price-sub pp-price-sub-combo"> setup + 59€/mes <span class="pp-price-old">98,99€</span></span></div>
+            <div class="pp-opt-feat pp-opt-feat-combo">✓ Web + Agente avanzado · Dominio .es gratis · Todo en uno</div>
+            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" onclick="handleStripeClick(event,'growth')" class="pp-btn pp-btn-combo">Obtener ahora →</a>
           </div>
         </div>
       </div>
 
       <!-- PRO -->
-      <div class="pr-plan reveal from-right">
-        <div class="pr-plan-header">
-          <div class="pr-plan-tag pr-tag-pro">Máximo rendimiento</div>
-          <div class="pr-plan-name">PRO</div>
-          <p class="pr-plan-desc">Para negocios que quieren optimizar resultados mes a mes. Revisión continua incluida.</p>
+      <div class="pp-card reveal from-right">
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-pro">Máximo rendimiento</div>
+          <div class="pp-card-name">PRO</div>
+          <p class="pp-card-desc">Para negocios que quieren resultados medibles mes a mes. Revisión continua incluida.</p>
         </div>
-        <div class="pr-options">
-          <div class="pr-option">
-            <div class="pr-opt-label"><span>🌐</span> Solo Web</div>
-            <div class="pr-opt-price"><span class="pr-setup">800€</span> <span class="pr-setup-tag">setup</span><br><span class="pr-monthly">99€/mes</span></div>
-            <div class="pr-opt-feat">✓ Web de alta conversión · Dominio .es gratis · Revisión mensual</div>
-            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" class="pr-btn pr-btn-ghost">Elegir plan →</a>
+        <div class="pp-opts">
+          <div class="pp-opt">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label"><span>🤖</span> Solo Agente</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main">69,99€</span><span class="pp-price-sub">/mes · Sin setup</span></div>
+            <div class="pp-opt-feat">✓ Alta conversión · Optimización mensual · Deriva a WhatsApp</div>
+            <a href="https://buy.stripe.com/6oU6oJfhictda5Z7cY4c803" target="_blank" onclick="handleStripeClick(event,'pro')" class="pp-btn pp-btn-ghost">Elegir →</a>
           </div>
-          <div class="pr-option">
-            <div class="pr-opt-label"><span>🤖</span> Solo Agente</div>
-            <div class="pr-opt-price"><span class="pr-setup">69,99€</span><span class="pr-monthly">/mes</span></div>
-            <div class="pr-opt-feat">✓ Para tu web actual · Alta conversión · Optimización mensual</div>
-            <a href="https://buy.stripe.com/6oU6oJfhictda5Z7cY4c803" target="_blank" onclick="handleStripeClick(event,'pro')" class="pr-btn pr-btn-ghost">Elegir plan →</a>
+          <div class="pp-opt">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label"><span>🌐</span> Solo Web</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main">800€</span><span class="pp-price-sub"> setup + 99€/mes</span></div>
+            <div class="pp-opt-feat">✓ Web de alta conversión · Revisión mensual · Dominio .es gratis</div>
+            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" class="pp-btn pp-btn-ghost">Elegir →</a>
           </div>
-          <div class="pr-option pr-option-combo">
-            <div class="pr-combo-top-row"><div class="pr-combo-badge">⭐ Recomendado</div><div class="pr-combo-save">Ahorras 69,99€/mes</div></div>
-            <div class="pr-opt-label pr-opt-label-combo"><span>⚡</span> Web + Agente</div>
-            <div class="pr-opt-price pr-opt-price-combo"><span class="pr-setup">800€</span> <span class="pr-setup-tag pr-setup-tag-combo">setup</span><br><span class="pr-monthly pr-monthly-combo">99€/mes</span> <span class="pr-price-crossed">168,99€</span></div>
-            <div class="pr-opt-feat pr-opt-feat-combo">✓ Web PRO + Agente PRO · Dominio .es gratis · Revisión mensual incluida</div>
-            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" onclick="handleStripeClick(event,'pro')" class="pr-btn pr-btn-combo">Obtener ahora →</a>
+          <div class="pp-opt pp-opt-combo" style="background:rgba(124,58,237,.05);border-top:2px solid rgba(124,58,237,.22) !important;">
+            <div class="pp-opt-top">
+              <div class="pp-opt-label" style="color:rgba(167,139,250,.8);"><span>⚡</span> Web + Agente</div>
+              <div class="pp-opt-save" style="background:rgba(124,58,237,.25);">Ahorra 69,99€/mes</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main">800€</span><span class="pp-price-sub" style="color:rgba(167,139,250,.7);"> setup + 99€/mes <span class="pp-price-old">168,99€</span></span></div>
+            <div class="pp-opt-feat" style="color:rgba(167,139,250,.6);">✓ Web PRO + Agente PRO · Revisión mensual incluida · Dominio .es gratis</div>
+            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" onclick="handleStripeClick(event,'pro')" class="pp-btn pp-btn-pro">Obtener ahora →</a>
           </div>
         </div>
       </div>
@@ -3354,16 +3265,29 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     </div>
   </div>
 
-  <!-- FAQ precios -->
-  <div style="max-width:720px;margin:80px auto 0;padding:0 32px 80px;">
-    <h3 style="text-align:center;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:32px;">Preguntas frecuentes</h3>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <details class="lp-faq-item" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);"><summary class="lp-faq-q" style="color:#fff;">¿Puedo empezar solo con el agente sin web?</summary><p class="lp-faq-a" style="color:rgba(255,255,255,.55);">Sí. El plan Solo Agente se instala en cualquier web que ya tengas con 2 líneas de código. Pagas solo la mensualidad, sin setup.</p></details>
-      <details class="lp-faq-item" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);"><summary class="lp-faq-q" style="color:#fff;">¿Qué incluye el setup?</summary><p class="lp-faq-a" style="color:rgba(255,255,255,.55);">El pago único de setup cubre el diseño y desarrollo de tu web, la configuración inicial del agente y la entrega en 24 horas. Solo se paga una vez.</p></details>
-      <details class="lp-faq-item" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);"><summary class="lp-faq-q" style="color:#fff;">¿Puedo cancelar cuando quiera?</summary><p class="lp-faq-a" style="color:rgba(255,255,255,.55);">Sí, sin permanencia. Cancelas la mensualidad cuando quieras desde el portal de Stripe. El setup no es reembolsable.</p></details>
-      <details class="lp-faq-item" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);"><summary class="lp-faq-q" style="color:#fff;">¿El dominio es realmente gratis?</summary><p class="lp-faq-a" style="color:rgba(255,255,255,.55);">Sí. Con cualquier plan que incluya web, el dominio .es está incluido mientras mantengas la mensualidad activa. Si cancelas, puedes transferirlo a tu nombre.</p></details>
+  <!-- FAQ -->
+  <div class="pp-faq">
+    <h3>Todo claro antes de decidir</h3>
+    <p class="pp-faq-sub">Las preguntas que siempre surgen, respondidas.</p>
+    <div class="pp-faq-list">
+      <details class="pp-faq-item">
+        <summary class="pp-faq-q">¿Puedo empezar solo con el agente sin tener web?</summary>
+        <p class="pp-faq-a">Sí. El plan Solo Agente se instala en cualquier web con 2 líneas de código. Pagas solo la mensualidad desde el primer día, sin ningún coste de setup.</p>
+      </details>
+      <details class="pp-faq-item">
+        <summary class="pp-faq-q">¿Qué incluye el pago de setup?</summary>
+        <p class="pp-faq-a">El setup es un pago único que cubre el diseño, desarrollo y entrega de tu web en menos de 24 horas. Incluye configuración inicial del agente si has elegido Web + Agente. No se repite.</p>
+      </details>
+      <details class="pp-faq-item">
+        <summary class="pp-faq-q">¿Puedo cancelar cuando quiera?</summary>
+        <p class="pp-faq-a">Sí. Sin permanencia. Cancelas cuando quieras desde el portal de Stripe. Conservas acceso hasta el final del período pagado. El pago de setup no es reembolsable.</p>
+      </details>
+      <details class="pp-faq-item">
+        <summary class="pp-faq-q">¿El dominio .es es realmente gratis?</summary>
+        <p class="pp-faq-a">Sí, incluido mientras mantengas la mensualidad activa. Si cancelas, puedes transferirlo a tu nombre sin coste adicional. No hay trampa.</p>
+      </details>
     </div>
-    <p style="text-align:center;margin-top:32px;font-size:13px;color:rgba(255,255,255,.25);">Precios sin IVA · Sin permanencia · Soporte en español</p>
+    <p class="pp-footer-note">Precios sin IVA · Sin permanencia · Soporte en español · Pago seguro con Stripe</p>
   </div>
 
 </div>
@@ -4067,12 +3991,12 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
         <!-- NOTA: Este bloque redirige a Stripe. El snippet se desbloquea tras confirmar pago. -->
         <div id="stripe-pay-block" style="margin-top:8px;">
           <div class="stripe-card">
-            <h3>Completa tu suscripción</h3>
+            <h3>Activa tu plan</h3>
             <p>Después del pago recibirás acceso inmediato al código de instalación personalizado para tu negocio.</p>
             <a id="stripe-btn" href="https://buy.stripe.com/14A5kF3yA50L5PJ68U4c801"
               target="_blank" class="btn-stripe" onclick="handleStripeClick(event)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
-              Pagar con Stripe
+              Activar ahora
             </a>
           </div>
         </div>
@@ -4225,60 +4149,99 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
           <button class="btn-save" onclick="saveAccountChanges()">Guardar cambios</button>
         </div>
 
-        <!-- Mejorar suscripción -->
+        <!-- Cambiar plan -->
         <div class="config-card" id="acc-upgrade-block">
-          <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;">Mejorar suscripción</h3>
-          <p style="font-size:13px;color:var(--gray-500);margin-bottom:20px;">Elige el plan que mejor se adapte a tu negocio.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:4px;">Cambiar de plan</h3>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:20px;">Elige la opción que mejor encaja con tu negocio. El agente va incluido en el mantenimiento mensual de la web.</p>
 
-            <!-- START -->
-            <div id="acc-upgrade-start" style="background:#f8fafc;border:1.5px solid #edf0f7;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:0;">
-              <div style="font-size:10px;font-weight:800;letter-spacing:.12em;color:#8a97b0;text-transform:uppercase;margin-bottom:8px;">PLAN START</div>
-              <div style="font-size:26px;font-weight:800;color:#0c1e3d;line-height:1;">29,99€<span style="font-size:13px;font-weight:400;color:#8a97b0;">/mes</span></div>
-              <ul style="font-size:12px;color:#6b7d96;list-style:none;display:flex;flex-direction:column;gap:5px;margin:14px 0 16px;padding:0;">
-                <li>✅ Web profesional incluida</li>
-                <li>✅ Asistente básico 24/7</li>
-                <li>✅ 500 mensajes/mes</li>
-              </ul>
-              <a href="https://buy.stripe.com/8x214p7OQ64P1zt1SE4c804" target="_blank" class="btn-stripe" style="display:block;text-align:center;font-size:12px;padding:9px 12px;margin-top:auto;">Activar START →</a>
+          <!-- START -->
+          <div id="acc-upgrade-start" style="margin-bottom:20px;">
+            <div style="font-size:10px;font-weight:800;letter-spacing:.12em;color:#8a97b0;text-transform:uppercase;margin-bottom:10px;">— PLAN START</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;">
+              <div style="background:#f8fafc;border:1.5px solid #edf0f7;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:11px;font-weight:700;color:#8a97b0;">🤖 Solo Agente</div>
+                <div style="font-size:22px;font-weight:800;color:#0c1e3d;">29,99€<span style="font-size:12px;font-weight:400;color:#8a97b0;">/mes</span></div>
+                <div style="font-size:11px;color:#8a97b0;">Sin setup · Para tu web actual</div>
+                <a href="https://buy.stripe.com/8x214p7OQ64P1zt1SE4c804" target="_blank" onclick="handleStripeClick(event,'start')" class="btn-stripe" style="display:block;text-align:center;font-size:11px;padding:8px 10px;margin-top:auto;">Activar →</a>
+              </div>
+              <div style="background:#f8fafc;border:1.5px solid #edf0f7;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:11px;font-weight:700;color:#8a97b0;">🌐 Solo Web</div>
+                <div style="font-size:22px;font-weight:800;color:#0c1e3d;">250€<span style="font-size:11px;font-weight:400;color:#8a97b0;"> setup</span> + 39€<span style="font-size:12px;font-weight:400;color:#8a97b0;">/mes</span></div>
+                <div style="font-size:11px;color:#8a97b0;">Dominio .es gratis · Lista en 24h</div>
+                <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" class="btn-stripe" style="display:block;text-align:center;font-size:11px;padding:8px 10px;margin-top:auto;">Activar →</a>
+              </div>
+              <div style="background:linear-gradient(135deg,#eafff2,#d1fae5);border:1.5px solid #6ee7b7;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;position:relative;">
+                <div style="position:absolute;top:-9px;left:12px;background:#16a34a;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:99px;">AHORRA 29,99€/mes</div>
+                <div style="font-size:11px;font-weight:700;color:#166534;">⚡ Web + Agente</div>
+                <div style="font-size:22px;font-weight:800;color:#0c1e3d;">250€<span style="font-size:11px;font-weight:400;color:#8a97b0;"> setup</span> + 39€<span style="font-size:12px;font-weight:400;color:#8a97b0;">/mes</span></div>
+                <div style="font-size:11px;color:#166534;">Agente incluido · Dominio .es gratis</div>
+                <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" onclick="handleStripeClick(event,'start')" style="display:block;text-align:center;font-size:11px;font-weight:700;padding:8px 10px;margin-top:auto;background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;border-radius:8px;text-decoration:none;">Activar →</a>
+              </div>
             </div>
+          </div>
 
-            <!-- GROWTH — DESTACADO -->
-            <div id="acc-upgrade-growth" style="background:linear-gradient(160deg,#0c1e3d,#162d58);border:2px solid #22c55e;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:0;position:relative;">
-              <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;font-size:9px;font-weight:800;padding:3px 12px;border-radius:99px;white-space:nowrap;">🔥 MÁS POPULAR</div>
-              <div style="font-size:10px;font-weight:800;letter-spacing:.12em;color:#22c55e;text-transform:uppercase;margin-bottom:8px;">PLAN GROWTH</div>
-              <div style="font-size:26px;font-weight:800;color:#fff;line-height:1;">39,99€<span style="font-size:13px;font-weight:400;color:rgba(255,255,255,.45);">/mes</span></div>
-              <ul style="font-size:12px;color:rgba(255,255,255,.7);list-style:none;display:flex;flex-direction:column;gap:5px;margin:14px 0 16px;padding:0;">
-                <li>✅ Todo lo de START</li>
-                <li>✅ Captación activa de leads</li>
-                <li>✅ 2.000 mensajes/mes</li>
-              </ul>
-              <a href="https://buy.stripe.com/14A5kF3yA50L5PJ68U4c801" target="_blank" style="display:block;text-align:center;font-size:12px;font-weight:700;padding:10px 12px;margin-top:auto;background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;border-radius:8px;text-decoration:none;">⚡ Activar GROWTH</a>
+          <!-- GROWTH -->
+          <div id="acc-upgrade-growth" style="margin-bottom:20px;padding:16px;background:linear-gradient(135deg,#0c1e3d,#162d58);border:2px solid #22c55e;border-radius:14px;position:relative;">
+            <div style="position:absolute;top:-10px;left:16px;background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;font-size:9px;font-weight:800;padding:2px 10px;border-radius:99px;">🔥 MÁS POPULAR</div>
+            <div style="font-size:10px;font-weight:800;letter-spacing:.12em;color:#22c55e;text-transform:uppercase;margin-bottom:10px;">— PLAN GROWTH</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;">
+              <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5);">🤖 Solo Agente</div>
+                <div style="font-size:22px;font-weight:800;color:#fff;">39,99€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.4);">/mes</span></div>
+                <div style="font-size:11px;color:rgba(255,255,255,.4);">Sin setup · Para tu web actual</div>
+                <a href="https://buy.stripe.com/14A5kF3yA50L5PJ68U4c801" target="_blank" onclick="handleStripeClick(event,'growth')" style="display:block;text-align:center;font-size:11px;font-weight:700;padding:8px 10px;margin-top:auto;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:8px;text-decoration:none;">Activar →</a>
+              </div>
+              <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5);">🌐 Solo Web</div>
+                <div style="font-size:22px;font-weight:800;color:#fff;">400€<span style="font-size:11px;font-weight:400;color:rgba(255,255,255,.4);"> setup</span> + 59€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.4);">/mes</span></div>
+                <div style="font-size:11px;color:rgba(255,255,255,.4);">Dominio .es gratis · Copy optimizado</div>
+                <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" style="display:block;text-align:center;font-size:11px;font-weight:700;padding:8px 10px;margin-top:auto;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:8px;text-decoration:none;">Activar →</a>
+              </div>
+              <div style="background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(22,163,74,.1));border:1.5px solid #22c55e;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;position:relative;">
+                <div style="position:absolute;top:-9px;left:12px;background:#22c55e;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:99px;">AHORRA 39,99€/mes</div>
+                <div style="font-size:11px;font-weight:700;color:#22c55e;">⚡ Web + Agente</div>
+                <div style="font-size:22px;font-weight:800;color:#fff;">400€<span style="font-size:11px;font-weight:400;color:rgba(255,255,255,.4);"> setup</span> + 59€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.4);">/mes</span></div>
+                <div style="font-size:11px;color:#22c55e;">Agente incluido · Dominio .es gratis</div>
+                <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" onclick="handleStripeClick(event,'growth')" style="display:block;text-align:center;font-size:11px;font-weight:700;padding:8px 10px;margin-top:auto;background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;border-radius:8px;text-decoration:none;">⚡ Activar →</a>
+              </div>
             </div>
+          </div>
 
-            <!-- PRO -->
-            <div id="acc-upgrade-pro" style="background:#f8fafc;border:1.5px solid #edf0f7;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:0;">
-              <div style="font-size:10px;font-weight:800;letter-spacing:.12em;color:#2a5cff;text-transform:uppercase;margin-bottom:8px;">PLAN PRO</div>
-              <div style="font-size:26px;font-weight:800;color:#0c1e3d;line-height:1;">69,99€<span style="font-size:13px;font-weight:400;color:#8a97b0;">/mes</span></div>
-              <ul style="font-size:12px;color:#6b7d96;list-style:none;display:flex;flex-direction:column;gap:5px;margin:14px 0 16px;padding:0;">
-                <li>✅ Todo lo de GROWTH</li>
-                <li>✅ Revisión mensual incluida</li>
-                <li>✅ 5.000 mensajes/mes</li>
-              </ul>
-              <a href="https://buy.stripe.com/6oU6oJfhictda5Z7cY4c803" target="_blank" class="btn-stripe" style="display:block;text-align:center;font-size:12px;padding:9px 12px;margin-top:auto;">Activar PRO →</a>
+          <!-- PRO -->
+          <div id="acc-upgrade-pro">
+            <div style="font-size:10px;font-weight:800;letter-spacing:.12em;color:#7c3aed;text-transform:uppercase;margin-bottom:10px;">— PLAN PRO</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;">
+              <div style="background:#f8fafc;border:1.5px solid #edf0f7;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:11px;font-weight:700;color:#8a97b0;">🤖 Solo Agente</div>
+                <div style="font-size:22px;font-weight:800;color:#0c1e3d;">69,99€<span style="font-size:12px;font-weight:400;color:#8a97b0;">/mes</span></div>
+                <div style="font-size:11px;color:#8a97b0;">Sin setup · Optimización mensual</div>
+                <a href="https://buy.stripe.com/6oU6oJfhictda5Z7cY4c803" target="_blank" onclick="handleStripeClick(event,'pro')" class="btn-stripe" style="display:block;text-align:center;font-size:11px;padding:8px 10px;margin-top:auto;">Activar →</a>
+              </div>
+              <div style="background:#f8fafc;border:1.5px solid #edf0f7;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:11px;font-weight:700;color:#8a97b0;">🌐 Solo Web</div>
+                <div style="font-size:22px;font-weight:800;color:#0c1e3d;">800€<span style="font-size:11px;font-weight:400;color:#8a97b0;"> setup</span> + 99€<span style="font-size:12px;font-weight:400;color:#8a97b0;">/mes</span></div>
+                <div style="font-size:11px;color:#8a97b0;">Alta conversión · Revisión mensual</div>
+                <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" class="btn-stripe" style="display:block;text-align:center;font-size:11px;padding:8px 10px;margin-top:auto;">Activar →</a>
+              </div>
+              <div style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1.5px solid #c4b5fd;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;position:relative;">
+                <div style="position:absolute;top:-9px;left:12px;background:#7c3aed;color:#fff;font-size:9px;font-weight:800;padding:2px 8px;border-radius:99px;">AHORRA 69,99€/mes</div>
+                <div style="font-size:11px;font-weight:700;color:#7c3aed;">⚡ Web + Agente</div>
+                <div style="font-size:22px;font-weight:800;color:#0c1e3d;">800€<span style="font-size:11px;font-weight:400;color:#8a97b0;"> setup</span> + 99€<span style="font-size:12px;font-weight:400;color:#8a97b0;">/mes</span></div>
+                <div style="font-size:11px;color:#7c3aed;">Agente PRO incluido · Revisión mensual</div>
+                <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" onclick="handleStripeClick(event,'pro')" style="display:block;text-align:center;font-size:11px;font-weight:700;padding:8px 10px;margin-top:auto;background:linear-gradient(90deg,#7c3aed,#6d28d9);color:#fff;border-radius:8px;text-decoration:none;">Activar →</a>
+              </div>
             </div>
-
           </div>
         </div>
 
-        <!-- Cancelar suscripción -->
+        <!-- Gestionar facturación -->
         <div id="acc-cancel-block" class="config-card" style="margin-bottom:20px;border:1.5px solid var(--danger-light);">
-          <h3 style="font-size:14px;font-weight:700;margin-bottom:6px;color:var(--danger);">Gestionar suscripción</h3>
-          <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">Puedes gestionar, modificar o cancelar tu suscripción desde el portal de facturación de Stripe. Al cancelar, conservas el acceso hasta el final del período pagado.</p>
+          <h3 style="font-size:14px;font-weight:700;margin-bottom:6px;color:var(--danger);">Gestionar facturación</h3>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">Accede al portal de facturación para modificar o cancelar tu plan. Al cancelar, conservas el acceso hasta el final del período pagado.</p>
           <a href="https://billing.stripe.com/p/login/cNibJ32uw50Lgun8h24c800" target="_blank" rel="noopener"
             style="display:inline-block;padding:10px 22px;background:transparent;color:var(--danger);border:1.5px solid var(--danger);border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all .18s;"
             onmouseover="this.style.background='var(--danger)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--danger)'">
-            Gestionar suscripción en Stripe →
+            Portal de facturación →
           </a>
         </div>
       </div>
