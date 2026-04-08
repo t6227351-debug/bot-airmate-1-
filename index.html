@@ -2685,29 +2685,31 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 .webs-section-sub{color:rgba(255,255,255,.45);font-size:1rem;max-width:480px;margin:0 auto;}
 
 /* ── Portfolio grid ── */
-.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:32px;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-bottom:48px;}
 @media(max-width:860px){.portfolio-grid{grid-template-columns:1fr;}}
 
-/* ── Portfolio card (unified dark) ── */
-.pf-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;}
-.pf-card:hover{transform:translateY(-8px);border-color:rgba(34,197,94,.35);box-shadow:0 20px 60px rgba(34,197,94,.15);}
-.pf-card-browser{background:#111827;padding:10px 14px 0;display:flex;align-items:center;gap:6px;}
+/* ── Portfolio card ── */
+.pf-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s;position:relative;}
+.pf-card::before{content:"";position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(34,197,94,.06),transparent 60%);opacity:0;transition:opacity .35s;pointer-events:none;z-index:0;}
+.pf-card:hover{transform:translateY(-10px);border-color:rgba(34,197,94,.4);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 0 1px rgba(34,197,94,.15);}
+.pf-card:hover::before{opacity:1;}
+.pf-card-browser{background:#0d1525;padding:11px 16px 0;display:flex;align-items:center;gap:6px;position:relative;z-index:1;}
 .pf-card-dots{display:flex;gap:5px;}
 .pf-card-dot{width:9px;height:9px;border-radius:50%;}
-.pf-card-url{flex:1;background:rgba(255,255,255,.07);border-radius:6px;height:20px;margin-left:10px;display:flex;align-items:center;padding:0 10px;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.02em;overflow:hidden;white-space:nowrap;}
-.pf-card-preview{width:100%;aspect-ratio:16/9;border:none;display:block;background:#0f172a;pointer-events:none;transform-origin:top left;}
+.pf-card-url{flex:1;background:rgba(255,255,255,.06);border-radius:6px;height:22px;margin-left:10px;display:flex;align-items:center;padding:0 10px;font-size:9px;color:rgba(255,255,255,.25);letter-spacing:.02em;overflow:hidden;white-space:nowrap;border:1px solid rgba(255,255,255,.05);}
+.pf-card-preview{width:100%;aspect-ratio:16/9;border:none;display:block;background:#0f172a;pointer-events:none;transform-origin:top left;position:relative;z-index:1;}
 .pf-card-preview-placeholder{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#0f172a,#1e2d4a);color:rgba(255,255,255,.25);font-size:13px;}
 .pf-card-preview-placeholder-icon{font-size:2.8rem;opacity:.4;}
-.pf-card-body{padding:22px 24px 26px;}
+.pf-card-body{padding:24px 26px 28px;position:relative;z-index:1;}
 .pf-card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-.pf-card-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:rgba(34,197,94,.1);color:var(--al-green);border:1px solid rgba(34,197,94,.2);}
-.pf-card-tag.gray{background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);border-color:rgba(255,255,255,.1);}
-.pf-card-name{font-family:var(--font-display);font-size:1.2rem;font-weight:400;color:#fff;margin-bottom:6px;}
-.pf-card-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:18px;}
+.pf-card-tag{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:99px;background:rgba(34,197,94,.1);color:var(--al-green);border:1px solid rgba(34,197,94,.2);}
+.pf-card-tag.gray{background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.1);}
+.pf-card-name{font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:7px;letter-spacing:-.01em;}
+.pf-card-desc{font-size:13px;color:rgba(255,255,255,.42);line-height:1.65;margin-bottom:20px;}
 .pf-card-footer{display:flex;align-items:center;justify-content:space-between;}
-.pf-card-location{font-size:12px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:5px;}
-.pf-card-link{font-size:12px;font-weight:700;color:var(--al-green);text-decoration:none;display:flex;align-items:center;gap:4px;transition:gap .2s;}
-.pf-card-link:hover{gap:8px;}
+.pf-card-location{font-size:12px;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:5px;}
+.pf-card-link{font-size:12px;font-weight:700;color:var(--al-green);text-decoration:none;display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:8px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);transition:all .2s;}
+.pf-card-link:hover{background:rgba(34,197,94,.2);gap:8px;}
 .pf-card-link-soon{font-size:12px;font-weight:600;color:rgba(255,255,255,.25);letter-spacing:.06em;text-transform:uppercase;}
 
 /* ── Stats bar ── */
@@ -2756,11 +2758,25 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   <div class="webs-section-inner">
 
     <div class="webs-section-header reveal">
-      <div style="text-align:center;margin-bottom:18px;">
-        <span class="portfolio-launch-badge">⚡ Lista y entregada en 24h</span>
+      <div style="text-align:center;margin-bottom:20px;">
+        <span class="portfolio-launch-badge">⚡ Diseñadas, entregadas y activas en 24h</span>
       </div>
-      <h2 class="webs-section-title">Webs que hemos <em>creado</em></h2>
-      <p class="webs-section-sub">Cada web es única, diseñada a medida para el negocio. Haz clic para ver la web real.</p>
+      <h2 class="webs-section-title">Webs reales que hemos <em>creado</em></h2>
+      <p class="webs-section-sub">Negocios reales. Diseños únicos. Haz clic en cualquier web para verla en directo.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:28px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.45);">
+          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 8px #22c55e;"></span>
+          Webs en producción
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.45);">
+          <span style="font-size:1rem;">🤖</span>
+          Agente IA incluido
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.45);">
+          <span style="font-size:1rem;">🌐</span>
+          Dominio .es gratis
+        </div>
+      </div>
     </div>
 
     <div class="portfolio-grid">
@@ -2890,7 +2906,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
         </div>
       </div>
 
-      <!-- Empleo Tenerife -->
+      <!-- Tres Amapolas -->
       <div class="pf-card reveal from-right delay-3">
         <div class="pf-card-browser">
           <div class="pf-card-dots">
@@ -2898,19 +2914,19 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
             <div class="pf-card-dot" style="background:#ffbd2e;"></div>
             <div class="pf-card-dot" style="background:#28c840;"></div>
           </div>
-          <div class="pf-card-url">airmateai.github.io/empleotenerife/</div>
+          <div class="pf-card-url">airmateai.github.io/Tres-amapolas/</div>
         </div>
-        <iframe class="pf-card-preview" src="https://airmateai.github.io/empleotenerife/" loading="lazy" title="Empleo Tenerife"></iframe>
+        <iframe class="pf-card-preview" src="https://airmateai.github.io/Tres-amapolas/" loading="lazy" title="Tres Amapolas"></iframe>
         <div class="pf-card-body">
           <div class="pf-card-tags">
-            <span class="pf-card-tag">Empleo</span>
-            <span class="pf-card-tag gray">Azul · Verde</span>
+            <span class="pf-card-tag">Restaurante</span>
+            <span class="pf-card-tag gray">Rojo · Dorado</span>
           </div>
-          <div class="pf-card-name">Empleo Tenerife</div>
-          <div class="pf-card-desc">Portal de empleo local para encontrar trabajo en la isla. Moderno y funcional.</div>
+          <div class="pf-card-name">Tres Amapolas</div>
+          <div class="pf-card-desc">Restaurante con alma. Diseño cálido y elegante pensado para convertir visitas en reservas.</div>
           <div class="pf-card-footer">
-            <span class="pf-card-location">📍 Tenerife</span>
-            <a href="https://airmateai.github.io/empleotenerife/" target="_blank" class="pf-card-link">Ver web →</a>
+            <span class="pf-card-location">📍 España</span>
+            <a href="https://airmateai.github.io/Tres-amapolas/" target="_blank" class="pf-card-link">Ver web →</a>
           </div>
         </div>
       </div>
