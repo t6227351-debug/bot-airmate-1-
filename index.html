@@ -7022,7 +7022,7 @@ async function renderAccountSection() {
   if (upg) upg.style.display = (authState.isOwner || isPaidActive || resolvedPlan === 'pro') ? 'none' : 'block';
   /* Mostrar cancelar solo si tiene suscripción activa de pago */
   const cancelBlock = document.getElementById('acc-cancel-block');
-  if (cancelBlock) cancelBlock.style.display = (!authState.isOwner && isPaidActive) ? 'block' : 'none';
+  if (cancelBlock) cancelBlock.style.display = !authState.isOwner ? 'block' : 'none';
   /* Ocultar tarjetas de planes ya activos o inferiores (beta ve todos los planes) */
   const planOrder = ['start','growth','pro'];
   const currentIdx = (user.plan === 'beta' || !user.plan) ? -1 : planOrder.indexOf(resolvedPlan);
