@@ -4912,7 +4912,7 @@ function checkFAQ(text) {
 ════════════════════════════════════════════ */
 async function callOpenAI() {
   const systemPrompt = state.systemPrompt || rebuildSystemPrompt();
-  const proxyUrl     = state.proxyUrl || localStorage.getItem('am_proxy_url') || '';
+  const proxyUrl     = state.proxyUrl || localStorage.getItem('am_proxy_url') || 'https://bot-airmate-1.vercel.app/api/chat';
 
   /* ── Modo proxy (recomendado en producción) ── */
   if (proxyUrl) {
