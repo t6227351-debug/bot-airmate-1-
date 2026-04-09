@@ -1038,13 +1038,19 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
   position:relative;overflow:hidden;
   min-height:100vh;display:flex;align-items:center;
   padding:120px 24px 80px;
-  background:#0a1628;
+  background:linear-gradient(160deg,#050d1a 0%,#071424 40%,#081a14 100%);
+}
+.lp-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(34,197,94,.1) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 50% at 20% 60%,rgba(42,92,255,.08) 0%,transparent 60%);
+  pointer-events:none;
 }
 .lp-hero-bg{
   position:absolute;inset:0;
   background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920&q=80');
   background-size:cover;background-position:center;
-  opacity:.07;
+  opacity:.04;
 }
 #lp-globe-bg{
   position:absolute;inset:0;width:100%;height:100%;
@@ -1092,10 +1098,11 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
 }
 @keyframes lp-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 .lp-hero-title{
-  font-family:var(--font-display);font-size:clamp(2.6rem,5vw,3.9rem);line-height:1.08;
-  color:#fff;margin-bottom:22px;letter-spacing:-.01em;
+  font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,4.4rem);line-height:1.06;
+  color:#fff;margin-bottom:22px;letter-spacing:-.02em;
 }
-.lp-hero-title em{color:var(--al-green);font-style:normal;}
+.lp-hero-title em{font-style:normal;background:linear-gradient(135deg,#22c55e 0%,#4ade80 50%,#22c55e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:lp-shimmer 3s linear infinite;}
+@keyframes lp-shimmer{0%{background-position:0% center}100%{background-position:200% center}}
 .lp-hero-sub{
   font-size:1.1rem;color:rgba(255,255,255,.6);line-height:1.75;
   margin-bottom:40px;max-width:460px;
@@ -2435,19 +2442,31 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
       <div>
         <div class="lp-hero-eyebrow anim-up">
           <span class="lp-hero-eyebrow-dot"></span>
-          Web profesional + asistente con IA · Para negocios locales
+          Agente IA para negocios locales · Responde 24/7
         </div>
-        <h1 class="lp-hero-title anim-up">Tu negocio consigue clientes<br><em>aunque no estés mirando el móvil</em></h1>
-        <p class="lp-hero-sub anim-up">Una web que convierte y un asistente que responde, asesora y manda al cliente directo a tu WhatsApp. Las 24 horas, sin que tú muevas un dedo.</p>
+        <h1 class="lp-hero-title anim-up">Responde a tus clientes<br><em>mientras duermes</em></h1>
+        <p class="lp-hero-sub anim-up">Un agente de ventas con IA que responde, asesora y manda al cliente directo a tu WhatsApp cuando está listo para contratar. Las 24 horas.</p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;" class="anim-up">
+          <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 16px;">
+            <span style="font-size:1.3rem;">⚡</span>
+            <div><div style="font-size:.75rem;font-weight:800;color:#fff;">Instalación</div><div style="font-size:.7rem;color:rgba(255,255,255,.4);">2 líneas de código</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 16px;">
+            <span style="font-size:1.3rem;">🕐</span>
+            <div><div style="font-size:.75rem;font-weight:800;color:#fff;">Disponible</div><div style="font-size:.7rem;color:rgba(255,255,255,.4);">24/7 sin descanso</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:10px 16px;">
+            <span style="font-size:1.3rem;">💬</span>
+            <div><div style="font-size:.75rem;font-weight:800;color:var(--al-green);">Deriva a WhatsApp</div><div style="font-size:.7rem;color:rgba(34,197,94,.5);">Cuando el cliente quiere comprar</div></div>
+          </div>
+        </div>
+
         <div class="lp-hero-cta anim-up">
-          <button class="lp-btn-primary" onclick="switchPage('planes')">Ver planes y precios →</button>
-          <button class="lp-btn-secondary" onclick="document.getElementById('lp-demo').scrollIntoView({behavior:'smooth'})">Ver cómo funciona ↓</button>
+          <button class="lp-btn-primary" onclick="switchPage('planes')" style="font-size:1rem;padding:16px 36px;">Empezar gratis 7 días →</button>
+          <button class="lp-btn-secondary" onclick="document.getElementById('lp-demo').scrollIntoView({behavior:'smooth'})">Ver demo en vivo ↓</button>
         </div>
-        <a href="https://wa.me/34646427613?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20AIRMATE%20para%20mi%20negocio" target="_blank" rel="noopener" class="btn-wa-hero anim-up">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          ¿Hablamos? Escríbenos por WhatsApp
-        </a>
-        <div class="lp-hero-trust anim-up" style="margin-top:20px;">
+        <div class="lp-hero-trust anim-up" style="margin-top:16px;">
           <span class="lp-hero-trust-item">Sin tarjeta de crédito</span>
           <span class="lp-trust-dot">·</span>
           <span class="lp-hero-trust-item">Listo en 2 minutos</span>
@@ -2457,7 +2476,11 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
       </div>
 
       <!-- Chat mockup decorativo -->
-      <div class="anim-up lp-hero-mockup-wrap">
+      <div class="anim-up lp-hero-mockup-wrap" style="position:relative;">
+        <!-- Badge flotante arriba -->
+        <div style="position:absolute;top:-18px;left:-10px;z-index:10;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;font-size:.72rem;font-weight:800;padding:6px 14px;border-radius:99px;box-shadow:0 4px 20px rgba(34,197,94,.5);animation:floatY 3s ease-in-out infinite;letter-spacing:.03em;">✓ Cliente captado →  WhatsApp</div>
+        <!-- Badge flotante derecha -->
+        <div style="position:absolute;bottom:60px;right:-20px;z-index:10;background:#fff;color:#0c1e3d;font-size:.7rem;font-weight:800;padding:8px 14px;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.25);animation:floatY 3.5s ease-in-out infinite .5s;display:flex;align-items:center;gap:6px;"><span style="font-size:1rem;">🔥</span><div><div>+40% conversiones</div><div style="font-weight:500;color:#64748b;font-size:.63rem;">con IA vs sin responder</div></div></div>
         <div class="lp-bot-mockup">
           <div class="lp-mockup-header">
             <div class="lp-mockup-avatar">🤖</div>
@@ -2465,7 +2488,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
               <div class="lp-mockup-name">Asistente AIRMATE</div>
               <div class="lp-mockup-status">En línea · IA activa</div>
             </div>
-            <div style="margin-left:auto;font-size:.65rem;color:rgba(34,197,94,.9);background:rgba(34,197,94,.12);padding:3px 8px;border-radius:99px;font-weight:700;letter-spacing:.04em;">LIVE</div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:4px;font-size:.65rem;color:rgba(34,197,94,.9);background:rgba(34,197,94,.12);padding:3px 8px;border-radius:99px;font-weight:700;letter-spacing:.04em;"><span style="width:5px;height:5px;border-radius:50%;background:#22c55e;display:inline-block;animation:lp-pulse 1.5s infinite;"></span>LIVE</div>
           </div>
           <div class="lp-chat-bubbles">
             <div class="lp-bubble bot">¡Hola! 👋 ¿En qué puedo ayudarte hoy?</div>
