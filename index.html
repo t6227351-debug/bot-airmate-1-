@@ -4514,9 +4514,9 @@ function switchPage(p) {
   if (p === 'landing') { _betaSpotsLoaded = false; ensureBetaSpots(); }
   if (p === 'planes') { setTimeout(triggerReveal, 80); }
   if (p === 'inicio' || p === 'webs') { setTimeout(triggerReveal, 80); }
-  /* Mostrar widget en landing Y en admin */
+  /* Mostrar widget en landing. En admin lo controla showAdminSection */
   const botWidget = document.getElementById('airmate-widget');
-  if (botWidget) botWidget.style.display = (p === 'landing' || p === 'admin') ? 'block' : 'none';
+  if (botWidget) botWidget.style.display = p === 'landing' ? 'block' : 'none';
 }
 function showAdminSection(id, btn) {
   document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));
@@ -4526,6 +4526,9 @@ function showAdminSection(id, btn) {
   refreshAdmin();
   if (id === 'bots') renderBotsPanel();
   if (id === 'config') renderConfigPlanSections();
+  /* Mostrar widget solo en la pestaña Configuración */
+  const botWidget = document.getElementById('airmate-widget');
+  if (botWidget) botWidget.style.display = id === 'config' ? 'block' : 'none';
 }
 
 function renderConfigPlanSections() {
