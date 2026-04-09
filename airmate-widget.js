@@ -79,9 +79,8 @@
     .am-td { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.6); animation: amBounce 1.2s infinite; }
     .am-td:nth-child(2) { animation-delay: .2s; } .am-td:nth-child(3) { animation-delay: .4s; }
     @keyframes amBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-5px); } }
-    #am-qr { display: flex; gap: 6px; padding: 8px 12px 0; overflow-x: auto; flex-shrink: 0; background: #fafbfd; }
-    #am-qr::-webkit-scrollbar { display: none; }
-    .am-qr { flex-shrink: 0; padding: 5px 11px; border-radius: 20px; border: 1.5px solid rgba(34,197,94,.4); background: #fff; color: var(--am-navy); font-size: 12px; cursor: pointer; white-space: nowrap; transition: background .15s, color .15s, border-color .15s; font-family: var(--am-font); }
+    #am-qr { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; padding: 8px 10px 0; flex-shrink: 0; background: #fafbfd; }
+    .am-qr { padding: 5px 8px; border-radius: 20px; border: 1.5px solid rgba(34,197,94,.4); background: #fff; color: var(--am-navy); font-size: 11px; cursor: pointer; white-space: nowrap; transition: background .15s, color .15s, border-color .15s; font-family: var(--am-font); text-align: center; overflow: hidden; text-overflow: ellipsis; }
     .am-qr:hover { background: var(--am-navy); color: #fff; border-color: var(--am-navy); }
     .am-qr-wa { background: #e8faf0; color: #128c4a; border-color: rgba(37,211,102,.4); font-weight: 700; }
     .am-qr-wa:hover { background: #25D366; color: #fff; border-color: #25D366; }
@@ -109,7 +108,7 @@
   btn.innerHTML = `
     <span class="am-notif"></span>
     <span class="am-ic"><div class="am-dot"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 10.5L8 3l5 7.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="12.5" r="1.5" fill="white"/></svg></div></span>
-    <span class="am-lbl">AIRMATE LEADS</span>
+    <span class="am-lbl">AIRMATE</span>
     <span class="am-ic2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
     <span class="am-lbl-open">Cerrar</span>`;
 
@@ -119,7 +118,7 @@
     <div class="am-header">
       <div class="am-avatar">💬</div>
       <div style="flex:1;min-width:0">
-        <div class="am-hbrand">AIRMATE LEADS</div>
+        <div class="am-hbrand">AIRMATE</div>
         <div class="am-hname">${_esc(BOT_NAME)}</div>
         <div class="am-hstatus"><span class="am-sdot"></span> En línea</div>
       </div>
@@ -127,17 +126,18 @@
     </div>
     <div id="am-msgs"></div>
     <div id="am-qr">
-      <button class="am-qr" onclick="window._amQR('productos')">🛍️ Busco un producto</button>
-      <button class="am-qr" onclick="window._amQR('servicios')">✨ Necesito un servicio</button>
-      <button class="am-qr" onclick="window._amQR('precio')">💰 ¿Cuánto cuesta?</button>
+      <button class="am-qr" onclick="window._amQR('productos')">🛍️ Productos</button>
+      <button class="am-qr" onclick="window._amQR('servicios')">✨ Servicios</button>
+      <button class="am-qr" onclick="window._amQR('precio')">💰 Precios</button>
       <button class="am-qr" onclick="window._amQR('horario')">🕐 Horario</button>
+      <button class="am-qr" onclick="window._amQR('direccion')">📍 Dirección</button>
       ${WA_PHONE ? `<button class="am-qr am-qr-wa" onclick="window._amWA()">💬 WhatsApp</button>` : ''}
     </div>
     <div id="am-input-row">
       <input id="am-input" type="text" placeholder="Escribe tu pregunta…" autocomplete="off" />
       <button id="am-send" aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
     </div>
-    <div class="am-footer">Powered by <a href="#" target="_blank">AIRMATE LEADS</a></div>`;
+    <div class="am-footer">Powered by <a href="#" target="_blank">AIRMATE</a></div>`;
 
   document.body.appendChild(btn);
   document.body.appendChild(panel);
@@ -313,13 +313,14 @@ ${extras   ? `- Extra: ${extras}` : ''}
 - Dirección: ${address !== '(no configurada)' ? address : 'consultar por WhatsApp'}
 ${wa ? `- WhatsApp: ${wa}` : ''}
 
-REGLA NÚMERO 1 — MENSAJES CORTOS:
-Escribe UN solo mensaje con máximo 2 frases. Nunca más. Si tienes varias cosas que decir, dile una y espera su respuesta para seguir. NUNCA hagas listas largas, NUNCA des toda la información de golpe.
+REGLA NÚMERO 1 — MENSAJES CONCISOS:
+Sé breve y claro. Si el cliente pregunta por los servicios o productos, lístalós en líneas separadas (uno por línea) para que sea fácil de leer. Para el resto de respuestas, máximo 2-3 frases. Siempre termina con una pregunta o un paso claro.
 
 CÓMO ACTÚAS:
 - Si el cliente saluda: haz UNA pregunta corta para saber qué busca. Nada más.
-- Si el cliente pregunta por algo: responde lo esencial en 1-2 frases y termina con una pregunta que avance la conversación.
-- Si el cliente muestra interés: recomienda UNA opción concreta con confianza. No listes todo.
+- Si el cliente pregunta por servicios o productos: lístalós en líneas separadas, uno por línea, y pregunta cuál le interesa.
+- Si el cliente pregunta por algo concreto: responde lo esencial en 1-2 frases y termina con una pregunta que avance la conversación.
+- Si el cliente muestra interés: recomienda UNA opción concreta con confianza.
 - Si el cliente duda o pone objeciones: una frase que entiende su duda + una pregunta corta para resolver.
 - Siempre termina con un paso claro: una pregunta, o mandarlo a WhatsApp.
 
@@ -327,8 +328,7 @@ CUÁNDO MANDAR A WHATSAPP:
 En cuanto quiera comprar, reservar o confirmar algo: "Para gestionarlo, escríbenos al ${wa || 'nuestro WhatsApp'} — te atendemos al momento."
 
 PROHIBIDO:
-- Listas de más de 2 puntos en un solo mensaje.
-- Más de 2 frases seguidas sin esperar respuesta.
+- Más de 3 frases seguidas sin esperar respuesta (excepto al listar servicios/productos).
 - "¡Por supuesto!", "¡Encantado!", "¡Claro que sí!" — habla como persona.
 - Inventar urgencia, stock limitado o datos que no tienes.
 - Escribir "wa.me/..." — solo el número si lo tienes.
