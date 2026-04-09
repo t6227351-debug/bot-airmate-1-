@@ -877,7 +877,7 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
 
 /* ════ QUICK REPLY BUTTONS ════ */
 .quick-replies{
-  display:flex;gap:5px;padding:7px 10px 0;flex-wrap:wrap;flex-shrink:0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:7px 10px 0;flex-shrink:0;
   background:#fff;border-top:1px solid rgba(12,30,61,.06);
 }
 .qr-btn{
