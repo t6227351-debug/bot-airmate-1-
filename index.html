@@ -3104,6 +3104,14 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     .pp-glow-dot { position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,.2),transparent 70%);top:-60px;right:-60px;pointer-events:none;animation:ppGlow 4s ease-in-out infinite; }
     @keyframes ppGlow { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
 
+    /* Type selector tabs */
+    .pp-type-selector { display:flex;align-items:center;justify-content:center;gap:0;max-width:480px;margin:0 auto 48px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:5px;position:relative;z-index:1; }
+    .pp-type-btn { flex:1;padding:10px 18px;border-radius:11px;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.4);background:transparent;border:none;cursor:pointer;transition:all .22s;white-space:nowrap; }
+    .pp-type-btn.active { background:rgba(255,255,255,.1);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.3); }
+    .pp-type-btn[data-type="combo"].active { background:linear-gradient(135deg,rgba(34,197,94,.25),rgba(34,197,94,.1));color:var(--al-green);box-shadow:0 2px 12px rgba(34,197,94,.2); }
+    .pp-type-view { display:none; }
+    .pp-type-view.active { display:block; }
+
     /* FAQ */
     .pp-faq { max-width:700px;margin:80px auto 0;padding:0 32px 96px;position:relative;z-index:1; }
     .pp-faq h3 { text-align:center;font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:8px; }
@@ -3155,137 +3163,180 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     </div>
   </div>
 
-  <!-- Legend -->
-  <div style="padding:0 32px;position:relative;z-index:1;">
-    <div class="pp-legend reveal delay-2">
-      <div class="pp-legend-item"><span style="font-size:1.2rem;">🌐</span> <div><strong>Solo Web</strong> — Tu presencia online profesional</div></div>
-      <div class="pp-legend-sep">+</div>
-      <div class="pp-legend-item"><span style="font-size:1.2rem;">🤖</span> <div><strong>Solo Agente</strong> — IA que responde en tu web actual</div></div>
-      <div class="pp-legend-sep">=</div>
-      <div class="pp-legend-item pp-legend-combo"><span style="font-size:1.2rem;">⚡</span> <div><strong>Web + Agente</strong> — Sistema completo. El agente va incluido gratis.</div></div>
+  <!-- Type selector -->
+  <div style="padding:0 32px;position:relative;z-index:1;margin-bottom:0;">
+    <div class="pp-type-selector reveal delay-2">
+      <button class="pp-type-btn active" data-type="agent" onclick="ppSelectType('agent',this)">🤖 Solo Agente</button>
+      <button class="pp-type-btn" data-type="web" onclick="ppSelectType('web',this)">🌐 Solo Web</button>
+      <button class="pp-type-btn" data-type="combo" onclick="ppSelectType('combo',this)">⚡ Web + Agente</button>
     </div>
   </div>
 
-  <!-- GRID DE PLANES -->
-  <div style="position:relative;z-index:1;padding-top:8px;padding-bottom:0;">
+  <!-- SOLO AGENTE -->
+  <div class="pp-type-view active" id="pp-view-agent" style="position:relative;z-index:1;padding-top:32px;padding-bottom:0;">
     <div class="pp-grid">
-
-      <!-- START -->
       <div class="pp-card reveal from-left">
         <div class="pp-card-head">
           <div class="pp-card-tag pp-tag-start">Para empezar</div>
           <div class="pp-card-name">START</div>
-          <p class="pp-card-desc">Básico, rápido y efectivo. Presencia profesional online desde hoy mismo.</p>
+          <p class="pp-card-desc">Instala el agente en tu web actual y responde a tus clientes 24/7 desde hoy.</p>
         </div>
         <div class="pp-opts">
-          <div class="pp-opt">
-            <div class="pp-opt-top">
-              <div class="pp-opt-label"><span>🤖</span> Solo Agente</div>
-            </div>
-            <div class="pp-price"><span class="pp-price-main">29,99€</span><span class="pp-price-sub">/mes · Sin setup</span></div>
+          <div class="pp-opt" style="border-bottom:none;">
+            <div class="pp-price"><span class="pp-price-main">29,99€</span><span class="pp-price-sub">/mes · Sin setup · Sin permanencia</span></div>
             <div class="pp-opt-feat">✓ Para tu web actual · Responde 24/7 · Deriva a WhatsApp</div>
             <div class="pp-limit-badge">500 conversaciones/mes</div>
-            <a href="https://buy.stripe.com/00w3cveJN8q8gzA0jv2Ry07" target="_blank" onclick="handleStripeClick(event,'start')" class="pp-btn pp-btn-ghost">Elegir →</a>
-          </div>
-          <div class="pp-opt">
-            <div class="pp-opt-top">
-              <div class="pp-opt-label"><span>🌐</span> Solo Web</div>
-            </div>
-            <div class="pp-price"><span class="pp-price-main">250€</span><span class="pp-price-sub"> setup + 39€/mes</span></div>
-            <div class="pp-opt-feat">✓ Web personalizada · Dominio .es gratis · Lista en 24h</div>
-            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" class="pp-btn pp-btn-ghost">Elegir →</a>
-          </div>
-          <div class="pp-opt pp-opt-combo">
-            <div class="pp-opt-top">
-              <div class="pp-opt-label pp-opt-label-combo"><span>⚡</span> Web + Agente</div>
-              <div class="pp-opt-save">Ahorra 29,99€/mes</div>
-            </div>
-            <div class="pp-price"><span class="pp-price-main pp-price-main-combo">250€</span><span class="pp-price-sub pp-price-sub-combo"> setup + 39€/mes <span class="pp-price-old">68,99€</span></span></div>
-            <div class="pp-opt-feat pp-opt-feat-combo">✓ Web + Agente incluido · Dominio .es gratis · Todo en uno</div>
-            <div class="pp-limit-badge pp-limit-badge-combo">500 conversaciones/mes incluidas</div>
-            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" onclick="handleStripeClick(event,'start')" class="pp-btn pp-btn-combo">Obtener ahora →</a>
+            <a href="https://buy.stripe.com/00w3cveJN8q8gzA0jv2Ry07" target="_blank" onclick="handleStripeClick(event,'start')" class="pp-btn pp-btn-ghost">Elegir START →</a>
           </div>
         </div>
       </div>
-
-      <!-- GROWTH — FEATURED -->
       <div class="pp-card pp-card-featured reveal">
         <div class="pp-glow-dot"></div>
         <div class="pp-card-badge pp-badge-green">🔥 MÁS ELEGIDO</div>
         <div class="pp-card-head">
           <div class="pp-card-tag pp-tag-growth">Más elegido</div>
           <div class="pp-card-name">GROWTH</div>
-          <p class="pp-card-desc">No solo estar online. Pensado para que los clientes te contacten y tú los conviertas.</p>
+          <p class="pp-card-desc">Cualifica leads activamente, detecta el momento exacto y manda al cliente a tu WhatsApp.</p>
         </div>
         <div class="pp-opts">
-          <div class="pp-opt">
-            <div class="pp-opt-top">
-              <div class="pp-opt-label"><span>🤖</span> Solo Agente</div>
-            </div>
-            <div class="pp-price"><span class="pp-price-main">39,99€</span><span class="pp-price-sub">/mes · Sin setup</span></div>
+          <div class="pp-opt" style="border-bottom:none;">
+            <div class="pp-price"><span class="pp-price-main">39,99€</span><span class="pp-price-sub">/mes · Sin setup · Sin permanencia</span></div>
             <div class="pp-opt-feat">✓ Cualificación de leads · Responde 24/7 · Deriva a WhatsApp</div>
             <div class="pp-limit-badge">2.000 conversaciones/mes</div>
-            <a href="https://buy.stripe.com/cNi7sL315eOw2IKgit2Ry08" target="_blank" onclick="handleStripeClick(event,'growth')" class="pp-btn pp-btn-ghost">Elegir →</a>
+            <a href="https://buy.stripe.com/cNi7sL315eOw2IKgit2Ry08" target="_blank" onclick="handleStripeClick(event,'growth')" class="pp-btn pp-btn-combo">Elegir GROWTH →</a>
           </div>
-          <div class="pp-opt">
-            <div class="pp-opt-top">
-              <div class="pp-opt-label"><span>🌐</span> Solo Web</div>
-            </div>
-            <div class="pp-price"><span class="pp-price-main">400€</span><span class="pp-price-sub"> setup + 59€/mes</span></div>
+        </div>
+      </div>
+      <div class="pp-card reveal from-right">
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-pro">Máximo rendimiento</div>
+          <div class="pp-card-name">PRO</div>
+          <p class="pp-card-desc">Máxima conversión con optimización mensual incluida. Para negocios que quieren resultados reales.</p>
+        </div>
+        <div class="pp-opts">
+          <div class="pp-opt" style="border-bottom:none;">
+            <div class="pp-price"><span class="pp-price-main">69,99€</span><span class="pp-price-sub">/mes · Sin setup · Sin permanencia</span></div>
+            <div class="pp-opt-feat">✓ Alta conversión · Optimización mensual · Deriva a WhatsApp</div>
+            <div class="pp-limit-badge">5.000 conversaciones/mes</div>
+            <a href="https://buy.stripe.com/5kQ3cvgRVcGo1EGfep2Ry09" target="_blank" onclick="handleStripeClick(event,'pro')" class="pp-btn pp-btn-ghost">Elegir PRO →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLO WEB -->
+  <div class="pp-type-view" id="pp-view-web" style="position:relative;z-index:1;padding-top:32px;padding-bottom:0;">
+    <div class="pp-grid">
+      <div class="pp-card reveal from-left">
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-start">Para empezar</div>
+          <div class="pp-card-name">START</div>
+          <p class="pp-card-desc">Web profesional lista en 24h. Dominio .es incluido y presencia online desde el primer día.</p>
+        </div>
+        <div class="pp-opts">
+          <div class="pp-opt" style="border-bottom:none;">
+            <div class="pp-price"><span class="pp-price-main">250€</span><span class="pp-price-sub"> setup único + 39€/mes</span></div>
+            <div class="pp-opt-feat">✓ Web personalizada · Dominio .es gratis · Lista en 24h</div>
+            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" class="pp-btn pp-btn-ghost">Elegir START →</a>
+          </div>
+        </div>
+      </div>
+      <div class="pp-card pp-card-featured reveal">
+        <div class="pp-glow-dot"></div>
+        <div class="pp-card-badge pp-badge-green">🔥 MÁS ELEGIDO</div>
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-growth">Más elegido</div>
+          <div class="pp-card-name">GROWTH</div>
+          <p class="pp-card-desc">Web enfocada en captar contactos. Copy optimizado para convertir visitas en clientes.</p>
+        </div>
+        <div class="pp-opts">
+          <div class="pp-opt" style="border-bottom:none;">
+            <div class="pp-price"><span class="pp-price-main">400€</span><span class="pp-price-sub"> setup único + 59€/mes</span></div>
             <div class="pp-opt-feat">✓ Web enfocada en contactos · Copy optimizado · Dominio .es gratis</div>
-            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" class="pp-btn pp-btn-ghost">Elegir →</a>
+            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" class="pp-btn pp-btn-combo">Elegir GROWTH →</a>
           </div>
-          <div class="pp-opt pp-opt-combo">
+        </div>
+      </div>
+      <div class="pp-card reveal from-right">
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-pro">Máximo rendimiento</div>
+          <div class="pp-card-name">PRO</div>
+          <p class="pp-card-desc">Web de alta conversión con revisión mensual. Para negocios que exigen los mejores resultados.</p>
+        </div>
+        <div class="pp-opts">
+          <div class="pp-opt" style="border-bottom:none;">
+            <div class="pp-price"><span class="pp-price-main">800€</span><span class="pp-price-sub"> setup único + 99€/mes</span></div>
+            <div class="pp-opt-feat">✓ Web de alta conversión · Revisión mensual · Dominio .es gratis</div>
+            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" class="pp-btn pp-btn-ghost">Elegir PRO →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEB + AGENTE -->
+  <div class="pp-type-view" id="pp-view-combo" style="position:relative;z-index:1;padding-top:32px;padding-bottom:0;">
+    <div style="text-align:center;margin-bottom:24px;position:relative;z-index:1;">
+      <span style="display:inline-block;font-size:.8rem;font-weight:700;color:var(--al-green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:99px;padding:6px 18px;">✓ El agente va incluido — no pagas por separado</span>
+    </div>
+    <div class="pp-grid">
+      <div class="pp-card reveal from-left" style="border-color:rgba(34,197,94,.25);">
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-start">Para empezar</div>
+          <div class="pp-card-name">START</div>
+          <p class="pp-card-desc">Web + Agente IA en un solo pack. Dominio gratis y agente activo desde el primer día.</p>
+        </div>
+        <div class="pp-opts">
+          <div class="pp-opt pp-opt-combo" style="border-bottom:none;">
             <div class="pp-opt-top">
-              <div class="pp-opt-label pp-opt-label-combo"><span>⚡</span> Web + Agente</div>
+              <div class="pp-opt-save">Ahorra 29,99€/mes</div>
+            </div>
+            <div class="pp-price"><span class="pp-price-main pp-price-main-combo">250€</span><span class="pp-price-sub pp-price-sub-combo"> setup + 39€/mes <span class="pp-price-old">68,99€</span></span></div>
+            <div class="pp-opt-feat pp-opt-feat-combo">✓ Web + Agente incluido · Dominio .es gratis · Todo en uno</div>
+            <div class="pp-limit-badge pp-limit-badge-combo">500 conversaciones/mes incluidas</div>
+            <a href="https://buy.stripe.com/eVq6oH31535OgzAd6h2Ry00" target="_blank" onclick="handleStripeClick(event,'start')" class="pp-btn pp-btn-combo">Obtener START →</a>
+          </div>
+        </div>
+      </div>
+      <div class="pp-card pp-card-featured reveal" style="border-color:rgba(34,197,94,.5);">
+        <div class="pp-glow-dot"></div>
+        <div class="pp-card-badge pp-badge-green">🔥 MÁS ELEGIDO</div>
+        <div class="pp-card-head">
+          <div class="pp-card-tag pp-tag-growth">Más elegido</div>
+          <div class="pp-card-name">GROWTH</div>
+          <p class="pp-card-desc">Web enfocada en captar clientes + agente avanzado que cualifica leads 24/7.</p>
+        </div>
+        <div class="pp-opts">
+          <div class="pp-opt pp-opt-combo" style="border-bottom:none;">
+            <div class="pp-opt-top">
               <div class="pp-opt-save">Ahorra 39,99€/mes</div>
             </div>
             <div class="pp-price"><span class="pp-price-main pp-price-main-combo">400€</span><span class="pp-price-sub pp-price-sub-combo"> setup + 59€/mes <span class="pp-price-old">98,99€</span></span></div>
             <div class="pp-opt-feat pp-opt-feat-combo">✓ Web + Agente avanzado · Dominio .es gratis · Todo en uno</div>
             <div class="pp-limit-badge pp-limit-badge-combo">2.000 conversaciones/mes incluidas</div>
-            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" onclick="handleStripeClick(event,'growth')" class="pp-btn pp-btn-combo">Obtener ahora →</a>
+            <a href="https://buy.stripe.com/9B68wP0SXeOw2IK1nz2Ry01" target="_blank" onclick="handleStripeClick(event,'growth')" class="pp-btn pp-btn-combo">Obtener GROWTH →</a>
           </div>
         </div>
       </div>
-
-      <!-- PRO -->
-      <div class="pp-card reveal from-right">
+      <div class="pp-card reveal from-right" style="border-color:rgba(124,58,237,.3);">
         <div class="pp-card-head">
           <div class="pp-card-tag pp-tag-pro">Máximo rendimiento</div>
           <div class="pp-card-name">PRO</div>
-          <p class="pp-card-desc">Para negocios que quieren resultados medibles mes a mes. Revisión continua incluida.</p>
+          <p class="pp-card-desc">Web PRO + Agente PRO con revisión mensual. El sistema completo para máximos resultados.</p>
         </div>
         <div class="pp-opts">
-          <div class="pp-opt">
+          <div class="pp-opt" style="background:rgba(124,58,237,.05);border-bottom:none;">
             <div class="pp-opt-top">
-              <div class="pp-opt-label"><span>🤖</span> Solo Agente</div>
-            </div>
-            <div class="pp-price"><span class="pp-price-main">69,99€</span><span class="pp-price-sub">/mes · Sin setup</span></div>
-            <div class="pp-opt-feat">✓ Alta conversión · Optimización mensual · Deriva a WhatsApp</div>
-            <div class="pp-limit-badge">5.000 conversaciones/mes</div>
-            <a href="https://buy.stripe.com/5kQ3cvgRVcGo1EGfep2Ry09" target="_blank" onclick="handleStripeClick(event,'pro')" class="pp-btn pp-btn-ghost">Elegir →</a>
-          </div>
-          <div class="pp-opt">
-            <div class="pp-opt-top">
-              <div class="pp-opt-label"><span>🌐</span> Solo Web</div>
-            </div>
-            <div class="pp-price"><span class="pp-price-main">800€</span><span class="pp-price-sub"> setup + 99€/mes</span></div>
-            <div class="pp-opt-feat">✓ Web de alta conversión · Revisión mensual · Dominio .es gratis</div>
-            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" class="pp-btn pp-btn-ghost">Elegir →</a>
-          </div>
-          <div class="pp-opt pp-opt-combo" style="background:rgba(124,58,237,.05);border-top:2px solid rgba(124,58,237,.22) !important;">
-            <div class="pp-opt-top">
-              <div class="pp-opt-label" style="color:rgba(167,139,250,.8);"><span>⚡</span> Web + Agente</div>
               <div class="pp-opt-save" style="background:rgba(124,58,237,.25);">Ahorra 69,99€/mes</div>
             </div>
             <div class="pp-price"><span class="pp-price-main">800€</span><span class="pp-price-sub" style="color:rgba(167,139,250,.7);"> setup + 99€/mes <span class="pp-price-old">168,99€</span></span></div>
-            <div class="pp-opt-feat" style="color:rgba(167,139,250,.6);">✓ Web PRO + Agente PRO · Revisión mensual incluida · Dominio .es gratis</div>
+            <div class="pp-opt-feat" style="color:rgba(167,139,250,.6);">✓ Web PRO + Agente PRO · Revisión mensual · Dominio .es gratis</div>
             <div class="pp-limit-badge pp-limit-badge-combo">5.000 conversaciones/mes incluidas</div>
-            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" onclick="handleStripeClick(event,'pro')" class="pp-btn pp-btn-pro">Obtener ahora →</a>
+            <a href="https://buy.stripe.com/5kQbJ16dhdKs1EG8Q12Ry02" target="_blank" onclick="handleStripeClick(event,'pro')" class="pp-btn pp-btn-pro">Obtener PRO →</a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -7438,6 +7489,15 @@ function mobileNav(page) {
   const activeMap = { inicio:'mob-tab-inicio', landing:'mob-tab-bot', webs:'mob-tab-webs', admin:'mob-tab-admin' };
   if (activeMap[page]) document.getElementById(activeMap[page])?.classList.add('active');
   switchPage(page);
+}
+
+/* ════ PLANES type selector ════ */
+function ppSelectType(type, btn) {
+  document.querySelectorAll('.pp-type-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.pp-type-view').forEach(v => v.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pp-view-' + type)?.classList.add('active');
+  setTimeout(triggerReveal, 60);
 }
 
 /* ════ REVEAL helper ════ */
