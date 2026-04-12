@@ -3253,7 +3253,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
               <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#6ea0ff;font-weight:700;">✓</span> Deriva a WhatsApp cuando está listo</li>
               <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#6ea0ff;font-weight:700;">✓</span> 1.000 conversaciones/mes</li>
             </ul>
-            <a href="https://buy.stripe.com/3cI14n6dhcGo1EGeal2Ry0c" target="_blank" class="pp-btn pp-btn-airmate">Activar AIRMATE</a>
+            <a href="https://buy.stripe.com/3cI14n6dhcGo1EGeal2Ry0c" target="_blank" onclick="requireLoginToPay(event,'https://buy.stripe.com/3cI14n6dhcGo1EGeal2Ry0c');return false;" class="pp-btn pp-btn-airmate">Activar AIRMATE</a>
           </div>
         </div>
       </div>
@@ -3275,7 +3275,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
               <li style="font-size:.8rem;color:rgba(255,255,255,.55);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#22c55e;font-weight:700;">✓</span> Hosting + mantenimiento incluido</li>
               <li style="font-size:.8rem;color:rgba(255,255,255,.55);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#22c55e;font-weight:700;">✓</span> Dominio .es gratis</li>
             </ul>
-            <a href="https://buy.stripe.com/cNidR9dFJ6i0bfg6HT2Ry0d" target="_blank" class="pp-btn pp-btn-ghost">Elegir START →</a>
+            <a href="https://buy.stripe.com/cNidR9dFJ6i0bfg6HT2Ry0d" target="_blank" onclick="requireLoginToPay(event,'https://buy.stripe.com/cNidR9dFJ6i0bfg6HT2Ry0d');return false;" class="pp-btn pp-btn-ghost">Elegir START →</a>
           </div>
         </div>
       </div>
@@ -3301,7 +3301,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
               <li style="font-size:.8rem;color:rgba(255,255,255,.7);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#22c55e;font-weight:700;">✓</span> 2.000 conversaciones/mes</li>
               <li style="font-size:.8rem;color:rgba(255,255,255,.7);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#22c55e;font-weight:700;">✓</span> Soporte por email incluido</li>
             </ul>
-            <a href="https://buy.stripe.com/9B65kD6dhbCkgzA1nz2Ry0e" target="_blank" class="pp-btn pp-btn-combo">Elegir GROWTH →</a>
+            <a href="https://buy.stripe.com/9B65kD6dhbCkgzA1nz2Ry0e" target="_blank" onclick="requireLoginToPay(event,'https://buy.stripe.com/9B65kD6dhbCkgzA1nz2Ry0e');return false;" class="pp-btn pp-btn-combo">Elegir GROWTH →</a>
           </div>
         </div>
       </div>
@@ -3327,7 +3327,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
               <li style="font-size:.8rem;color:rgba(167,139,250,.8);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#a78bfa;font-weight:700;">✓</span> Revisión y optimización mensual</li>
               <li style="font-size:.8rem;color:rgba(167,139,250,.8);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#a78bfa;font-weight:700;">✓</span> Soporte prioritario incluido</li>
             </ul>
-            <a href="https://buy.stripe.com/8x2aEX6dhfSA3MOaY92Ry0f" target="_blank" class="pp-btn pp-btn-pro">Elegir PRO →</a>
+            <a href="https://buy.stripe.com/8x2aEX6dhfSA3MOaY92Ry0f" target="_blank" onclick="requireLoginToPay(event,'https://buy.stripe.com/8x2aEX6dhfSA3MOaY92Ry0f');return false;" class="pp-btn pp-btn-pro">Elegir PRO →</a>
           </div>
         </div>
       </div>
@@ -6523,6 +6523,49 @@ function showPostRegisterPayModal(userEmail) {
   document.body.appendChild(modal);
 }
 
+/* ── Intercepta botones de plan: obliga a crear cuenta antes de pagar ── */
+function requireLoginToPay(e, stripeUrl) {
+  e && e.preventDefault();
+
+  // Si ya está logueado y tiene email real → ir directo a Stripe
+  const user = authState.currentUser;
+  if (user && user.email && !authState.isOwner) {
+    window.open(stripeUrl, '_blank');
+    showToast('Completa el pago con tu email: ' + user.email);
+    return;
+  }
+
+  // No logueado → mostrar modal de registro con el link de Stripe pendiente
+  localStorage.setItem('am_pending_stripe', stripeUrl);
+  showPayGateModal(stripeUrl);
+}
+
+function showPayGateModal(stripeUrl) {
+  document.getElementById('pay-gate-modal')?.remove();
+  const m = document.createElement('div');
+  m.id = 'pay-gate-modal';
+  m.style.cssText = 'position:fixed;inset:0;background:rgba(10,22,40,.8);backdrop-filter:blur(8px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+  m.innerHTML = `
+    <div style="background:#fff;border-radius:20px;padding:36px 32px;max-width:420px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.2);position:relative;">
+      <button onclick="document.getElementById('pay-gate-modal').remove()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;color:#b0bac8;cursor:pointer;line-height:1;">×</button>
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#4a6cf7;margin-bottom:8px;">Paso previo</div>
+      <h3 style="font-size:20px;font-weight:900;color:#0c1e3d;margin:0 0 8px;">Crea tu cuenta primero</h3>
+      <p style="font-size:13px;color:#8a97b0;margin:0 0 24px;line-height:1.6;">Necesitas una cuenta para que el pago active tu acceso automáticamente. Solo tarda 30 segundos.</p>
+      <div style="display:flex;gap:10px;">
+        <button onclick="document.getElementById('pay-gate-modal').remove();switchPage('admin');setTimeout(()=>showAuthRegister(),300);"
+          style="flex:1;padding:13px;background:linear-gradient(135deg,#0c1e3d,#1e3a70);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;">
+          Crear cuenta →
+        </button>
+        <button onclick="document.getElementById('pay-gate-modal').remove();switchPage('admin');setTimeout(()=>showAuthLogin(),300);"
+          style="flex:1;padding:13px;background:#f1f5f9;color:#0c1e3d;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;">
+          Ya tengo cuenta
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(m);
+}
+
 function closePostRegModal() {
   document.getElementById('post-reg-pay-modal')?.remove();
 }
@@ -6714,9 +6757,20 @@ function enterPrivateMode(user) {
   }
 
   if (user.plan === 'beta' && isBetaExpired(user)) {
-    showToast('⏰ Tu acceso beta de 7 días ha expirado. Elige un plan para continuar.');
+    showToast('Tu acceso beta de 7 días ha expirado. Elige un plan para continuar.');
   } else {
     showToast(`Bienvenido, ${user.name || user.email}`);
+  }
+
+  /* Si el usuario llegó aquí desde un botón de plan → abrir Stripe ahora */
+  const pendingStripe = localStorage.getItem('am_pending_stripe');
+  if (pendingStripe && !authState.isOwner) {
+    localStorage.removeItem('am_pending_stripe');
+    setTimeout(() => {
+      window.open(pendingStripe, '_blank');
+      showToast('Completa el pago con tu email: ' + (user.email || ''));
+      if (user.email) setTimeout(() => showPostRegisterPayModal(user.email), 800);
+    }, 600);
   }
 }
 
