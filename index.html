@@ -78,18 +78,16 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
 .topnav-logo-name span:first-child{font-size:15px;font-weight:800;color:#fff;}
 .topnav-logo-name span:last-child{font-size:10px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.1em;}
 
-/* ── Logo SVG reutilizable ── */
-.am-badge{ display:none; }
-.am-wordmark{ display:none; }
-.am-wordmark-sub{ display:none; }
-.am-logo-svg{ display:block; }
-/* En fondos oscuros: la montaña navy necesita sombra blanca para verse */
-.am-logo-dark .am-logo-svg{
-  filter: drop-shadow(0 0 8px rgba(255,255,255,.28));
+/* ── Logo image ── */
+.am-logo-img{
+  display:block;
+  height:44px;
+  width:auto;
+  transition:transform .2s,filter .2s;
 }
-/* En fondos claros: sin filtro extra */
-.am-logo-light .am-logo-svg{
-  filter: none;
+.topnav-logo:hover .am-logo-img{
+  transform:scale(1.04);
+  filter:drop-shadow(0 4px 12px rgba(109,184,46,.4));
 }
 .topnav-tabs{
   display:flex;gap:3px;background:rgba(255,255,255,.08);
@@ -2047,8 +2045,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 @media(max-width:768px){
   /* ── Nav mobile ── */
   .topnav { padding:0 14px !important; height:58px !important; }
-  .am-badge { width:30px !important; height:30px !important; border-radius:8px !important; }
-  .am-wordmark { font-size:14px !important; }
+  .am-logo-img { height:34px !important; }
   /* Ocultar tabs horizontales en móvil */
   .topnav-tabs { display:none !important; }
   /* Ocultar botones de acción excepto el hamburguesa */
@@ -2195,24 +2192,8 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <!-- NAV -->
 <nav class="topnav">
   <!-- Logo -->
-  <a class="topnav-logo am-logo-dark" href="#" onclick="switchPage('inicio');return false;">
-    <svg class="am-logo-svg" height="42" viewBox="0 0 130 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Swoosh verde inferior: empieza abajo-izquierda, curva bajo la montaña, sube -->
-      <path d="M10 92 C 28 105, 62 102, 82 84 C 96 70, 104 50, 112 22" stroke="#6db82e" stroke-width="7" stroke-linecap="round" fill="none"/>
-      <!-- Flecha arriba-derecha al final del swoosh -->
-      <polygon points="102,10 120,20 106,30" fill="#6db82e"/>
-      <!-- Cuerpo montaña navy -->
-      <path d="M22 98 L44 28 L55 56 L66 28 L88 98 Z" fill="#1b3868"/>
-      <!-- Nieve pico izquierdo -->
-      <path d="M40 40 L44 28 L48 40 Q44 36 40 40 Z" fill="white"/>
-      <!-- Línea separadora interior montaña (sombra derecha) -->
-      <path d="M55 56 L66 28 L88 98 L66 98 Z" fill="#162d56"/>
-      <!-- Persona: cuerpo curvo (brazos arriba) -->
-      <path d="M94 44 C 88 36, 96 28, 104 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <path d="M94 44 C 100 36, 108 28, 116 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <!-- Cabeza persona -->
-      <circle cx="104" cy="20" r="8" fill="#6db82e"/>
-    </svg>
+  <a class="topnav-logo" href="#" onclick="switchPage('inicio');return false;">
+    <img src="logo.png" alt="AIRMATE" class="am-logo-img">
   </a>
 
   <!-- Tab buttons principales -->
@@ -2265,16 +2246,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <div id="auth-screen" class="hidden">
   <div class="auth-card">
     <div class="auth-logo">
-      <svg class="am-logo-svg" height="70" viewBox="0 0 130 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 16px rgba(109,184,46,.18));">
-        <path d="M10 92 C 28 105, 62 102, 82 84 C 96 70, 104 50, 112 22" stroke="#6db82e" stroke-width="7" stroke-linecap="round" fill="none"/>
-        <polygon points="102,10 120,20 106,30" fill="#6db82e"/>
-        <path d="M22 98 L44 28 L55 56 L66 28 L88 98 Z" fill="#1b3868"/>
-        <path d="M40 40 L44 28 L48 40 Q44 36 40 40 Z" fill="white"/>
-        <path d="M55 56 L66 28 L88 98 L66 98 Z" fill="#162d56"/>
-        <path d="M94 44 C 88 36, 96 28, 104 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M94 44 C 100 36, 108 28, 116 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <circle cx="104" cy="20" r="8" fill="#6db82e"/>
-      </svg>
+      <img src="logo.png" alt="AIRMATE" style="height:72px;width:auto;display:block;margin:0 auto 8px;filter:drop-shadow(0 4px 16px rgba(109,184,46,.2));">
       <div class="auth-logo-sub">Panel de administración</div>
     </div>
 
@@ -2344,18 +2316,7 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     </video>
     <div class="inicio-hero-overlay"></div>
     <div class="inicio-hero-content">
-      <div style="margin-bottom:28px;">
-        <svg class="am-logo-svg" height="90" viewBox="0 0 130 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 4px 24px rgba(0,0,0,.5)) drop-shadow(0 0 32px rgba(109,184,46,.2));">
-          <path d="M10 92 C 28 105, 62 102, 82 84 C 96 70, 104 50, 112 22" stroke="#6db82e" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <polygon points="102,10 120,20 106,30" fill="#6db82e"/>
-          <path d="M22 98 L44 28 L55 56 L66 28 L88 98 Z" fill="#1b3868"/>
-          <path d="M40 40 L44 28 L48 40 Q44 36 40 40 Z" fill="white"/>
-          <path d="M55 56 L66 28 L88 98 L66 98 Z" fill="#162d56"/>
-          <path d="M94 44 C 88 36, 96 28, 104 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <path d="M94 44 C 100 36, 108 28, 116 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <circle cx="104" cy="20" r="8" fill="#6db82e"/>
-        </svg>
-      </div>
+      <img src="logo.png" alt="AIRMATE" style="height:100px;width:auto;display:block;margin-bottom:28px;filter:drop-shadow(0 4px 24px rgba(0,0,0,.6));">
       <div class="inicio-hero-eyebrow">
         <span class="inicio-hero-eyebrow-dot"></span>
         Para negocios locales que quieren más clientes
@@ -3407,18 +3368,9 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   <div class="admin">
     <aside class="admin-sidebar">
       <!-- Brand -->
-      <div style="padding:4px 10px 20px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:8px;">
-        <svg class="am-logo-svg" height="46" viewBox="0 0 130 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 0 8px rgba(255,255,255,.2));">
-          <path d="M10 92 C 28 105, 62 102, 82 84 C 96 70, 104 50, 112 22" stroke="#6db82e" stroke-width="7" stroke-linecap="round" fill="none"/>
-          <polygon points="102,10 120,20 106,30" fill="#6db82e"/>
-          <path d="M22 98 L44 28 L55 56 L66 28 L88 98 Z" fill="#1b3868"/>
-          <path d="M40 40 L44 28 L48 40 Q44 36 40 40 Z" fill="white"/>
-          <path d="M55 56 L66 28 L88 98 L66 98 Z" fill="#162d56"/>
-          <path d="M94 44 C 88 36, 96 28, 104 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <path d="M94 44 C 100 36, 108 28, 116 34" stroke="#6db82e" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <circle cx="104" cy="20" r="8" fill="#6db82e"/>
-        </svg>
-        <div style="font-size:9px;color:rgba(255,255,255,.28);font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-top:4px;padding-left:2px;">Panel de control</div>
+      <div style="padding:4px 12px 20px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:8px;">
+        <img src="logo.png" alt="AIRMATE" style="height:48px;width:auto;display:block;filter:brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,.4));">
+        <div style="font-size:9px;color:rgba(255,255,255,.28);font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-top:5px;padding-left:2px;">Panel de control</div>
       </div>
       <div class="admin-sidebar-section">General</div>
       <button class="sidebar-item active" onclick="showAdminSection('dashboard',this)">
