@@ -6724,19 +6724,41 @@ function enterPrivateMode(user) {
     state.paymentDone = true;
   }
 
-  /* Si es cliente, cargar su plan */
+  /* Si es cliente, cargar su plan y sincronizar desde Supabase */
   if (!authState.isOwner) {
-    state.activePlan   = user.plan || 'lan';
-    state.selectedPlan = user.plan || 'lan';
-    /* Beta y activos tienen acceso completo sin pago (beta expira a los 7 días) */
+    state.activePlan   = user.plan || 'beta';
+    state.selectedPlan = user.plan || 'beta';
     state.paymentDone  = user.active === true || (user.plan === 'beta' && !isBetaExpired(user));
     localStorage.setItem('am_plan', state.activePlan);
-    /* Cargar config y estado real desde Supabase — si no hay id, buscar por email */
-    if (user.id) {
-      loadBotConfigFromSupabase(user.id);
-    } else if (user.email) {
-      _SB.from('clients').select('id,active,plan').eq('email', user.email).single().then(({ data }) => {
-        if (data) { user.id = data.id; loadBotConfigFromSupabase(data.id); }
+
+    /* Siempre consultar Supabase para coger el plan actualizado (el webhook puede haberlo cambiado) */
+    const emailToCheck = user.email;
+    if (emailToCheck) {
+      _SB.from('clients').select('id,active,plan,name').eq('email', emailToCheck).maybeSingle().then(({ data }) => {
+        if (!data) return;
+        /* Actualizar ID si faltaba */
+        if (data.id) user.id = data.id;
+        /* Si el plan cambió (ej: beta → airmate tras pago) actualizar sesión */
+        if (data.plan && data.plan !== user.plan) {
+          user.plan   = data.plan;
+          user.active = data.active === true;
+          state.activePlan   = data.plan;
+          state.selectedPlan = data.plan;
+          state.paymentDone  = data.active === true;
+          /* Guardar sesión actualizada */
+          const raw = localStorage.getItem(SESSION_KEY);
+          if (raw) {
+            const sess = JSON.parse(raw);
+            sess.user.plan   = data.plan;
+            sess.user.active = data.active === true;
+            localStorage.setItem(SESSION_KEY, JSON.stringify(sess));
+          }
+          refreshAdmin();
+          if (data.active && data.plan !== 'beta') {
+            showToast('Plan ' + data.plan.toUpperCase() + ' activo');
+          }
+        }
+        loadBotConfigFromSupabase(data.id);
       });
     }
   }
