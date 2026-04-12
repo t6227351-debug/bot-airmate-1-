@@ -271,34 +271,35 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
 /* ════ ADMIN ════ */
 .admin{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:calc(100vh - 64px);}
 .admin-sidebar{
-  background:linear-gradient(180deg,var(--al-navy-3) 0%,var(--al-navy) 100%);
-  padding:24px 14px;display:flex;flex-direction:column;gap:2px;
+  background:linear-gradient(180deg,#0a1628 0%,#0f2040 100%);
+  padding:28px 16px;display:flex;flex-direction:column;gap:2px;
+  border-right:1px solid rgba(255,255,255,.06);
 }
 .admin-sidebar-section{
-  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);padding:16px 12px 6px;
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.22);padding:18px 12px 6px;
 }
 .sidebar-item{
-  display:flex;align-items:center;gap:10px;padding:10px 12px;
-  border-radius:var(--radius-md);font-size:13px;font-weight:500;cursor:pointer;
-  color:rgba(255,255,255,.55);border:none;background:none;width:100%;text-align:left;
+  display:flex;align-items:center;gap:10px;padding:11px 13px;
+  border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;
+  color:rgba(255,255,255,.45);border:none;background:none;width:100%;text-align:left;
   transition:all .18s;
 }
 .sidebar-item svg{width:16px;height:16px;flex-shrink:0;}
-.sidebar-item:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.9);}
+.sidebar-item:hover{background:rgba(255,255,255,.07);color:rgba(255,255,255,.85);}
 .sidebar-item.active{
-  background:linear-gradient(135deg,rgba(34,197,94,.2) 0%,rgba(34,197,94,.1) 100%);
-  color:var(--al-green);border:1px solid rgba(34,197,94,.2);
+  background:linear-gradient(135deg,rgba(74,108,247,.28) 0%,rgba(74,108,247,.15) 100%);
+  color:#8fb4ff;border:1px solid rgba(74,108,247,.3);
 }
 .sidebar-item .badge-count{
-  margin-left:auto;background:var(--al-green);color:#fff;
+  margin-left:auto;background:#4a6cf7;color:#fff;
   font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px;
 }
-.admin-main{padding:36px 40px;background:#f0f2f7;overflow-y:auto;}
+.admin-main{padding:36px 40px;background:#f4f6fb;overflow-y:auto;}
 .admin-section{display:none;} .admin-section.active{display:block;}
 .admin-header{margin-bottom:28px;}
-.admin-header h2{font-family:var(--font-display);font-size:30px;font-weight:400;margin-bottom:4px;color:var(--al-navy);}
-.admin-header p{font-size:14px;color:#6b7d96;}
+.admin-header h2{font-family:var(--font-display);font-size:28px;font-weight:800;margin-bottom:4px;color:#0c1e3d;}
+.admin-header p{font-size:13px;color:#8a97b0;}
 
 /* ════ STATS ════ */
 .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:24px;}
@@ -3368,6 +3369,16 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <div id="page-admin" class="page">
   <div class="admin">
     <aside class="admin-sidebar">
+      <!-- Brand -->
+      <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 20px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:8px;">
+        <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#4a6cf7,#6ea0ff);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 7v11h5v-5h4v5h5V7L10 2z" fill="rgba(255,255,255,.9)"/></svg>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:.01em;">AIRMATE</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.35);font-weight:500;">Panel de control</div>
+        </div>
+      </div>
       <div class="admin-sidebar-section">General</div>
       <button class="sidebar-item active" onclick="showAdminSection('dashboard',this)">
         <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -3431,64 +3442,123 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     <main class="admin-main">
 
       <!-- BANNER UPGRADE -->
-      <div id="upgrade-banner" style="display:none;margin-bottom:24px;background:linear-gradient(135deg,#0c1e3d,#162d58);border:2px solid #22c55e;border-radius:16px;padding:22px 26px;display:none;align-items:center;gap:20px;flex-wrap:wrap;">
-        <div style="flex:1;min-width:200px;">
-          <div id="upgrade-banner-title" style="font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;">Tu acceso ha llegado al límite</div>
-          <div id="upgrade-banner-sub" style="font-size:13px;color:rgba(255,255,255,.6);">Elige un plan para seguir usando tu chatbot sin interrupciones.</div>
+      <div id="upgrade-banner" style="display:none;margin-bottom:24px;background:linear-gradient(135deg,#0c1e3d 0%,#162d58 60%,#1e3a70 100%);border:1px solid rgba(74,108,247,.4);border-radius:18px;padding:24px 28px;align-items:center;gap:20px;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(12,30,61,.2);">
+        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(74,108,247,.12);pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-40px;right:80px;width:80px;height:80px;border-radius:50%;background:rgba(34,197,94,.08);pointer-events:none;"></div>
+        <div style="flex:1;min-width:200px;position:relative;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;">Acción requerida</div>
+          <div id="upgrade-banner-title" style="font-size:17px;font-weight:900;color:#fff;margin-bottom:5px;">Tu acceso ha llegado al límite</div>
+          <div id="upgrade-banner-sub" style="font-size:13px;color:rgba(255,255,255,.55);">Elige un plan para seguir usando tu chatbot sin interrupciones.</div>
         </div>
         <a onclick="showAdminSection('account',document.getElementById('btn-account'));renderAccountSection();setTimeout(()=>{const el=document.getElementById('acc-upgrade-block');if(el)el.scrollIntoView({behavior:'smooth'});},300)"
-           style="cursor:pointer;background:linear-gradient(90deg,#22c55e,#16a34a);color:#fff;font-size:14px;font-weight:800;padding:13px 28px;border-radius:10px;text-decoration:none;white-space:nowrap;box-shadow:0 6px 20px rgba(34,197,94,.4);transition:box-shadow .2s;"
-           onmouseover="this.style.boxShadow='0 10px 28px rgba(34,197,94,.6)'" onmouseout="this.style.boxShadow='0 6px 20px rgba(34,197,94,.4)'">
+           style="cursor:pointer;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;font-size:14px;font-weight:800;padding:14px 28px;border-radius:12px;text-decoration:none;white-space:nowrap;box-shadow:0 6px 20px rgba(34,197,94,.35);transition:all .2s;position:relative;"
+           onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 10px 28px rgba(34,197,94,.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(34,197,94,.35)'">
           Ver planes →
         </a>
       </div>
 
       <!-- DASHBOARD -->
       <div id="admin-dashboard" class="admin-section active">
-        <div class="admin-header">
-          <h2>Resumen</h2>
-          <p>Vista general de la actividad de tu bot este mes</p>
+
+        <!-- Header premium -->
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
+          <div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6ea0ff;margin-bottom:4px;">Panel de control</div>
+            <h2 style="font-size:26px;font-weight:900;color:#0c1e3d;margin:0 0 4px;">Resumen de actividad</h2>
+            <p style="font-size:13px;color:#8a97b0;margin:0;">Datos en tiempo real de tu asistente</p>
+          </div>
+          <div id="dash-date-badge" style="background:#f0f4ff;border:1px solid #dbe4ff;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:600;color:#4a6cf7;white-space:nowrap;"></div>
         </div>
-        <div id="dashboard-alerts"></div>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-label">Conversaciones</div>
-            <div class="stat-value" id="stat-convs">0</div>
-            <div class="stat-sub">Total acumulado</div>
+
+        <!-- Alertas -->
+        <div id="dashboard-alerts" style="margin-bottom:20px;"></div>
+
+        <!-- KPI cards -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px;">
+
+          <!-- Conversaciones -->
+          <div style="background:#fff;border:1px solid #e8edf5;border-radius:16px;padding:22px 24px;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+            <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#4a6cf7,#6ea0ff);border-radius:4px 0 0 4px;"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a97b0;">Conversaciones</div>
+              <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#eef1ff,#dbe4ff);display:flex;align-items:center;justify-content:center;">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M2 3a1 1 0 011-1h10a1 1 0 011 1v7a1 1 0 01-1 1H5l-3 3V3z" stroke="#4a6cf7" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div id="stat-convs" style="font-size:36px;font-weight:900;color:#0c1e3d;line-height:1;margin-bottom:6px;">0</div>
+            <div style="font-size:12px;color:#8a97b0;">Total acumulado</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-label">Mensajes este mes</div>
-            <div class="stat-value" id="stat-msgs">0</div>
-            <div class="prog-bar"><div class="prog-fill" id="msgs-prog" style="width:0%"></div></div>
-            <div class="stat-sub"><span id="stat-msgs-detail">0 / 1.000 mensajes</span></div>
+
+          <!-- Mensajes este mes -->
+          <div style="background:#fff;border:1px solid #e8edf5;border-radius:16px;padding:22px 24px;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+            <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#22c55e,#4ade80);border-radius:4px 0 0 4px;"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a97b0;">Mensajes este mes</div>
+              <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);display:flex;align-items:center;justify-content:center;">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 7h8M3 10h5" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div id="stat-msgs" style="font-size:36px;font-weight:900;color:#0c1e3d;line-height:1;margin-bottom:10px;">0</div>
+            <div style="background:#f1f5f9;border-radius:99px;height:6px;margin-bottom:6px;overflow:hidden;">
+              <div id="msgs-prog" style="height:100%;width:0%;background:linear-gradient(90deg,#22c55e,#4ade80);border-radius:99px;transition:width .6s ease;"></div>
+            </div>
+            <div style="font-size:12px;color:#8a97b0;"><span id="stat-msgs-detail">0 / 1.000 mensajes</span></div>
           </div>
-          <div class="stat-card">
-            <div class="stat-label">Plan activo</div>
-            <div class="stat-value" id="stat-plan" style="font-size:18px;margin-top:4px;">PLAN PRO</div>
-            <div class="stat-sub" id="stat-plan-price">—</div>
+
+          <!-- Plan activo -->
+          <div style="background:linear-gradient(135deg,#0c1e3d,#162d58);border-radius:16px;padding:22px 24px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(12,30,61,.2);">
+            <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(110,160,255,.12);"></div>
+            <div style="position:absolute;bottom:-30px;right:10px;width:60px;height:60px;border-radius:50%;background:rgba(74,108,247,.1);"></div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px;">Plan activo</div>
+            <div id="stat-plan" style="font-size:26px;font-weight:900;color:#fff;line-height:1;margin-bottom:6px;">—</div>
+            <div id="stat-plan-price" style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:14px;">—</div>
+            <button onclick="showAdminSection('plan',null)" style="font-size:11px;font-weight:700;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">Ver mi plan →</button>
           </div>
         </div>
-        <div style="background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius-lg);padding:22px;">
-          <div style="font-size:13px;font-weight:700;color:var(--gray-700);margin-bottom:16px;">Últimas conversaciones</div>
-          <div id="recent-convs-list">
-            <div style="font-size:13px;color:var(--gray-300);text-align:center;padding:24px;">Aún no hay conversaciones. ¡Prueba el chat!</div>
+
+        <!-- Últimas conversaciones -->
+        <div style="background:#fff;border:1px solid #e8edf5;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #f1f5f9;">
+            <div>
+              <div style="font-size:14px;font-weight:800;color:#0c1e3d;">Últimas conversaciones</div>
+              <div style="font-size:12px;color:#8a97b0;margin-top:2px;">Actividad reciente de tu asistente</div>
+            </div>
+            <button onclick="showAdminSection('conversations',document.querySelector('.sidebar-item[onclick*=conversations]'))" style="font-size:12px;font-weight:700;color:#4a6cf7;background:#eef1ff;border:none;border-radius:8px;padding:7px 14px;cursor:pointer;">Ver todo →</button>
+          </div>
+          <div id="recent-convs-list" style="padding:8px 0;">
+            <div style="font-size:13px;color:#b0bac8;text-align:center;padding:32px 24px;">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="display:block;margin:0 auto 10px;opacity:.4;"><circle cx="20" cy="20" r="19" stroke="#b0bac8" stroke-width="1.5"/><path d="M12 15a2 2 0 012-2h12a2 2 0 012 2v9a2 2 0 01-2 2H14l-4 4V15z" stroke="#b0bac8" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              Aún no hay conversaciones.<br><span style="font-size:12px;">¡Instala el widget y prueba el chat!</span>
+            </div>
           </div>
         </div>
+
       </div>
 
       <!-- LEADS -->
 
       <!-- CONVERSACIONES -->
       <div id="admin-conversations" class="admin-section">
-        <div class="admin-header">
-          <h2>Conversaciones</h2>
-          <p>Historial de chats atendidos por el bot</p>
+        <div style="margin-bottom:24px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6ea0ff;margin-bottom:4px;">Historial</div>
+          <h2 style="font-size:24px;font-weight:900;color:#0c1e3d;margin:0 0 4px;">Conversaciones</h2>
+          <p style="font-size:13px;color:#8a97b0;margin:0;">Todas las interacciones registradas por tu asistente</p>
         </div>
-        <div class="data-table">
-          <table>
-            <thead><tr><th>Sesión</th><th>Negocio</th><th>Mensajes</th><th>Fecha</th></tr></thead>
+        <div style="background:#fff;border:1px solid #e8edf5;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04);">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="background:#f8fafc;">
+                <th style="padding:12px 20px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a97b0;border-bottom:1px solid #e8edf5;">Sesión</th>
+                <th style="padding:12px 20px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a97b0;border-bottom:1px solid #e8edf5;">Negocio</th>
+                <th style="padding:12px 20px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a97b0;border-bottom:1px solid #e8edf5;">Mensajes</th>
+                <th style="padding:12px 20px;text-align:right;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a97b0;border-bottom:1px solid #e8edf5;">Fecha</th>
+              </tr>
+            </thead>
             <tbody id="convs-tbody">
-              <tr><td colspan="4" style="text-align:center;color:var(--gray-300);padding:32px;">Sin conversaciones aún.</td></tr>
+              <tr><td colspan="4" style="text-align:center;color:#b0bac8;padding:48px 20px;">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="display:block;margin:0 auto 10px;opacity:.4;"><circle cx="20" cy="20" r="19" stroke="#b0bac8" stroke-width="1.5"/><path d="M12 15a2 2 0 012-2h12a2 2 0 012 2v9a2 2 0 01-2 2H14l-4 4V15z" stroke="#b0bac8" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Sin conversaciones aún.
+              </td></tr>
             </tbody>
           </table>
         </div>
@@ -6034,8 +6104,8 @@ function refreshAdmin() {
   const ae=document.getElementById('dashboard-alerts');
   if (ae) {
     let a='';
-    if (mp>=100) a+=`<div class="alert-danger">🚫 Límite de mensajes (${p.maxMsgs.toLocaleString()}) alcanzado. Actualiza tu plan.</div>`;
-    else if (mp>=80) a+=`<div class="alert-warn">⚠️ ${mp}% de mensajes usados. Quedan ${p.maxMsgs-state.msgCount}.</div>`;
+    if (mp>=100) a+=`<div style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#fef2f2,#fee2e2);border:1px solid #fca5a5;border-radius:14px;padding:16px 20px;margin-bottom:4px;"><div style="font-size:22px;">🚫</div><div><div style="font-size:13px;font-weight:800;color:#991b1b;margin-bottom:2px;">Límite de mensajes alcanzado</div><div style="font-size:12px;color:#b91c1c;">Has usado los ${p.maxMsgs.toLocaleString()} mensajes de tu plan. Actualiza para seguir respondiendo a tus clientes.</div></div><button onclick="showAdminSection('plan',null)" style="margin-left:auto;white-space:nowrap;background:#dc2626;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;">Mejorar plan →</button></div>`;
+    else if (mp>=80) a+=`<div style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fcd34d;border-radius:14px;padding:16px 20px;margin-bottom:4px;"><div style="font-size:22px;">⚡</div><div><div style="font-size:13px;font-weight:800;color:#92400e;margin-bottom:2px;">Estás al ${mp}% de capacidad</div><div style="font-size:12px;color:#b45309;">Solo quedan ${(p.maxMsgs-state.msgCount).toLocaleString()} mensajes este mes. Considera actualizar tu plan.</div></div><button onclick="showAdminSection('plan',null)" style="margin-left:auto;white-space:nowrap;background:#f59e0b;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;">Ver planes →</button></div>`;
     ae.innerHTML=a;
   }
 
@@ -6066,30 +6136,38 @@ function refreshAdmin() {
   const activePlanKey=state.selectedPlan||state.activePlan;
   if (sb && PLANS[activePlanKey]) sb.href=PLANS[activePlanKey].stripeUrl;
 
+  /* Fecha badge */
+  const db=document.getElementById('dash-date-badge');
+  if(db){const now=new Date();db.textContent=now.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+
   /* Últimas conversaciones */
   const rc=document.getElementById('recent-convs-list');
   if (rc) {
-    if (!state.conversations.length) rc.innerHTML='<div style="font-size:13px;color:var(--gray-300);text-align:center;padding:24px;">Aún no hay conversaciones. ¡Prueba el chat!</div>';
-    else rc.innerHTML=state.conversations.slice(0,5).map(c=>`
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gray-50);">
-        <div>
-          <div style="font-size:13px;font-weight:500;">${escHtml(c.business)}</div>
-          <div style="font-size:12px;color:var(--gray-300);">${c.messages} mensajes · ${fmtDate(c.date)}</div>
+    if (!state.conversations.length) rc.innerHTML=`<div style="font-size:13px;color:#b0bac8;text-align:center;padding:32px 24px;"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="display:block;margin:0 auto 10px;opacity:.4;"><circle cx="20" cy="20" r="19" stroke="#b0bac8" stroke-width="1.5"/><path d="M12 15a2 2 0 012-2h12a2 2 0 012 2v9a2 2 0 01-2 2H14l-4 4V15z" stroke="#b0bac8" stroke-width="1.5" stroke-linejoin="round"/></svg>Aún no hay conversaciones.<br><span style="font-size:12px;">¡Instala el widget y prueba el chat!</span></div>`;
+    else rc.innerHTML=state.conversations.slice(0,5).map((c,i)=>`
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 24px;${i<Math.min(state.conversations.length,5)-1?'border-bottom:1px solid #f8fafc;':''}transition:background .15s;" onmouseover="this.style.background='#fafbff'" onmouseout="this.style.background=''">
+        <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#eef1ff,#dbe4ff);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;">💬</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:700;color:#0c1e3d;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escHtml(c.business)}</div>
+          <div style="font-size:12px;color:#8a97b0;">${fmtDate(c.date)}</div>
         </div>
-        <span class="pill pill-gray">${c.messages} msgs</span>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-size:13px;font-weight:800;color:#4a6cf7;">${c.messages}</div>
+          <div style="font-size:10px;color:#b0bac8;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">msgs</div>
+        </div>
       </div>`).join('');
   }
 
   /* Tabla de conversaciones */
   const ct=document.getElementById('convs-tbody');
   if (ct) {
-    if (!state.conversations.length) ct.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--gray-300);padding:32px;">Sin conversaciones aún.</td></tr>';
-    else ct.innerHTML=state.conversations.map(c=>`
-      <tr>
-        <td style="font-family:monospace;font-size:11px;color:var(--gray-300);">${c.sessionId.slice(0,8)}…</td>
-        <td style="font-weight:500;">${escHtml(c.business)}</td>
-        <td>${c.messages}</td>
-        <td style="color:var(--gray-500);font-size:12px;">${fmtDate(c.date)}</td>
+    if (!state.conversations.length) ct.innerHTML=`<tr><td colspan="4" style="text-align:center;color:#b0bac8;padding:48px 20px;"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="display:block;margin:0 auto 10px;opacity:.4;"><circle cx="20" cy="20" r="19" stroke="#b0bac8" stroke-width="1.5"/><path d="M12 15a2 2 0 012-2h12a2 2 0 012 2v9a2 2 0 01-2 2H14l-4 4V15z" stroke="#b0bac8" stroke-width="1.5" stroke-linejoin="round"/></svg>Sin conversaciones aún.</td></tr>`;
+    else ct.innerHTML=state.conversations.map((c,i)=>`
+      <tr style="transition:background .15s;" onmouseover="this.style.background='#fafbff'" onmouseout="this.style.background=''">
+        <td style="padding:14px 20px;font-family:monospace;font-size:11px;color:#b0bac8;border-bottom:1px solid #f8fafc;">${c.sessionId.slice(0,8)}…</td>
+        <td style="padding:14px 20px;border-bottom:1px solid #f8fafc;"><span style="font-size:13px;font-weight:700;color:#0c1e3d;">${escHtml(c.business)}</span></td>
+        <td style="padding:14px 20px;text-align:center;border-bottom:1px solid #f8fafc;"><span style="background:#eef1ff;color:#4a6cf7;font-size:12px;font-weight:800;padding:3px 10px;border-radius:99px;">${c.messages}</span></td>
+        <td style="padding:14px 20px;text-align:right;font-size:12px;color:#8a97b0;border-bottom:1px solid #f8fafc;">${fmtDate(c.date)}</td>
       </tr>`).join('');
   }
 
