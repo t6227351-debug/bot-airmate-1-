@@ -6829,6 +6829,8 @@ function enterPrivateMode(user) {
 async function renderOwnerDashboard() {
   if (!authState.isOwner) return;
 
+  let mrr = 0; /* declarado fuera para que el segundo try lo pueda leer */
+
   /* Estadísticas desde Supabase */
   try {
     const { data: clients } = await _SB.from('clients').select('*').order('created_at', { ascending: false });
@@ -6838,7 +6840,7 @@ async function renderOwnerDashboard() {
     const startC   = active.filter(c => resolvePlan(c.plan) === 'start');
     const growthC  = active.filter(c => resolvePlan(c.plan) === 'growth');
     const proC     = active.filter(c => resolvePlan(c.plan) === 'pro');
-    const mrr      = airmateC.length * 39.99 + startC.length * 39 + growthC.length * 59 + proC.length * 99;
+    mrr      = airmateC.length * 39.99 + startC.length * 39 + growthC.length * 59 + proC.length * 99;
 
     const set = (id, v) => { const el=document.getElementById(id); if(el) el.textContent=v; };
     set('ow-total-clients',  active.length);
