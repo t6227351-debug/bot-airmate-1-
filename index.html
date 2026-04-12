@@ -68,21 +68,32 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .topnav-logo{
-  display:flex;align-items:center;gap:0;text-decoration:none;
+  display:flex;align-items:center;gap:10px;text-decoration:none;
+  transition:opacity .2s;
 }
+.topnav-logo:hover{ opacity:.85; }
 .topnav-logo-dot{ display:none; }
-.topnav-logo-img{
-  height:38px;width:auto;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,.18));
-  transition:filter .2s,transform .2s;
-}
-.topnav-logo:hover .topnav-logo-img{
-  filter: drop-shadow(0 4px 16px rgba(34,197,94,.35));
-  transform:scale(1.03);
-}
+.topnav-logo-img{ display:none; }
 .topnav-logo-name{display:none;}
 .topnav-logo-name span:first-child{font-size:15px;font-weight:800;color:#fff;}
 .topnav-logo-name span:last-child{font-size:10px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:.1em;}
+
+/* ── Logomark badge reutilizable ── */
+.am-badge{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(145deg,#0d1f3e 0%,#1a3260 100%);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.1);
+}
+.am-wordmark{
+  font-size:16px;font-weight:900;letter-spacing:.1em;
+  color:#fff;text-transform:uppercase;
+  text-shadow:0 1px 6px rgba(0,0,0,.25);
+}
+.am-wordmark-sub{
+  font-size:9px;font-weight:600;letter-spacing:.14em;
+  color:rgba(255,255,255,.4);text-transform:uppercase;margin-top:1px;
+}
 .topnav-tabs{
   display:flex;gap:3px;background:rgba(255,255,255,.08);
   border-radius:10px;padding:4px;border:1px solid rgba(255,255,255,.1);
@@ -794,11 +805,11 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
   box-shadow:0 32px 80px rgba(0,0,0,.4);animation:authIn .4s cubic-bezier(.34,1.3,.64,1);
 }
 @keyframes authIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
-.auth-logo{text-align:center;margin-bottom:28px;}
+.auth-logo{text-align:center;margin-bottom:32px;}
 .auth-logo-dot{display:none;}
-.auth-logo-img{height:56px;width:auto;margin:0 auto 10px;display:block;filter:drop-shadow(0 4px 16px rgba(34,197,94,.2));}
+.auth-logo-img{display:none;}
 .auth-logo-name{display:none;}
-.auth-logo-sub{font-size:12px;color:#7a8ea8;margin-top:2px;}
+.auth-logo-sub{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#9aacbf;margin-top:6px;}
 .auth-title{font-size:20px;font-weight:700;color:#0c1e3d;margin-bottom:6px;text-align:center;}
 .auth-subtitle{font-size:13px;color:#6b7d96;text-align:center;margin-bottom:24px;}
 .auth-field{margin-bottom:16px;}
@@ -2039,7 +2050,8 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 @media(max-width:768px){
   /* ── Nav mobile ── */
   .topnav { padding:0 14px !important; height:58px !important; }
-  .topnav-logo-img { height:30px !important; }
+  .am-badge { width:30px !important; height:30px !important; border-radius:8px !important; }
+  .am-wordmark { font-size:14px !important; }
   /* Ocultar tabs horizontales en móvil */
   .topnav-tabs { display:none !important; }
   /* Ocultar botones de acción excepto el hamburguesa */
@@ -2187,7 +2199,18 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <nav class="topnav">
   <!-- Logo -->
   <a class="topnav-logo" href="#" onclick="switchPage('inicio');return false;">
-    <img src="logo.png" alt="AIRMATE" class="topnav-logo-img">
+    <div class="am-badge">
+      <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+        <path d="M2 19L11 2L20 19" stroke="white" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.8 13.8h10.4" stroke="white" stroke-width="1.9" stroke-linecap="round"/>
+        <circle cx="11" cy="1.6" r="2.2" fill="#22c55e"/>
+        <path d="M17 6.5L20.5 3L17 3" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="am-wordmark">Airmate</div>
+      <div class="am-wordmark-sub">Webs · IA · Chatbots</div>
+    </div>
   </a>
 
   <!-- Tab buttons principales -->
@@ -2240,8 +2263,20 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <div id="auth-screen" class="hidden">
   <div class="auth-card">
     <div class="auth-logo">
-      <img src="logo.png" alt="AIRMATE" class="auth-logo-img">
-      <div class="auth-logo-sub">Panel de administración</div>
+      <div style="display:inline-flex;align-items:center;gap:11px;padding:10px 18px 10px 12px;background:linear-gradient(145deg,#0d1f3e,#1a3260);border-radius:16px;box-shadow:0 8px 28px rgba(12,30,61,.25),0 0 0 1px rgba(255,255,255,.08);">
+        <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="24" height="22" viewBox="0 0 22 20" fill="none">
+            <path d="M2 19L11 2L20 19" stroke="white" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.8 13.8h10.4" stroke="white" stroke-width="1.9" stroke-linecap="round"/>
+            <circle cx="11" cy="1.6" r="2.2" fill="#22c55e"/>
+            <path d="M17 6.5L20.5 3L17 3" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div style="text-align:left;">
+          <div style="font-size:18px;font-weight:900;color:#fff;letter-spacing:.1em;text-transform:uppercase;line-height:1.1;">Airmate</div>
+          <div style="font-size:9px;color:rgba(255,255,255,.38);font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-top:2px;">Panel de administración</div>
+        </div>
+      </div>
     </div>
 
     <!-- ── FORMULARIO LOGIN ── -->
@@ -2310,7 +2345,20 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     </video>
     <div class="inicio-hero-overlay"></div>
     <div class="inicio-hero-content">
-      <img src="logo.png" alt="AIRMATE" style="height:72px;width:auto;margin-bottom:24px;display:block;filter:drop-shadow(0 4px 24px rgba(0,0,0,.5)) drop-shadow(0 0 40px rgba(34,197,94,.18)) brightness(1.08);">
+      <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:28px;">
+        <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(145deg,#0d1f3e,#1a3260);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.12),0 0 40px rgba(34,197,94,.12);">
+          <svg width="32" height="29" viewBox="0 0 22 20" fill="none">
+            <path d="M2 19L11 2L20 19" stroke="white" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.8 13.8h10.4" stroke="white" stroke-width="1.9" stroke-linecap="round"/>
+            <circle cx="11" cy="1.6" r="2.2" fill="#22c55e"/>
+            <path d="M17 6.5L20.5 3L17 3" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:28px;font-weight:900;letter-spacing:.1em;color:#fff;text-transform:uppercase;line-height:1;text-shadow:0 2px 12px rgba(0,0,0,.4);">Airmate</div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:.18em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-top:3px;">Webs · IA · Chatbots</div>
+        </div>
+      </div>
       <div class="inicio-hero-eyebrow">
         <span class="inicio-hero-eyebrow-dot"></span>
         Para negocios locales que quieren más clientes
@@ -3362,9 +3410,19 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
   <div class="admin">
     <aside class="admin-sidebar">
       <!-- Brand -->
-      <div style="padding:4px 10px 20px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:8px;">
-        <img src="logo.png" alt="AIRMATE" style="height:36px;width:auto;filter:drop-shadow(0 2px 10px rgba(0,0,0,.3)) brightness(1.1);">
-        <div style="font-size:10px;color:rgba(255,255,255,.28);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:5px;padding-left:2px;">Panel de control</div>
+      <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 20px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:8px;">
+        <div style="width:34px;height:34px;border-radius:10px;background:linear-gradient(145deg,#0d1f3e,#1a3260);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1);">
+          <svg width="20" height="18" viewBox="0 0 22 20" fill="none">
+            <path d="M2 19L11 2L20 19" stroke="white" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.8 13.8h10.4" stroke="white" stroke-width="1.9" stroke-linecap="round"/>
+            <circle cx="11" cy="1.6" r="2.2" fill="#22c55e"/>
+            <path d="M17 6.5L20.5 3L17 3" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:900;color:#fff;letter-spacing:.08em;text-transform:uppercase;line-height:1.1;">Airmate</div>
+          <div style="font-size:9px;color:rgba(255,255,255,.28);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;">Panel de control</div>
+        </div>
       </div>
       <div class="admin-sidebar-section">General</div>
       <button class="sidebar-item active" onclick="showAdminSection('dashboard',this)">
