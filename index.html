@@ -3083,19 +3083,23 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
     .pp-legend-combo strong { color:var(--al-green); }
     @media(max-width:680px){ .pp-legend { flex-direction:column;gap:10px;align-items:flex-start; } .pp-legend-sep { display:none; } }
 
-    /* Plan cards */
-    .pp-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start;max-width:1380px;margin:0 auto;padding:0 32px; }
+    /* Plan cards — misma altura, diseño unificado */
+    .pp-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch;max-width:1380px;margin:0 auto;padding:0 32px; }
     @media(max-width:1200px){ .pp-grid { grid-template-columns:repeat(2,1fr);max-width:720px;margin:0 auto; } }
     @media(max-width:640px)  { .pp-grid { grid-template-columns:1fr;max-width:520px;margin:0 auto; } }
+    .pp-card { display:flex;flex-direction:column; }
+    .pp-opts { flex:1;display:flex;flex-direction:column; }
+    .pp-opt  { flex:1;display:flex;flex-direction:column; }
+    .pp-opt ul { flex:1; }
 
-    /* AIRMATE card — estilo especial fuego */
-    .pp-card-airmate { border-color:rgba(251,146,60,.35) !important;background:rgba(251,146,60,.04) !important; }
-    .pp-card-airmate:hover { border-color:rgba(251,146,60,.6) !important;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(251,146,60,.1) !important; }
-    .pp-badge-airmate { background:linear-gradient(90deg,#f97316,#ef4444);color:#fff; }
-    .pp-tag-airmate { color:#fb923c;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.3); }
-    .pp-btn-airmate { background:linear-gradient(135deg,#f97316,#ef4444);color:#fff;border:none;box-shadow:0 4px 18px rgba(249,115,22,.38); }
-    .pp-btn-airmate:hover { box-shadow:0 8px 28px rgba(249,115,22,.55);transform:translateY(-1px); }
-    .pp-airmate-glow { position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(251,146,60,.18),transparent 70%);top:-60px;right:-60px;pointer-events:none;animation:ppGlow 4s ease-in-out infinite; }
+    /* AIRMATE card — azul marca, limpio */
+    .pp-card-airmate { border-color:rgba(42,92,255,.3) !important;background:rgba(42,92,255,.03) !important; }
+    .pp-card-airmate:hover { border-color:rgba(42,92,255,.55) !important;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(42,92,255,.08) !important; }
+    .pp-badge-airmate { background:linear-gradient(90deg,#2a5cff,#1e40af);color:#fff; }
+    .pp-tag-airmate { color:#6ea0ff;background:rgba(42,92,255,.1);border:1px solid rgba(42,92,255,.25); }
+    .pp-btn-airmate { background:linear-gradient(135deg,#2a5cff,#1e40af);color:#fff;border:none;box-shadow:0 4px 18px rgba(42,92,255,.35); }
+    .pp-btn-airmate:hover { box-shadow:0 8px 28px rgba(42,92,255,.5);transform:translateY(-1px); }
+    .pp-airmate-glow { position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(42,92,255,.15),transparent 70%);top:-60px;right:-60px;pointer-events:none;animation:ppGlow 4s ease-in-out infinite; }
 
     .pp-card { background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;overflow:hidden;position:relative;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s; }
     .pp-card:hover { transform:translateY(-6px);border-color:rgba(255,255,255,.2);box-shadow:0 24px 60px rgba(0,0,0,.5); }
@@ -3229,19 +3233,19 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
         <div class="pp-card-badge pp-badge-airmate">⚡ YA TIENES WEB</div>
         <div class="pp-card-head">
           <div class="pp-card-tag pp-tag-airmate">Solo el agente</div>
-          <div class="pp-card-name" style="background:linear-gradient(135deg,#fb923c,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AIRMATE</div>
+          <div class="pp-card-name" style="background:linear-gradient(135deg,#6ea0ff,#2a5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AIRMATE</div>
           <p class="pp-card-desc">Instala el agente en tu web actual. Antes respondías tú. Después responde solo, 24/7, mientras tú te dedicas a lo que importa.</p>
         </div>
         <div class="pp-opts">
           <div class="pp-opt" style="border-bottom:none;">
-            <div class="pp-price"><span class="pp-price-main" style="color:#fb923c;">39,99€</span><span class="pp-price-sub">/mes · Sin setup · Sin permanencia</span></div>
+            <div class="pp-price"><span class="pp-price-main" style="color:#6ea0ff;">39,99€</span><span class="pp-price-sub">/mes · Sin setup · Sin permanencia</span></div>
             <div class="pp-opt-feat">Compatible con cualquier web · Activo en 5 minutos</div>
             <ul style="list-style:none;padding:0;margin:0 0 14px;display:flex;flex-direction:column;gap:7px;">
-              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#fb923c;font-weight:700;">✓</span> 🤖 Agente IA en tu web actual</li>
-              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#fb923c;font-weight:700;">✓</span> Responde preguntas 24/7 sin ti</li>
-              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#fb923c;font-weight:700;">✓</span> Detecta interés y recomienda</li>
-              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#fb923c;font-weight:700;">✓</span> Deriva a WhatsApp cuando está listo</li>
-              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#fb923c;font-weight:700;">✓</span> 1.000 conversaciones/mes</li>
+              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#6ea0ff;font-weight:700;">✓</span> 🤖 Agente IA en tu web actual</li>
+              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#6ea0ff;font-weight:700;">✓</span> Responde preguntas 24/7 sin ti</li>
+              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#6ea0ff;font-weight:700;">✓</span> Detecta interés y recomienda</li>
+              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#6ea0ff;font-weight:700;">✓</span> Deriva a WhatsApp cuando está listo</li>
+              <li style="font-size:.8rem;color:rgba(255,255,255,.65);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#6ea0ff;font-weight:700;">✓</span> 1.000 conversaciones/mes</li>
             </ul>
             <a href="#" onclick="return false;" class="pp-btn pp-btn-airmate">Activar AIRMATE ⚡</a>
           </div>
@@ -4567,7 +4571,19 @@ function switchPage(p) {
   /* Mostrar/ocultar nav links según página */
   const navLinks = document.getElementById('nav-links-public');
   if (navLinks) navLinks.style.display = (p === 'inicio' || p === 'landing' || p === 'webs') ? 'flex' : 'none';
-  if (p === 'admin') { refreshAdmin(); if (!authState.isOwner && authState.currentUser) renderAccountSection(); }
+  if (p === 'admin') {
+    /* Restaurar simulación de plan si el owner la tenía guardada */
+    const simPlan = localStorage.getItem('am_owner_sim_plan');
+    if (authState.isOwner && simPlan && simPlan !== 'owner') {
+      authState.currentUser.plan = simPlan;
+      state.activePlan = simPlan;
+      authState.isOwner = false;
+      const sel = document.getElementById('owner-plan-sim');
+      if (sel) sel.value = simPlan;
+    }
+    refreshAdmin();
+    if (!authState.isOwner && authState.currentUser) renderAccountSection();
+  }
   if (p === 'landing' || p === 'inicio') { _betaSpotsLoaded = false; ensureBetaSpots(); }
   if (p === 'planes') { setTimeout(triggerReveal, 80); }
   if (p === 'inicio' || p === 'webs') { setTimeout(triggerReveal, 80); }
@@ -5676,6 +5692,27 @@ function renderInstallSection() {
 
   const activePlan = (state.activePlan || authState.currentUser?.plan || 'growth').toLowerCase();
 
+  /* ── PLAN START: solo web, sin agente ── */
+  if (activePlan === 'start' && state.paymentDone) {
+    container.innerHTML=`
+      <div class="install-locked" style="background:linear-gradient(135deg,#f8fafc,#f0f4ff);border:2px solid #e4e9f2;">
+        <div class="install-lock-icon">🌐</div>
+        <h3 style="-webkit-text-fill-color:#0c1e3d;">Tu plan <strong>START</strong> no incluye<br>agente IA.</h3>
+        <p style="color:#6b7d96;max-width:380px;margin:0 auto 28px;">Tu web está en preparación. El agente conversacional está disponible desde el plan GROWTH.</p>
+        <div class="install-locked-features">
+          <div class="install-locked-feat"><span class="install-locked-feat-dot">✓</span>Web profesional en preparación</div>
+          <div class="install-locked-feat"><span class="install-locked-feat-dot">✓</span>Dominio .es incluido</div>
+          <div class="install-locked-feat"><span class="install-locked-feat-dot">✓</span>SEO básico configurado</div>
+        </div>
+        <button class="btn-unlock" onclick="showAdminSection('plan',null)" style="background:linear-gradient(135deg,#22c55e,#16a34a);margin-top:8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Mejorar a GROWTH — añadir agente IA
+        </button>
+        <div class="install-locked-note" style="color:#8a97b0;margin-top:14px;">Tu web estará lista en menos de 24h · Te avisaremos por email</div>
+      </div>`;
+    return;
+  }
+
   /* ── MODO BLOQUEADO: sin pago ── */
   if (!state.paymentDone) {
     container.innerHTML=`
@@ -5958,13 +5995,19 @@ function ownerSimulatePlan(planKey) {
   if (planKey === 'owner') {
     authState.currentUser.plan = '__owner__';
     authState.isOwner = true;
+    localStorage.removeItem('am_owner_sim_plan');
     showToast('👑 Modo owner restaurado');
   } else {
     authState.currentUser.plan = planKey;
+    state.activePlan = planKey;
     authState.isOwner = false;
+    localStorage.setItem('am_owner_sim_plan', planKey);
     const p = PLANS[planKey];
     showToast('Simulando plan ' + (p ? p.name : planKey));
   }
+  /* Sincronizar selector visual */
+  const sel = document.getElementById('owner-plan-sim');
+  if (sel) sel.value = planKey;
   renderConfigPlanSections();
   refreshAdmin();
 }
