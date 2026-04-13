@@ -3821,369 +3821,332 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
           /* ── OWNER PREMIUM THEME ── */
           #admin-owner-dashboard { background:transparent; }
 
+          /* ── SECCIÓN LABEL ── */
+          .ow-section-label {
+            font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+            color:rgba(255,255,255,.2);margin:36px 0 14px;padding-left:2px;
+            display:flex;align-items:center;gap:10px;
+          }
+          .ow-section-label::after {
+            content:'';flex:1;height:1px;background:rgba(255,255,255,.06);
+          }
+
+          /* ── HERO ── */
           .ow-hero {
-            background: linear-gradient(135deg, #080e1f 0%, #0d1a3a 50%, #0a1628 100%);
-            border-radius: 20px;
-            padding: 32px 36px;
-            margin-bottom: 28px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,.06);
+            background:linear-gradient(135deg,#080e1f 0%,#0d1a3a 60%,#0a1628 100%);
+            border-radius:18px;padding:36px 40px;margin-bottom:0;
+            position:relative;overflow:hidden;
+            border:1px solid rgba(255,255,255,.07);
           }
           .ow-hero::before {
-            content:'';position:absolute;top:-80px;right:-80px;
-            width:280px;height:280px;border-radius:50%;
-            background:radial-gradient(circle,rgba(42,92,255,.18),transparent 70%);
-            pointer-events:none;
+            content:'';position:absolute;top:-80px;right:-60px;width:260px;height:260px;
+            border-radius:50%;background:radial-gradient(circle,rgba(42,92,255,.15),transparent 70%);pointer-events:none;
           }
           .ow-hero::after {
-            content:'';position:absolute;bottom:-60px;left:30%;
-            width:200px;height:200px;border-radius:50%;
-            background:radial-gradient(circle,rgba(124,58,237,.12),transparent 70%);
-            pointer-events:none;
+            content:'';position:absolute;bottom:-50px;left:35%;width:180px;height:180px;
+            border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.1),transparent 70%);pointer-events:none;
           }
-          .ow-hero-label {
-            font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-            color:rgba(255,255,255,.3);margin-bottom:8px;
-          }
-          .ow-hero-title {
-            font-size:28px;font-weight:900;color:#fff;letter-spacing:-.5px;margin-bottom:4px;
-          }
-          .ow-hero-sub { font-size:13px;color:rgba(255,255,255,.35); }
-          .ow-hero-actions { display:flex;gap:12px;margin-top:24px;flex-wrap:wrap; }
+          .ow-hero-eyebrow { font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px; }
+          .ow-hero-title { font-size:26px;font-weight:900;color:#fff;letter-spacing:-.4px;margin-bottom:5px; }
+          .ow-hero-sub { font-size:12px;color:rgba(255,255,255,.3);line-height:1.6; }
+          .ow-hero-divider { height:1px;background:rgba(255,255,255,.06);margin:24px 0; }
+          .ow-hero-actions { display:flex;gap:10px;flex-wrap:wrap; }
           .ow-hero-btn {
-            display:flex;align-items:center;gap:8px;padding:11px 20px;
-            border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;
-            transition:all .2s;text-decoration:none;
+            display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
+            border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;
+            transition:all .18s;
           }
-          .ow-hero-btn-primary {
-            background:linear-gradient(135deg,#2a5cff,#1e40af);color:#fff;
-            box-shadow:0 4px 20px rgba(42,92,255,.4);
-          }
-          .ow-hero-btn-primary:hover { transform:translateY(-2px);box-shadow:0 8px 28px rgba(42,92,255,.5); }
-          .ow-hero-btn-ghost {
-            background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);
-            border:1px solid rgba(255,255,255,.12);
-          }
-          .ow-hero-btn-ghost:hover { background:rgba(255,255,255,.12);color:#fff; }
+          .ow-hero-btn-primary { background:linear-gradient(135deg,#2a5cff,#1e40af);color:#fff;box-shadow:0 3px 14px rgba(42,92,255,.35); }
+          .ow-hero-btn-primary:hover { transform:translateY(-1px);box-shadow:0 6px 22px rgba(42,92,255,.5); }
+          .ow-hero-btn-ghost { background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1); }
+          .ow-hero-btn-ghost:hover { background:rgba(255,255,255,.1);color:#fff; }
 
-          /* KPI CARDS */
-          .ow-kpi-grid {
-            display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;
-          }
+          /* ── KPI GRID ── */
+          .ow-kpi-grid { display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:14px;margin-bottom:0; }
           .ow-kpi {
-            background:linear-gradient(135deg,#0d1a3a,#111e3d);
-            border:1px solid rgba(255,255,255,.07);
-            border-radius:16px;padding:20px 22px;
-            position:relative;overflow:hidden;
-            transition:transform .2s,box-shadow .2s;
+            background:#0d1831;border:1px solid rgba(255,255,255,.07);
+            border-radius:14px;padding:22px 24px;position:relative;overflow:hidden;
+            transition:transform .18s,box-shadow .18s;
           }
-          .ow-kpi:hover { transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3); }
-          .ow-kpi-accent {
-            position:absolute;top:0;left:0;right:0;height:2px;border-radius:16px 16px 0 0;
-          }
-          .ow-kpi-icon {
-            width:36px;height:36px;border-radius:10px;display:flex;align-items:center;
-            justify-content:center;font-size:16px;margin-bottom:12px;
-          }
-          .ow-kpi-label { font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px; }
-          .ow-kpi-value { font-size:26px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1; }
-          .ow-kpi-sub { font-size:11px;color:rgba(255,255,255,.25);margin-top:6px; }
+          .ow-kpi:hover { transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.35); }
+          .ow-kpi-top-bar { position:absolute;top:0;left:0;right:0;height:2px;border-radius:14px 14px 0 0; }
+          .ow-kpi-icon { font-size:18px;margin-bottom:14px;display:block; }
+          .ow-kpi-label { font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px; }
+          .ow-kpi-value { font-size:28px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1; }
+          .ow-kpi-sub { font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;line-height:1.5; }
+          .ow-kpi-mrr { background:linear-gradient(135deg,#0c1d52,#0e1d47);border-color:rgba(42,92,255,.2); }
+          .ow-kpi-mrr .ow-kpi-value { font-size:34px;color:#7eb3ff; }
 
-          /* MRR CARD ESPECIAL */
-          .ow-kpi-mrr {
-            grid-column:span 2;
-            background:linear-gradient(135deg,#0d2052,#0f1e4a);
-            border-color:rgba(42,92,255,.25);
+          /* ── PLAN BREAKDOWN ── */
+          .ow-plan-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:12px; }
+          .ow-plan-tile {
+            background:#0d1831;border:1px solid rgba(255,255,255,.06);border-radius:12px;
+            padding:18px 20px;display:flex;align-items:center;gap:16px;
+            transition:border-color .18s;
           }
-          .ow-kpi-mrr .ow-kpi-value { font-size:36px;color:#6ea0ff; }
+          .ow-plan-tile:hover { border-color:rgba(255,255,255,.14); }
+          .ow-plan-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
+          .ow-plan-info-name { font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:3px; }
+          .ow-plan-info-count { font-size:20px;font-weight:900;color:#fff;line-height:1; }
+          .ow-plan-info-price { font-size:10px;color:rgba(255,255,255,.18);margin-top:3px; }
 
-          /* PLAN MINI GRID */
-          .ow-plan-mini-grid {
-            display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;
+          /* ── TABLES ── */
+          .ow-table-wrap {
+            background:#0d1831;border:1px solid rgba(255,255,255,.07);
+            border-radius:14px;overflow:hidden;
           }
-          .ow-plan-mini {
-            background:linear-gradient(135deg,#0d1a3a,#0a1628);
-            border:1px solid rgba(255,255,255,.07);
-            border-radius:14px;padding:16px 18px;
-            display:flex;align-items:center;gap:14px;
-          }
-          .ow-plan-mini-dot { width:10px;height:10px;border-radius:50%;flex-shrink:0; }
-          .ow-plan-mini-name { font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2px; }
-          .ow-plan-mini-count { font-size:22px;font-weight:900;color:#fff; }
-          .ow-plan-mini-price { font-size:10px;color:rgba(255,255,255,.2);margin-top:1px; }
-
-          /* PREMIUM TABLE */
-          .ow-table-card {
-            background:linear-gradient(135deg,#0d1a3a,#0a1628);
-            border:1px solid rgba(255,255,255,.07);
-            border-radius:16px;overflow:hidden;margin-bottom:20px;
-          }
-          .ow-table-head {
-            padding:18px 24px;border-bottom:1px solid rgba(255,255,255,.06);
+          .ow-table-header {
+            padding:20px 26px;border-bottom:1px solid rgba(255,255,255,.06);
             display:flex;align-items:center;justify-content:space-between;
           }
-          .ow-table-head-title { font-size:14px;font-weight:800;color:#fff;letter-spacing:.01em; }
-          .ow-table-head-sub { font-size:11px;color:rgba(255,255,255,.25);margin-top:2px; }
-          .ow-table-badge {
-            background:rgba(42,92,255,.15);border:1px solid rgba(42,92,255,.3);
-            color:#6ea0ff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;
+          .ow-table-title { font-size:13px;font-weight:800;color:#fff; }
+          .ow-table-subtitle { font-size:11px;color:rgba(255,255,255,.22);margin-top:2px; }
+          .ow-table-pill {
+            background:rgba(42,92,255,.12);border:1px solid rgba(42,92,255,.25);
+            color:#7eb3ff;padding:3px 11px;border-radius:20px;font-size:10px;font-weight:700;
           }
-          .ow-premium-table { width:100%;border-collapse:collapse;font-size:13px; }
-          .ow-premium-table thead tr { border-bottom:1px solid rgba(255,255,255,.06); }
-          .ow-premium-table th { padding:10px 16px;text-align:left;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.2); }
+          .ow-premium-table { width:100%;border-collapse:collapse;font-size:12.5px; }
+          .ow-premium-table thead tr { background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.05); }
+          .ow-premium-table th {
+            padding:11px 18px;font-size:9px;font-weight:800;letter-spacing:2px;
+            text-transform:uppercase;color:rgba(255,255,255,.18);white-space:nowrap;
+          }
           .ow-premium-table th:not(:first-child) { text-align:center; }
-          .ow-premium-table tbody tr { border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s; }
-          .ow-premium-table tbody tr:hover { background:rgba(255,255,255,.03); }
-          .ow-premium-table td { padding:12px 16px;color:rgba(255,255,255,.7); }
+          .ow-premium-table tbody tr { border-bottom:1px solid rgba(255,255,255,.03);transition:background .12s; }
+          .ow-premium-table tbody tr:last-child { border-bottom:none; }
+          .ow-premium-table tbody tr:hover { background:rgba(255,255,255,.025); }
+          .ow-premium-table td { padding:14px 18px;color:rgba(255,255,255,.6);vertical-align:middle; }
           .ow-premium-table td:not(:first-child) { text-align:center; }
 
-          /* COLLAPSE CONTRACTS */
-          .ow-collapse-header {
-            padding:18px 24px;cursor:pointer;user-select:none;
+          /* ── CONTRACTS COLLAPSE ── */
+          .ow-collapse-btn {
+            width:100%;padding:20px 26px;background:none;border:none;cursor:pointer;
             display:flex;align-items:center;justify-content:space-between;
-            transition:background .15s;border-radius:16px;
+            transition:background .15s;text-align:left;
           }
-          .ow-collapse-header:hover { background:rgba(255,255,255,.02); }
-          .ow-collapse-arrow { color:rgba(255,255,255,.25);font-size:14px;transition:transform .25s; }
+          .ow-collapse-btn:hover { background:rgba(255,255,255,.02); }
+          .ow-collapse-arrow { color:rgba(255,255,255,.2);font-size:12px;transition:transform .25s; }
 
-          /* NEW CLIENT FORM */
-          .ow-form-card {
-            background:linear-gradient(135deg,#0d1a3a,#0a1628);
-            border:1px solid rgba(255,255,255,.08);
-            border-radius:16px;padding:28px;margin-top:20px;
+          /* ── NEW CLIENT FORM ── */
+          .ow-form-wrap {
+            background:#0d1831;border:1px solid rgba(255,255,255,.08);
+            border-radius:14px;padding:30px 32px;
           }
-          .ow-form-title { font-size:15px;font-weight:800;color:#fff;margin-bottom:4px; }
-          .ow-form-sub { font-size:12px;color:rgba(255,255,255,.3);margin-bottom:20px; }
-          .ow-form-input {
-            width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-            border-radius:10px;padding:11px 14px;color:#fff;font-size:13px;outline:none;
-            transition:border .2s;
+          .ow-form-title { font-size:14px;font-weight:800;color:#fff;margin-bottom:3px; }
+          .ow-form-sub { font-size:11px;color:rgba(255,255,255,.25);margin-bottom:22px;line-height:1.5; }
+          .ow-form-row { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px; }
+          .ow-form-group { display:flex;flex-direction:column;gap:6px; }
+          .ow-form-label { font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25); }
+          .ow-form-input, .ow-form-select {
+            background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+            border-radius:9px;padding:11px 14px;color:#fff;font-size:13px;outline:none;
+            transition:border .18s,background .18s;width:100%;
           }
-          .ow-form-input:focus { border-color:rgba(42,92,255,.6);background:rgba(42,92,255,.06); }
-          .ow-form-input::placeholder { color:rgba(255,255,255,.2); }
-          .ow-form-label { font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px;display:block; }
-          .ow-form-select {
-            width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-            border-radius:10px;padding:11px 14px;color:#fff;font-size:13px;outline:none;
-            transition:border .2s;appearance:none;
-          }
-          .ow-form-select option { background:#0d1a3a;color:#fff; }
+          .ow-form-input:focus, .ow-form-select:focus { border-color:rgba(42,92,255,.5);background:rgba(42,92,255,.05); }
+          .ow-form-input::placeholder { color:rgba(255,255,255,.18); }
+          .ow-form-select { appearance:none; }
+          .ow-form-select option { background:#0d1831;color:#fff; }
           .ow-form-btn {
-            margin-top:20px;padding:12px 28px;
-            background:linear-gradient(135deg,#2a5cff,#1e40af);
-            color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;
-            cursor:pointer;box-shadow:0 4px 20px rgba(42,92,255,.35);
-            transition:all .2s;
+            padding:12px 26px;background:linear-gradient(135deg,#2a5cff,#1e40af);
+            color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:700;
+            cursor:pointer;box-shadow:0 3px 14px rgba(42,92,255,.3);transition:all .18s;
           }
-          .ow-form-btn:hover { transform:translateY(-2px);box-shadow:0 8px 28px rgba(42,92,255,.5); }
+          .ow-form-btn:hover { transform:translateY(-1px);box-shadow:0 6px 22px rgba(42,92,255,.45); }
         </style>
 
-        <!-- HERO HEADER -->
+        <!-- ── HERO ── -->
         <div class="ow-hero">
-          <div class="ow-hero-label">Airmate · Panel de control</div>
+          <div class="ow-hero-eyebrow">Airmate · Panel de control exclusivo</div>
           <div class="ow-hero-title">Owner Dashboard</div>
           <div class="ow-hero-sub">Visión completa de tu negocio — clientes, ingresos y contratos en tiempo real</div>
+          <div class="ow-hero-divider"></div>
           <div class="ow-hero-actions">
             <button class="ow-hero-btn ow-hero-btn-primary" onclick="ownerOpenContractModal('','','')">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="1" width="10" height="12" rx="1.5" stroke="white" stroke-width="1.4"/><path d="M4 4h6M4 6.5h6M4 9h4" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><rect x="2" y="1" width="10" height="12" rx="1.5" stroke="white" stroke-width="1.5"/><path d="M4 4h6M4 6.5h6M4 9h4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
               Generar contrato
             </button>
-            <button class="ow-hero-btn ow-hero-btn-ghost" onclick="document.getElementById('ow-new-client-form').style.display=document.getElementById('ow-new-client-form').style.display==='none'?'block':'none'">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 12c0-2.8 2.2-4 5-4s5 1.2 5 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M11 3v4M9 5h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <button class="ow-hero-btn ow-hero-btn-ghost" onclick="const f=document.getElementById('ow-new-client-form');f.style.display=f.style.display==='none'?'block':'none'">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12c0-2.8 2.2-4 5-4s5 1.2 5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 3v4M9 5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               Nuevo cliente
             </button>
           </div>
         </div>
 
-        <!-- KPI CARDS -->
+        <!-- ── MÉTRICAS ── -->
+        <div class="ow-section-label">Métricas del negocio</div>
         <div class="ow-kpi-grid">
           <div class="ow-kpi ow-kpi-mrr">
-            <div class="ow-kpi-accent" style="background:linear-gradient(90deg,#2a5cff,#6ea0ff);"></div>
-            <div class="ow-kpi-icon" style="background:rgba(42,92,255,.15);">💰</div>
-            <div class="ow-kpi-label">Ingresos mensuales (MRR)</div>
+            <div class="ow-kpi-top-bar" style="background:linear-gradient(90deg,#2a5cff,#6ea0ff);"></div>
+            <span class="ow-kpi-icon">💰</span>
+            <div class="ow-kpi-label">Ingresos mensuales recurrentes</div>
             <div class="ow-kpi-value" id="ow-mrr">0€</div>
-            <div class="ow-kpi-sub">Chatbot <span id="ow-mrr-bot">0€</span> · Web <span id="ow-mrr-web-stat">0€</span></div>
+            <div class="ow-kpi-sub">Bot <span id="ow-mrr-bot">0€</span> · Web <span id="ow-mrr-web-stat">0€</span></div>
           </div>
           <div class="ow-kpi">
-            <div class="ow-kpi-accent" style="background:linear-gradient(90deg,#22c55e,#86efac);"></div>
-            <div class="ow-kpi-icon" style="background:rgba(34,197,94,.15);">👥</div>
+            <div class="ow-kpi-top-bar" style="background:linear-gradient(90deg,#22c55e,#86efac);"></div>
+            <span class="ow-kpi-icon">👥</span>
             <div class="ow-kpi-label">Clientes activos</div>
             <div class="ow-kpi-value" id="ow-total-clients">0</div>
             <div class="ow-kpi-sub">Con plan activo</div>
           </div>
           <div class="ow-kpi">
-            <div class="ow-kpi-accent" style="background:linear-gradient(90deg,#f59e0b,#fcd34d);"></div>
-            <div class="ow-kpi-icon" style="background:rgba(245,158,11,.15);">🌐</div>
+            <div class="ow-kpi-top-bar" style="background:linear-gradient(90deg,#f59e0b,#fde68a);"></div>
+            <span class="ow-kpi-icon">🌐</span>
             <div class="ow-kpi-label">Clientes web</div>
             <div class="ow-kpi-value" id="ow-web-count">0</div>
-            <div class="ow-kpi-sub">Con mantenimiento · MRR web: <span id="ow-web-mrr">0€</span></div>
+            <div class="ow-kpi-sub">MRR web: <span id="ow-web-mrr">0€</span></div>
           </div>
           <div class="ow-kpi">
-            <div class="ow-kpi-accent" style="background:linear-gradient(90deg,#7c3aed,#c4b5fd);"></div>
-            <div class="ow-kpi-icon" style="background:rgba(124,58,237,.15);">📦</div>
-            <div class="ow-kpi-label">Cobros por entrega</div>
+            <div class="ow-kpi-top-bar" style="background:linear-gradient(90deg,#7c3aed,#c4b5fd);"></div>
+            <span class="ow-kpi-icon">📦</span>
+            <div class="ow-kpi-label">Cobros entrega</div>
             <div class="ow-kpi-value" id="ow-delivery-total">0€</div>
             <div class="ow-kpi-sub">Webs entregadas</div>
           </div>
         </div>
 
-        <!-- PLAN BREAKDOWN -->
-        <div class="ow-plan-mini-grid">
-          <div class="ow-plan-mini">
-            <div class="ow-plan-mini-dot" style="background:#2a5cff;box-shadow:0 0 8px rgba(42,92,255,.6);"></div>
+        <!-- ── DISTRIBUCIÓN DE PLANES ── -->
+        <div class="ow-section-label">Distribución por plan</div>
+        <div class="ow-plan-grid">
+          <div class="ow-plan-tile">
+            <div class="ow-plan-dot" style="background:#2a5cff;box-shadow:0 0 7px rgba(42,92,255,.7);"></div>
             <div>
-              <div class="ow-plan-mini-name">Airmate</div>
-              <div class="ow-plan-mini-count" id="ow-count-airmate">0</div>
-              <div class="ow-plan-mini-price">39,99€/mes</div>
+              <div class="ow-plan-info-name">Airmate</div>
+              <div class="ow-plan-info-count" id="ow-count-airmate">0</div>
+              <div class="ow-plan-info-price">39,99€/mes</div>
             </div>
           </div>
-          <div class="ow-plan-mini">
-            <div class="ow-plan-mini-dot" style="background:#06b6d4;box-shadow:0 0 8px rgba(6,182,212,.6);"></div>
+          <div class="ow-plan-tile">
+            <div class="ow-plan-dot" style="background:#06b6d4;box-shadow:0 0 7px rgba(6,182,212,.7);"></div>
             <div>
-              <div class="ow-plan-mini-name">Start</div>
-              <div class="ow-plan-mini-count" id="ow-count-starter">0</div>
-              <div class="ow-plan-mini-price">250€ + 39€/mes</div>
+              <div class="ow-plan-info-name">Start</div>
+              <div class="ow-plan-info-count" id="ow-count-starter">0</div>
+              <div class="ow-plan-info-price">250€ + 39€/mes</div>
             </div>
           </div>
-          <div class="ow-plan-mini">
-            <div class="ow-plan-mini-dot" style="background:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.6);"></div>
+          <div class="ow-plan-tile">
+            <div class="ow-plan-dot" style="background:#22c55e;box-shadow:0 0 7px rgba(34,197,94,.7);"></div>
             <div>
-              <div class="ow-plan-mini-name">Growth</div>
-              <div class="ow-plan-mini-count" id="ow-count-pro">0</div>
-              <div class="ow-plan-mini-price">400€ + 59€/mes</div>
+              <div class="ow-plan-info-name">Growth</div>
+              <div class="ow-plan-info-count" id="ow-count-pro">0</div>
+              <div class="ow-plan-info-price">400€ + 59€/mes</div>
             </div>
           </div>
-          <div class="ow-plan-mini">
-            <div class="ow-plan-mini-dot" style="background:#7c3aed;box-shadow:0 0 8px rgba(124,58,237,.6);"></div>
+          <div class="ow-plan-tile">
+            <div class="ow-plan-dot" style="background:#7c3aed;box-shadow:0 0 7px rgba(124,58,237,.7);"></div>
             <div>
-              <div class="ow-plan-mini-name">Pro</div>
-              <div class="ow-plan-mini-count" id="ow-count-adv">0</div>
-              <div class="ow-plan-mini-price">800€ + 99€/mes</div>
+              <div class="ow-plan-info-name">Pro</div>
+              <div class="ow-plan-info-count" id="ow-count-adv">0</div>
+              <div class="ow-plan-info-price">800€ + 99€/mes</div>
             </div>
           </div>
         </div>
 
-        <!-- TABLA CLIENTES CHATBOT -->
-        <div class="ow-table-card">
-          <div class="ow-table-head">
+        <!-- ── CLIENTES CHATBOT ── -->
+        <div class="ow-section-label">Clientes chatbot</div>
+        <div class="ow-table-wrap">
+          <div class="ow-table-header">
             <div>
-              <div class="ow-table-head-title">Clientes Chatbot</div>
-              <div class="ow-table-head-sub">Agente IA — suscripciones activas</div>
+              <div class="ow-table-title">Suscripciones activas</div>
+              <div class="ow-table-subtitle">Agente IA — facturación recurrente</div>
             </div>
           </div>
           <div style="overflow-x:auto;">
             <table class="ow-premium-table">
-              <thead>
-                <tr>
-                  <th>Cliente</th>
-                  <th>Email</th>
-                  <th>Plan</th>
-                  <th>€/mes</th>
-                  <th>Estado</th>
-                  <th>Registro</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
+              <thead><tr>
+                <th>Cliente</th><th>Email</th><th>Plan</th>
+                <th>€/mes</th><th>Estado</th><th>Registro</th><th>Acciones</th>
+              </tr></thead>
               <tbody id="ow-clients-tbody">
-                <tr><td colspan="7" style="text-align:center;color:rgba(255,255,255,.2);padding:32px;">Cargando…</td></tr>
+                <tr><td colspan="7" style="text-align:center;color:rgba(255,255,255,.15);padding:36px;font-size:12px;">Cargando…</td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- TABLA CLIENTES WEB -->
-        <div class="ow-table-card">
-          <div class="ow-table-head">
+        <!-- ── CLIENTES WEB ── -->
+        <div class="ow-section-label">Clientes web</div>
+        <div class="ow-table-wrap">
+          <div class="ow-table-header">
             <div>
-              <div class="ow-table-head-title">Clientes Web</div>
-              <div class="ow-table-head-sub">Diseño y mantenimiento web</div>
+              <div class="ow-table-title">Diseño y mantenimiento</div>
+              <div class="ow-table-subtitle">Webs entregadas y en mantenimiento mensual</div>
             </div>
-            <div class="ow-table-badge">MRR web: <span id="ow-web-mrr-b">0€</span></div>
+            <span class="ow-table-pill">MRR web: <span id="ow-web-mrr-b">0€</span></span>
           </div>
           <div style="overflow-x:auto;">
             <table class="ow-premium-table">
-              <thead>
-                <tr>
-                  <th>Negocio</th>
-                  <th>Contacto</th>
-                  <th>Tipo</th>
-                  <th>Entrega</th>
-                  <th>Mant./mes</th>
-                  <th>Estado</th>
-                  <th>Fecha</th>
-                  <th>Notas</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
+              <thead><tr>
+                <th>Negocio</th><th>Contacto</th><th>Tipo</th>
+                <th>Entrega</th><th>Mant./mes</th><th>Estado</th>
+                <th>Fecha</th><th>Notas</th><th>Acciones</th>
+              </tr></thead>
               <tbody id="ow-web-tbody">
-                <tr><td colspan="9" style="text-align:center;color:rgba(255,255,255,.2);padding:32px;">Cargando…</td></tr>
+                <tr><td colspan="9" style="text-align:center;color:rgba(255,255,255,.15);padding:36px;font-size:12px;">Cargando…</td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- REGISTRO DE CONTRATOS -->
-        <div class="ow-table-card">
-          <div class="ow-collapse-header" onclick="owToggleContracts()" id="ow-contracts-header">
+        <!-- ── CONTRATOS ── -->
+        <div class="ow-section-label">Contratos</div>
+        <div class="ow-table-wrap">
+          <button class="ow-collapse-btn" onclick="owToggleContracts()" id="ow-contracts-header">
             <div style="display:flex;align-items:center;gap:14px;">
-              <div style="width:36px;height:36px;border-radius:10px;background:rgba(42,92,255,.15);display:flex;align-items:center;justify-content:center;">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="1" width="12" height="14" rx="2" stroke="rgba(110,160,255,.7)" stroke-width="1.4"/><path d="M5 5h6M5 8h6M5 11h4" stroke="rgba(110,160,255,.7)" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <div style="width:34px;height:34px;border-radius:9px;background:rgba(42,92,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="2" y="1" width="12" height="14" rx="2" stroke="rgba(110,160,255,.6)" stroke-width="1.4"/><path d="M5 5h6M5 8h6M5 11h4" stroke="rgba(110,160,255,.6)" stroke-width="1.4" stroke-linecap="round"/></svg>
               </div>
               <div>
-                <div class="ow-table-head-title">Registro de contratos</div>
-                <div class="ow-table-head-sub" id="ow-contracts-count">—</div>
+                <div class="ow-table-title">Registro de contratos</div>
+                <div class="ow-table-subtitle" id="ow-contracts-count">Haz clic para expandir</div>
               </div>
             </div>
             <span class="ow-collapse-arrow" id="ow-contracts-arrow">▼</span>
-          </div>
-          <div id="ow-contracts-body" style="display:none;border-top:1px solid rgba(255,255,255,.06);">
+          </button>
+          <div id="ow-contracts-body" style="display:none;border-top:1px solid rgba(255,255,255,.05);">
             <div style="overflow-x:auto;">
               <table class="ow-premium-table">
-                <thead>
-                  <tr>
-                    <th>Cliente</th>
-                    <th>Plan</th>
-                    <th>Dominio</th>
-                    <th>Fecha</th>
-                    <th>Estado firma</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
+                <thead><tr>
+                  <th>Cliente</th><th>Plan</th><th>Dominio</th>
+                  <th>Fecha</th><th>Firma</th><th>Acciones</th>
+                </tr></thead>
                 <tbody id="ow-contracts-tbody">
-                  <tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,.2);padding:32px;">Cargando…</td></tr>
+                  <tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,.15);padding:36px;font-size:12px;">Cargando…</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
 
-        <!-- NUEVO CLIENTE -->
+        <!-- ── NUEVO CLIENTE ── -->
         <div id="ow-new-client-form" style="display:none;">
-          <div class="ow-form-card">
-            <div class="ow-form-title">Crear nuevo cliente</div>
-            <div class="ow-form-sub">El cliente recibirá acceso al panel con las credenciales que definas</div>
-            <div class="config-grid">
-              <div class="form-group">
+          <div class="ow-section-label" style="margin-top:32px;">Crear acceso de cliente</div>
+          <div class="ow-form-wrap">
+            <div class="ow-form-title">Nuevo cliente</div>
+            <div class="ow-form-sub">El cliente accederá al panel con estas credenciales desde airmate.es</div>
+            <div class="ow-form-row">
+              <div class="ow-form-group">
                 <label class="ow-form-label">Nombre de usuario</label>
                 <input class="ow-form-input" id="ow-new-name" type="text" placeholder="nombre.cliente">
               </div>
-              <div class="form-group">
+              <div class="ow-form-group">
                 <label class="ow-form-label">Contraseña</label>
                 <input class="ow-form-input" id="ow-new-pass" type="text" placeholder="••••••••">
               </div>
-              <div class="form-group" style="grid-column:1/-1;">
-                <label class="ow-form-label">Plan</label>
-                <select class="ow-form-select" id="ow-new-plan">
-                  <option value="beta">ACCESO BETA — Gratis (prueba)</option>
-                  <option value="airmate">PLAN AIRMATE — 39,99€/mes</option>
-                  <option value="start">PLAN START — 250€ setup + 39€/mes</option>
-                  <option value="growth">PLAN GROWTH — 400€ setup + 59€/mes</option>
-                  <option value="pro">PLAN PRO — 800€ setup + 99€/mes</option>
-                </select>
-              </div>
             </div>
-            <button class="ow-form-btn" onclick="ownerCreateClient()">Crear cliente y activar acceso</button>
+            <div class="ow-form-group">
+              <label class="ow-form-label">Plan</label>
+              <select class="ow-form-select" id="ow-new-plan">
+                <option value="beta">BETA — Acceso de prueba gratuito</option>
+                <option value="airmate">AIRMATE — 39,99€/mes · Solo agente</option>
+                <option value="start">START — 250€ setup + 39€/mes</option>
+                <option value="growth">GROWTH — 400€ setup + 59€/mes</option>
+                <option value="pro">PRO — 800€ setup + 99€/mes</option>
+              </select>
+            </div>
+            <div style="margin-top:24px;">
+              <button class="ow-form-btn" onclick="ownerCreateClient()">Crear cliente y activar acceso</button>
+            </div>
           </div>
         </div>
       </div>
