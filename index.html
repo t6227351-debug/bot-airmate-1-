@@ -297,6 +297,44 @@ body{font-family:var(--font-body);background:#f0f2f7;color:var(--al-navy);min-he
 }
 .admin-main{padding:36px 40px;background:#f4f6fb;overflow-y:auto;}
 .admin-section{display:none;} .admin-section.active{display:block;}
+
+/* ── Plan theme sidebar ── */
+.admin-sidebar{position:relative;overflow:hidden;}
+.plan-orb{
+  position:absolute;border-radius:50%;filter:blur(48px);
+  opacity:0;pointer-events:none;transition:opacity 1.2s ease;
+  animation:orbFloat 8s ease-in-out infinite;
+}
+.plan-orb.orb1{width:180px;height:180px;top:-40px;left:-60px;animation-delay:0s;}
+.plan-orb.orb2{width:130px;height:130px;bottom:60px;right:-40px;animation-delay:-3s;}
+.plan-orb.orb3{width:90px;height:90px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-5s;}
+@keyframes orbFloat{
+  0%,100%{transform:translateY(0) scale(1);}
+  33%{transform:translateY(-18px) scale(1.06);}
+  66%{transform:translateY(10px) scale(.95);}
+}
+.plan-orb.orb3{animation:orbFloat3 10s ease-in-out infinite;}
+@keyframes orbFloat3{
+  0%,100%{transform:translate(-50%,-50%) scale(1);}
+  50%{transform:translate(-50%,-62%) scale(1.1);}
+}
+.admin-sidebar.plan-active .plan-orb{opacity:.55;}
+
+/* Plan badge en sidebar */
+#sidebar-plan-badge{
+  display:none;margin:0 0 16px;padding:8px 12px;border-radius:10px;
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  text-align:center;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);color:#fff;
+  position:relative;overflow:hidden;
+}
+#sidebar-plan-badge::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+  transform:translateX(-100%);
+  animation:shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
 .admin-header{margin-bottom:28px;}
 .admin-header h2{font-family:var(--font-display);font-size:28px;font-weight:800;margin-bottom:4px;color:#0c1e3d;}
 .admin-header p{font-size:13px;color:#8a97b0;}
@@ -3370,7 +3408,11 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
 <!-- ADMIN PANEL -->
 <div id="page-admin" class="page">
   <div class="admin">
-    <aside class="admin-sidebar">
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- Plan orbs (animated background blobs) -->
+      <div class="plan-orb orb1" id="plan-orb1"></div>
+      <div class="plan-orb orb2" id="plan-orb2"></div>
+      <div class="plan-orb orb3" id="plan-orb3"></div>
       <!-- Brand -->
       <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 20px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:8px;">
         <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(34,197,94,.35);">
@@ -3381,6 +3423,9 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
           <div style="font-size:10px;color:rgba(255,255,255,.35);font-weight:500;">Panel de control</div>
         </div>
       </div>
+      <!-- Plan badge -->
+      <div id="sidebar-plan-badge"></div>
+
       <div class="admin-sidebar-section">General</div>
       <button class="sidebar-item active" onclick="showAdminSection('dashboard',this)">
         <svg viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" stroke="rgba(255,255,255,0.55)" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.5" stroke="rgba(255,255,255,0.55)" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.5" stroke="rgba(255,255,255,0.55)" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.5" stroke="rgba(255,255,255,0.55)" stroke-width="1.3"/></svg>
@@ -6195,6 +6240,46 @@ function refreshAdmin() {
   const sb=document.getElementById('stripe-btn');
   const activePlanKey=state.selectedPlan||state.activePlan;
   if (sb && PLANS[activePlanKey]) sb.href=PLANS[activePlanKey].stripeUrl;
+
+  /* ── Plan theme sidebar ── */
+  if (!authState.isOwner) {
+    const PLAN_THEME = {
+      airmate: { c1:'#2a5cff', c2:'#6ea0ff', c3:'#1a3a8f', label:'Plan AIRMATE', emoji:'🤖' },
+      start:   { c1:'#16a34a', c2:'#4ade80', c3:'#14532d', label:'Plan START',   emoji:'🌱' },
+      growth:  { c1:'#22c55e', c2:'#86efac', c3:'#166534', label:'Plan GROWTH',  emoji:'🚀' },
+      pro:     { c1:'#7c3aed', c2:'#c4b5fd', c3:'#4c1d95', label:'Plan PRO',     emoji:'⚡' },
+      beta:    { c1:'#64748b', c2:'#94a3b8', c3:'#1e293b', label:'Acceso BETA',  emoji:'🔬' },
+    };
+    const rp = resolvePlan(state.activePlan) || 'beta';
+    const theme = PLAN_THEME[rp] || PLAN_THEME.beta;
+    const sidebar = document.getElementById('admin-sidebar');
+    const badge   = document.getElementById('sidebar-plan-badge');
+    const orb1    = document.getElementById('plan-orb1');
+    const orb2    = document.getElementById('plan-orb2');
+    const orb3    = document.getElementById('plan-orb3');
+    if (sidebar && state.paymentDone) {
+      sidebar.classList.add('plan-active');
+      sidebar.style.background = `linear-gradient(180deg, color-mix(in srgb, ${theme.c1} 22%, #0a1628) 0%, color-mix(in srgb, ${theme.c3} 30%, #0f2040) 100%)`;
+      sidebar.style.borderRight = `1px solid ${theme.c1}33`;
+      if (orb1) orb1.style.background = theme.c1;
+      if (orb2) orb2.style.background = theme.c2;
+      if (orb3) orb3.style.background = theme.c3;
+      // active item color
+      const styleId = 'plan-sidebar-style';
+      let styleEl = document.getElementById(styleId);
+      if (!styleEl) { styleEl = document.createElement('style'); styleEl.id = styleId; document.head.appendChild(styleEl); }
+      styleEl.textContent = `.sidebar-item.active{background:linear-gradient(135deg,${theme.c1}40,${theme.c1}20)!important;color:${theme.c2}!important;border:1px solid ${theme.c1}55!important;}`;
+    }
+    if (badge) {
+      badge.style.display = state.paymentDone ? 'block' : 'none';
+      if (state.paymentDone) {
+        badge.style.background = `linear-gradient(135deg,${theme.c1}22,${theme.c1}0a)`;
+        badge.style.borderColor = `${theme.c1}44`;
+        badge.style.color = theme.c2;
+        badge.innerHTML = `<span style="margin-right:5px;">${theme.emoji}</span>${theme.label}`;
+      }
+    }
+  }
 
   /* Fecha badge */
   const db=document.getElementById('dash-date-badge');
