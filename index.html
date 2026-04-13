@@ -3969,6 +3969,74 @@ h1, h2, h3, h4 { letter-spacing: -.01em; }
         </div>
       </div>
 
+      <!-- MODAL GENERAR CONTRATO -->
+      <div id="ow-contract-modal" class="ow-modal-overlay" style="display:none;" onclick="if(event.target===this)document.getElementById('ow-contract-modal').style.display='none'">
+        <div class="ow-modal" style="max-width:560px;max-height:90vh;overflow-y:auto;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+            <div style="width:36px;height:36px;border-radius:8px;background:#f0f5ff;display:flex;align-items:center;justify-content:center;font-size:18px;">📄</div>
+            <div>
+              <h3 style="font-size:16px;font-weight:700;color:#0d1b3e;">Generar contrato</h3>
+              <div style="font-size:11px;color:#8a97b0;">Se descargará un HTML listo para imprimir o enviar por email</div>
+            </div>
+          </div>
+          <div class="config-grid">
+            <div class="form-group">
+              <label class="form-label">Nombre completo / Empresa</label>
+              <input class="form-input" id="ct-name" type="text" placeholder="Ej: Juan García / Solarium Torrelavega">
+            </div>
+            <div class="form-group">
+              <label class="form-label">DNI / CIF</label>
+              <input class="form-input" id="ct-dni" type="text" placeholder="Ej: 12345678A">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input class="form-input" id="ct-email" type="email" placeholder="cliente@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teléfono</label>
+              <input class="form-input" id="ct-phone" type="text" placeholder="Ej: 600 000 000">
+            </div>
+            <div class="form-group" style="grid-column:1/-1;">
+              <label class="form-label">Dirección</label>
+              <input class="form-input" id="ct-address" type="text" placeholder="Calle, nº, ciudad, CP">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Plan contratado</label>
+              <select class="form-select" id="ct-plan" onchange="owContractPlanChange()">
+                <option value="airmate">AIRMATE — Solo agente</option>
+                <option value="start">START — Web + agente</option>
+                <option value="growth">GROWTH — Web + agente avanzado</option>
+                <option value="pro">PRO — Sistema de ventas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Dominio web</label>
+              <input class="form-input" id="ct-domain" type="text" placeholder="Ej: www.minegocio.es">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Setup (pago único)</label>
+              <input class="form-input" id="ct-setup" type="text" placeholder="Ej: 400€">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mensualidad</label>
+              <input class="form-input" id="ct-monthly" type="text" placeholder="Ej: 59€">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nº de contrato</label>
+              <input class="form-input" id="ct-num" type="text" placeholder="Ej: 2026-001">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Fecha del contrato</label>
+              <input class="form-input" id="ct-date" type="date">
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end;">
+            <button class="ow-btn ow-btn-delete" onclick="document.getElementById('ow-contract-modal').style.display='none'">Cancelar</button>
+            <button class="ow-btn ow-btn-edit" style="padding:8px 20px;font-size:13px;background:#2a5cff;" onclick="owGenerateContract()">⬇ Descargar contrato</button>
+          </div>
+        </div>
+      </div>
+
       <!-- MODAL EDITAR CLIENTE WEB -->
       <div id="ow-web-edit-modal" class="ow-modal-overlay" style="display:none;" onclick="if(event.target===this)owCloseWebModal()">
         <div class="ow-modal">
@@ -6872,6 +6940,7 @@ async function renderOwnerDashboard() {
             <td style="padding:10px 16px;">
               <div class="ow-actions">
                 <button class="ow-btn ow-btn-edit" onclick="ownerEditClient('${c.id}','${escHtml(c.name||'')}','${c.plan}',${c.active})">Editar</button>
+                <button class="ow-btn" style="background:#f0f5ff;color:#2a5cff;border:1px solid #c7d9ff;font-size:11px;padding:4px 10px;border-radius:6px;cursor:pointer;" onclick="ownerOpenContractModal('${escHtml(c.name||'')}','${escHtml(c.email||'')}','${c.plan}')">📄 Contrato</button>
                 <button class="ow-btn ow-btn-delete" onclick="ownerDeleteClient('${c.id}','${escHtml(c.name||'?')}')">Eliminar</button>
               </div>
             </td>
@@ -7003,6 +7072,253 @@ async function ownerCreateClient() {
     document.getElementById('ow-new-pass').value = '';
     renderOwnerDashboard();
   } catch(e) { showToast('Error de conexión'); }
+}
+
+/* ── Owner: Generar contrato ── */
+const CONTRACT_PRICES = {
+  airmate: { setup: '—',    monthly: '39,99€', desc: 'Agente IA instalado en web actual · Sin setup · Sin permanencia' },
+  start:   { setup: '250€', monthly: '39€',    desc: 'Web profesional + agente IA · Entrega en 24h · Dominio .es gratis' },
+  growth:  { setup: '400€', monthly: '59€',    desc: 'Web que convierte + agente IA avanzado · 2.000 conv/mes' },
+  pro:     { setup: '800€', monthly: '99€',    desc: 'Sistema de ventas automatizado · 5.000 conv/mes · Soporte prioritario' },
+};
+const CONTRACT_INCLUDES = {
+  airmate: ['Agente IA en tu web actual (instalación en 5 min)','Responde preguntas 24/7 automáticamente','Detecta interés y recomienda servicios','Deriva a WhatsApp cuando el cliente está listo','1.000 conversaciones/mes','Sin permanencia mínima'],
+  start:   ['Web profesional rápida y moderna (24-48h)','SEO básico para aparecer en Google','Hosting + mantenimiento mensual incluido','Dominio .es gratis (primer año)','Agente IA incluido en el mantenimiento','Sin permanencia mínima'],
+  growth:  ['Todo lo incluido en START','Agente comercial IA nivel avanzado','Responde y recomienda servicios 24/7','Deriva a WhatsApp cuando el cliente está listo','2.000 conversaciones/mes','Soporte técnico por email'],
+  pro:     ['Todo lo incluido en GROWTH','Agente con memoria avanzada del cliente','Hace preguntas estratégicas para guiar','Detecta intención de compra con precisión','Cierra ventas de forma autónoma','5.000 conversaciones/mes','Revisión y optimización mensual','Soporte prioritario'],
+};
+
+function ownerOpenContractModal(name, email, plan) {
+  document.getElementById('ct-name').value    = name || '';
+  document.getElementById('ct-email').value   = email || '';
+  document.getElementById('ct-phone').value   = '';
+  document.getElementById('ct-dni').value     = '';
+  document.getElementById('ct-address').value = '';
+  document.getElementById('ct-domain').value  = '';
+  const p = (plan && CONTRACT_PRICES[plan]) ? plan : 'growth';
+  document.getElementById('ct-plan').value    = p;
+  document.getElementById('ct-setup').value   = CONTRACT_PRICES[p].setup;
+  document.getElementById('ct-monthly').value = CONTRACT_PRICES[p].monthly;
+  const today = new Date();
+  document.getElementById('ct-date').value    = today.toISOString().split('T')[0];
+  const n = String(today.getFullYear()) + '-' + String(Math.floor(Math.random()*900)+100);
+  document.getElementById('ct-num').value     = n;
+  document.getElementById('ow-contract-modal').style.display = 'flex';
+}
+
+function owContractPlanChange() {
+  const p = document.getElementById('ct-plan').value;
+  if (CONTRACT_PRICES[p]) {
+    document.getElementById('ct-setup').value   = CONTRACT_PRICES[p].setup;
+    document.getElementById('ct-monthly').value = CONTRACT_PRICES[p].monthly;
+  }
+}
+
+function owGenerateContract() {
+  const name    = document.getElementById('ct-name').value.trim()    || 'Cliente';
+  const dni     = document.getElementById('ct-dni').value.trim()     || '—';
+  const email   = document.getElementById('ct-email').value.trim()   || '—';
+  const phone   = document.getElementById('ct-phone').value.trim()   || '—';
+  const address = document.getElementById('ct-address').value.trim() || '—';
+  const plan    = document.getElementById('ct-plan').value;
+  const domain  = document.getElementById('ct-domain').value.trim()  || '—';
+  const setup   = document.getElementById('ct-setup').value.trim()   || '—';
+  const monthly = document.getElementById('ct-monthly').value.trim() || '—';
+  const num     = document.getElementById('ct-num').value.trim()     || '2026-001';
+  const date    = document.getElementById('ct-date').value;
+  const dateStr = date ? new Date(date).toLocaleDateString('es-ES') : new Date().toLocaleDateString('es-ES');
+  const planLabel = { airmate:'AIRMATE', start:'START', growth:'GROWTH', pro:'PRO' }[plan] || plan.toUpperCase();
+  const planDesc  = CONTRACT_PRICES[plan]?.desc || '';
+  const includes  = (CONTRACT_INCLUDES[plan] || []).map(i => `<div class="inc-item"><div class="inc-check">✓</div><span>${i}</span></div>`).join('');
+  const setupRow  = setup === '—' ? '' : `<div class="service-setup-label">Setup (pago único)</div><div class="service-setup-price">${setup}</div>`;
+
+  const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contrato Airmate — ${name}</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f4f6fa;color:#1a2340;font-size:13px;line-height:1.6;}
+.page{width:794px;min-height:1123px;margin:32px auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,.12);}
+.header{background:linear-gradient(135deg,#0d1b3e 0%,#1a3a6b 60%,#0f4c9c 100%);padding:36px 48px 28px;position:relative;overflow:hidden;}
+.header::after{content:'';position:absolute;bottom:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.04);}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-logo{width:44px;height:44px;background:linear-gradient(135deg,#2a5cff,#6ea0ff);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px;flex-shrink:0;}
+.brand-name{font-size:22px;font-weight:900;color:#fff;letter-spacing:.5px;}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
+.doc-meta{text-align:right;}
+.doc-type{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.doc-number{font-size:13px;font-weight:700;color:rgba(255,255,255,.9);}
+.doc-date{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;}
+.header-title{margin-top:24px;font-size:26px;font-weight:900;color:#fff;letter-spacing:-.3px;}
+.header-subtitle{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px;}
+.parties{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #eef1f8;}
+.party{padding:24px 48px;}
+.party:first-child{border-right:1px solid #eef1f8;}
+.party-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2a5cff;margin-bottom:10px;}
+.party-name{font-size:15px;font-weight:700;color:#0d1b3e;margin-bottom:6px;}
+.party-detail{font-size:11.5px;color:#5a6a85;line-height:1.7;}
+.body{padding:28px 48px;}
+.service-box{background:linear-gradient(135deg,#f0f5ff,#e8f0fe);border:1px solid #c7d9ff;border-radius:10px;padding:20px 24px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;}
+.service-plan{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2a5cff;margin-bottom:4px;}
+.service-name{font-size:18px;font-weight:900;color:#0d1b3e;}
+.service-desc{font-size:11.5px;color:#5a6a85;margin-top:4px;}
+.service-price-block{text-align:right;flex-shrink:0;}
+.service-setup-label{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#8a97b0;margin-bottom:2px;}
+.service-setup-price{font-size:22px;font-weight:900;color:#0d1b3e;}
+.service-monthly{font-size:11px;color:#5a6a85;margin-top:3px;}
+.section{margin-bottom:22px;}
+.section-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2a5cff;padding-bottom:6px;border-bottom:1.5px solid #e8f0fe;margin-bottom:12px;}
+.section p{font-size:12px;color:#3d4f6b;line-height:1.75;margin-bottom:8px;}
+.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:6px;}
+.inc-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#3d4f6b;}
+.inc-check{width:16px;height:16px;border-radius:50%;background:#e0f2fe;color:#0284c7;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0;margin-top:1px;}
+.clause{margin-bottom:14px;}
+.clause-num{font-weight:700;color:#0d1b3e;font-size:12px;}
+.clause p{font-size:12px;color:#4a5a72;line-height:1.75;}
+.notice-box{background:#fffbeb;border:1px solid #fcd34d;border-left:3px solid #f59e0b;border-radius:6px;padding:12px 16px;margin:10px 0 16px;font-size:12px;color:#78350f;line-height:1.7;}
+.notice-box strong{color:#92400e;}
+.signature-section{margin-top:32px;padding-top:24px;border-top:1.5px dashed #d1d9e8;}
+.sig-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#2a5cff;margin-bottom:20px;text-align:center;}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.sig-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8a97b0;margin-bottom:6px;}
+.sig-name-line{font-size:13px;font-weight:600;color:#1a2340;margin-bottom:50px;}
+.sig-line{border-bottom:1.5px solid #c4cdd8;margin-bottom:6px;}
+.sig-foot{font-size:10px;color:#8a97b0;}
+.sig-date-line{font-size:12px;color:#5a6a85;margin-top:12px;}
+.footer{background:#f8faff;border-top:1px solid #eef1f8;padding:14px 48px;display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
+.footer-left{font-size:10px;color:#8a97b0;}
+.footer-right{font-size:10px;color:#8a97b0;text-align:right;}
+@media print{body{background:#fff;}.page{width:100%;margin:0;box-shadow:none;border-radius:0;}@page{margin:0;size:A4;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-logo">A</div>
+        <div>
+          <div class="brand-name">Airmate</div>
+          <div class="brand-tagline">Agentes IA · Webs profesionales</div>
+        </div>
+      </div>
+      <div class="doc-meta">
+        <div class="doc-type">Contrato de servicios</div>
+        <div class="doc-number">Nº ${num}</div>
+        <div class="doc-date">Fecha: ${dateStr}</div>
+      </div>
+    </div>
+    <div class="header-title">Acuerdo de Prestación de Servicios</div>
+    <div class="header-subtitle">Servicio de agente IA y/o desarrollo web profesional</div>
+  </div>
+  <div class="parties">
+    <div class="party">
+      <div class="party-label">Prestador del servicio</div>
+      <div class="party-name">Airmate</div>
+      <div class="party-detail">airmate.es<br>airmateai@gmail.com<br>España</div>
+    </div>
+    <div class="party">
+      <div class="party-label">Cliente</div>
+      <div class="party-name">${name}</div>
+      <div class="party-detail">${dni}<br>${address}<br>${email} · ${phone}</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="service-box">
+      <div>
+        <div class="service-plan">Plan contratado</div>
+        <div class="service-name">${planLabel}</div>
+        <div class="service-desc">${planDesc}</div>
+      </div>
+      <div class="service-price-block">
+        ${setupRow}
+        <div class="service-monthly">${setup !== '—' ? '+ ' : ''}${monthly}/mes${setup !== '—' ? ' desde el mes 2' : ''}</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">1. Servicios incluidos</div>
+      <p>El presente contrato incluye la prestación de los siguientes servicios por parte de Airmate:</p>
+      <div class="includes-grid">${includes}</div>
+    </div>
+    <div class="section">
+      <div class="section-title">2. Plazos y entrega</div>
+      <div class="clause"><p><span class="clause-num">2.1</span> Una vez confirmado el pago del setup, Airmate se compromete a entregar la web funcional en un plazo máximo de <strong>24-48 horas hábiles</strong>, salvo que el cliente no haya proporcionado la información necesaria.</p></div>
+      <div class="clause"><p><span class="clause-num">2.2</span> El agente IA quedará activo en el panel del cliente en el momento de la entrega de la web. El cliente podrá configurar el comportamiento del agente desde su panel en <strong>airmate.es</strong>.</p></div>
+      <div class="clause"><p><span class="clause-num">2.3</span> Tras la entrega, Airmate enviará al cliente el enlace de pago de la mensualidad recurrente. La suscripción mensual es necesaria para mantener el servicio activo.</p></div>
+    </div>
+    <div class="section">
+      <div class="section-title">3. Dominio web</div>
+      <div class="notice-box"><strong>Titularidad del dominio:</strong> El dominio contratado es registrado y gestionado por Airmate durante la vigencia del contrato. Si el cliente desea transferir el dominio a su titularidad, podrá hacerlo abonando una tarifa de transferencia de <strong>49€</strong>. En caso de cancelación sin solicitud de transferencia, el dominio podrá ser liberado pasados 30 días.</div>
+      <div class="clause"><p><span class="clause-num">3.1</span> El dominio asignado al cliente es: <strong>${domain}</strong></p></div>
+    </div>
+    <div class="section">
+      <div class="section-title">4. Facturación y cancelación</div>
+      <div class="clause"><p><span class="clause-num">4.1</span> El primer mes incluye el cargo de setup (pago único) más la primera mensualidad. A partir del segundo mes, únicamente se factura la mensualidad recurrente.</p></div>
+      <div class="clause"><p><span class="clause-num">4.2</span> No existe permanencia mínima. El cliente puede cancelar en cualquier momento desde el portal de gestión en <strong>billing.stripe.com</strong> o contactando con Airmate. La cancelación es efectiva al finalizar el período ya abonado.</p></div>
+      <div class="clause"><p><span class="clause-num">4.3</span> En caso de impago, Airmate se reserva el derecho de suspender el servicio con un aviso previo de 48 horas.</p></div>
+    </div>
+    <div class="section">
+      <div class="section-title">5. Protección de datos y privacidad</div>
+      <div class="clause"><p><span class="clause-num">5.1</span> Airmate trata los datos del cliente exclusivamente para la prestación del servicio contratado, de conformidad con el <strong>RGPD</strong> y la Ley Orgánica 3/2018 (LOPDGDD).</p></div>
+      <div class="clause"><p><span class="clause-num">5.2</span> Los datos del cliente se almacenan de forma segura con cifrado en tránsito y en reposo. Airmate no cede ni vende datos a terceros bajo ningún concepto.</p></div>
+      <div class="clause"><p><span class="clause-num">5.3</span> Las conversaciones gestionadas por el agente IA son propiedad del cliente. Airmate puede utilizar datos anonimizados y agregados para mejorar el servicio, sin identificar en ningún caso a personas o negocios concretos.</p></div>
+      <div class="clause"><p><span class="clause-num">5.4</span> El cliente puede ejercer sus derechos de acceso, rectificación, supresión y portabilidad escribiendo a <strong>airmateai@gmail.com</strong>.</p></div>
+    </div>
+    <div class="section">
+      <div class="section-title">6. Propiedad intelectual y dominio</div>
+      <div class="clause"><p><span class="clause-num">6.1</span> El diseño, código y estructura de la web son propiedad de Airmate mientras el contrato esté vigente. Tras 6 meses de servicio activo, el cliente podrá solicitar la cesión del código fuente.</p></div>
+      <div class="clause"><p><span class="clause-num">6.2</span> Los textos, imágenes y contenidos aportados por el cliente son de su exclusiva propiedad. El cliente garantiza tener los derechos necesarios sobre el material que facilita.</p></div>
+    </div>
+    <div class="section">
+      <div class="section-title">7. Limitación de responsabilidad</div>
+      <div class="clause"><p><span class="clause-num">7.1</span> Airmate garantiza una disponibilidad del servicio del <strong>99% mensual</strong>.</p></div>
+      <div class="clause"><p><span class="clause-num">7.2</span> Airmate no se hace responsable de los resultados comerciales derivados del uso del agente IA, ni de interrupciones causadas por terceros.</p></div>
+    </div>
+    <div class="section">
+      <div class="section-title">8. Legislación aplicable</div>
+      <p>Este contrato se rige por la legislación española. Cualquier controversia se someterá a los Juzgados y Tribunales del domicilio del prestador del servicio.</p>
+    </div>
+    <div class="signature-section">
+      <div class="sig-title">Conformidad y firma de las partes</div>
+      <p style="text-align:center;font-size:12px;color:#5a6a85;margin-bottom:24px;">Ambas partes declaran haber leído y aceptado las condiciones del presente contrato.</p>
+      <div class="sig-grid">
+        <div class="sig-block">
+          <div class="sig-label">Airmate (prestador)</div>
+          <div class="sig-name-line">Airmate · airmate.es</div>
+          <div class="sig-line"></div>
+          <div class="sig-foot">Firma y sello</div>
+          <div class="sig-date-line">Fecha: ____________________</div>
+        </div>
+        <div class="sig-block">
+          <div class="sig-label">Cliente</div>
+          <div class="sig-name-line">${name} · ${dni}</div>
+          <div class="sig-line"></div>
+          <div class="sig-foot">Firma y DNI/CIF</div>
+          <div class="sig-date-line">Fecha: ____________________</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-left">airmate.es · airmateai@gmail.com<br>Documento generado el ${dateStr}</div>
+    <div class="footer-right">Contrato nº ${num}<br><span style="color:#2a5cff;font-weight:600;">Confidencial</span></div>
+  </div>
+</div>
+</body>
+</html>`;
+
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `contrato_airmate_${name.replace(/\s+/g,'_').toLowerCase()}_${num}.html`;
+  a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('ow-contract-modal').style.display = 'none';
+  showToast('Contrato generado · Ábrelo en el navegador y usa Cmd+P para imprimir o guardar PDF');
 }
 
 /* ── Owner: acciones sobre clientes ── */
