@@ -7522,9 +7522,9 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f4f6fa;color:#1a2
 .sig-line{border-bottom:1.5px solid #c4cdd8;margin-bottom:6px;}
 .sig-foot{font-size:10px;color:#8a97b0;}
 .sig-date-line{font-size:12px;color:#5a6a85;margin-top:12px;}
-.sig-stamp-wrap{position:relative;height:90px;margin-bottom:4px;display:flex;align-items:flex-end;gap:16px;}
-.sig-stamp{position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.sig-autograph{font-family:"Segoe Script","Brush Script MT","Comic Sans MS",cursive;font-size:28px;color:#1a3a9e;opacity:0.82;line-height:1;transform:rotate(-4deg);white-space:nowrap;padding-bottom:4px;}
+.sig-stamp-wrap{position:relative;height:120px;margin-bottom:4px;display:flex;align-items:flex-end;gap:20px;}
+.sig-stamp{position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;transform:rotate(-8deg);opacity:0.82;filter:drop-shadow(0 1px 2px rgba(26,58,158,0.18));}
+.sig-autograph{display:flex;align-items:flex-end;padding-bottom:6px;}
 .footer{background:#f8faff;border-top:1px solid #eef1f8;padding:14px 48px;display:flex;justify-content:space-between;align-items:center;margin-top:32px;}
 .footer-left{font-size:10px;color:#8a97b0;}
 .footer-right{font-size:10px;color:#8a97b0;text-align:right;}
@@ -7625,31 +7625,47 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f4f6fa;color:#1a2
         <div class="sig-block">
           <div class="sig-label">Airmate (prestador)</div>
           <div class="sig-stamp-wrap">
-            <div class="sig-autograph">Airmate</div>
+            <!-- Firma caligráfica SVG -->
+            <div class="sig-autograph">
+              <svg width="140" height="70" viewBox="0 0 140 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Trazo principal firma estilo caligrafía -->
+                <path d="M8,48 C12,28 18,18 26,22 C32,25 30,38 28,42 C26,46 30,44 36,36 C40,30 44,22 50,24 C56,26 52,40 54,42 C56,44 60,38 66,32 C70,28 74,24 78,28 C82,32 80,42 82,44 C84,46 88,40 94,34 C98,30 102,26 106,30 C110,34 108,44 110,46 C112,46 116,42 122,36 C126,32 130,30 134,34" stroke="#1a3a9e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <!-- Subrayado elegante -->
+                <path d="M6,58 C30,54 80,52 136,56" stroke="#1a3a9e" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+                <!-- Punto final decorativo -->
+                <circle cx="134" cy="34" r="2" fill="#1a3a9e" opacity="0.7"/>
+              </svg>
+            </div>
+            <!-- Sello oficial -->
             <div class="sig-stamp">
-              <!-- SELLO AIRMATE SVG -->
-              <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.78;">
-                <!-- Anillo exterior dentado -->
-                <circle cx="44" cy="44" r="41" stroke="#1a3a9e" stroke-width="2.2" fill="none" stroke-dasharray="4.5 2.5"/>
+              <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Fondo muy sutil -->
+                <circle cx="50" cy="50" r="46" fill="rgba(26,58,158,0.03)"/>
+                <!-- Anillo exterior con efecto tinta -->
+                <circle cx="50" cy="50" r="46" stroke="#1a3a9e" stroke-width="2.8" fill="none" opacity="0.9"/>
+                <!-- Anillo dentado decorativo -->
+                <circle cx="50" cy="50" r="42" stroke="#1a3a9e" stroke-width="1" fill="none" stroke-dasharray="3 3" opacity="0.6"/>
                 <!-- Anillo interior -->
-                <circle cx="44" cy="44" r="33" stroke="#1a3a9e" stroke-width="1.4" fill="rgba(26,58,158,0.04)"/>
-                <!-- Círculo central relleno -->
-                <circle cx="44" cy="44" r="24" fill="rgba(26,58,158,0.06)" stroke="#1a3a9e" stroke-width="1.2"/>
-                <!-- Letra A central -->
-                <text x="44" y="52" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="800" fill="#1a3a9e" letter-spacing="-1">A</text>
-                <!-- Texto circular superior: AIRMATE -->
-                <path id="arc-top" d="M 12,44 A 32,32 0 0,1 76,44" fill="none"/>
-                <text font-family="Arial,Helvetica,sans-serif" font-size="7.5" font-weight="700" fill="#1a3a9e" letter-spacing="3">
-                  <textPath href="#arc-top" startOffset="12%">AIRMATE · AGENTES IA</textPath>
+                <circle cx="50" cy="50" r="34" stroke="#1a3a9e" stroke-width="1.6" fill="rgba(26,58,158,0.05)" opacity="0.85"/>
+                <!-- Logo A estilizado central -->
+                <text x="50" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="30" font-weight="900" fill="#1a3a9e" opacity="0.9" letter-spacing="-2">A</text>
+                <!-- Líneas decorativas bajo la A -->
+                <line x1="34" y1="63" x2="66" y2="63" stroke="#1a3a9e" stroke-width="0.8" opacity="0.4"/>
+                <!-- Texto arco superior AIRMATE -->
+                <path id="top-arc" d="M 10,50 A 40,40 0 0,1 90,50" fill="none"/>
+                <text font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="800" fill="#1a3a9e" letter-spacing="4" opacity="0.9">
+                  <textPath href="#top-arc" startOffset="8%">A I R M A T E</textPath>
                 </text>
-                <!-- Texto circular inferior: airmate.es -->
-                <path id="arc-bot" d="M 76,44 A 32,32 0 0,1 12,44" fill="none"/>
-                <text font-family="Arial,Helvetica,sans-serif" font-size="7" font-weight="600" fill="#1a3a9e" letter-spacing="2.5">
-                  <textPath href="#arc-bot" startOffset="14%">airmate.es · España</textPath>
+                <!-- Texto arco inferior -->
+                <path id="bot-arc" d="M 90,50 A 40,40 0 0,1 10,50" fill="none"/>
+                <text font-family="Arial,Helvetica,sans-serif" font-size="7" font-weight="600" fill="#1a3a9e" letter-spacing="2" opacity="0.75">
+                  <textPath href="#bot-arc" startOffset="10%">airmate.es · España</textPath>
                 </text>
-                <!-- Estrellitas decorativas -->
-                <text x="44" y="26" text-anchor="middle" font-size="5" fill="#1a3a9e">★</text>
-                <text x="44" y="68" text-anchor="middle" font-size="5" fill="#1a3a9e">★</text>
+                <!-- Estrellas decorativas -->
+                <text x="50" y="18" text-anchor="middle" font-size="6" fill="#1a3a9e" opacity="0.7">✦</text>
+                <text x="50" y="87" text-anchor="middle" font-size="6" fill="#1a3a9e" opacity="0.7">✦</text>
+                <text x="12" y="52" text-anchor="middle" font-size="5" fill="#1a3a9e" opacity="0.5">·</text>
+                <text x="88" y="52" text-anchor="middle" font-size="5" fill="#1a3a9e" opacity="0.5">·</text>
               </svg>
             </div>
           </div>
