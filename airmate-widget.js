@@ -250,7 +250,7 @@
     /* Cargar citas existentes de ese día */
     const dayStart = dStr + 'T00:00:00';
     const dayEnd   = dStr + 'T23:59:59';
-    const { data: existing } = await sbFetch(`appointments?biz_slug=eq.${SLUG}&starts_at=gte.${dayStart}&starts_at=lte.${dayEnd}&status=neq.cancelled&select=starts_at`);
+    const { data: existing } = await sbFetch(`appointments?business_slug=eq.${SLUG}&starts_at=gte.${dayStart}&starts_at=lte.${dayEnd}&status=neq.cancelled&select=starts_at`);
 
     /* Horas disponibles 9-19 cada 30 min */
     const slots = [];
@@ -308,7 +308,7 @@
       const endsAt   = new Date(new Date(startsAt).getTime() + (svc?.duration||60)*60000).toISOString();
 
       const body = {
-        biz_slug:      SLUG,
+        business_slug: SLUG,
         client_name:   name,
         client_phone:  phone,
         client_email:  email || null,
@@ -331,7 +331,7 @@
         st.history.push({ role:'assistant', content:'Reserva confirmada correctamente.' });
         /* Guardar lead asociado */
         sbInsert('leads', {
-          biz_slug:     SLUG, name, phone, email: email||null,
+          business_slug: SLUG, name, phone, email: email||null,
           interest:     svc?.name||'Reserva', intent: 'new',
           temperature:  'warm', status: 'new',
           created_at:   new Date().toISOString(), updated_at: new Date().toISOString()
@@ -362,7 +362,7 @@
       if (!name || !phone) { alert('Por favor rellena nombre y teléfono.'); return; }
       card.innerHTML = '<div class="am-card" style="padding:16px;color:#8a97b0;">Guardando…</div>';
       await sbInsert('leads', {
-        biz_slug: SLUG, name, phone, interest: interest||'Consulta general',
+        business_slug: SLUG, name, phone, interest: interest||'Consulta general',
         intent: 'new', temperature: 'warm', status: 'new',
         created_at: new Date().toISOString(), updated_at: new Date().toISOString()
       });
