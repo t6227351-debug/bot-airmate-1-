@@ -293,7 +293,7 @@
       ${svc?`<div style="font-size:12px;color:#6b7d96;margin-bottom:10px;">📅 ${svc.name} · ${st.selDate} a las ${st.selTime}</div>`:''}
       <input class="am-inp" id="am-bk-name"  type="text"  placeholder="Nombre completo" />
       <input class="am-inp" id="am-bk-phone" type="tel"   placeholder="Teléfono" />
-      <input class="am-inp" id="am-bk-email" type="email" placeholder="Email (opcional)" />
+      <input class="am-inp" id="am-bk-email" type="email" placeholder="Email" />
       <button class="am-btn-g" onclick="window._amConfirmBooking()">✅ Confirmar reserva</button>
     </div>`;
     msgs().appendChild(card); scrollBot();
@@ -302,7 +302,7 @@
       const name  = document.getElementById('am-bk-name')?.value.trim();
       const phone = document.getElementById('am-bk-phone')?.value.trim();
       const email = document.getElementById('am-bk-email')?.value.trim();
-      if (!name || !phone) { alert('Por favor rellena nombre y teléfono.'); return; }
+      if (!name || !phone || !email) { alert('Por favor rellena nombre, teléfono y email.'); return; }
 
       card.innerHTML = '<div class="am-card" style="text-align:center;padding:20px;color:#8a97b0;">Guardando reserva…</div>';
 
