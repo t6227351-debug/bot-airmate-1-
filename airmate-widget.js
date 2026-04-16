@@ -383,10 +383,11 @@
       if (!window.emailjs) {
         const s = document.createElement('script');
         s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-        await new Promise(r => { s.onload = r; document.head.appendChild(s); });
+        await new Promise((res, rej) => { s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+        await new Promise(r => setTimeout(r, 300));
       }
       const fechaFmt = new Date(date + 'T' + time).toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-      await window.emailjs.send(EJ_SVC, EJ_TPL, {
+      const params = {
         cliente_nombre:   name,
         cliente_email:    email,
         cliente_telefono: phone || '—',
@@ -397,8 +398,11 @@
         fecha:            fechaFmt,
         hora:             time,
         reply_to:         email,
-      }, EJ_KEY);
-    } catch(e) { console.warn('[Airmate] EmailJS error:', e); }
+      };
+      console.log('[Airmate] Enviando email a', email, params);
+      const result = await window.emailjs.send(EJ_SVC, EJ_TPL, params, EJ_KEY);
+      console.log('[Airmate] EmailJS result:', result);
+    } catch(e) { console.error('[Airmate] EmailJS error:', e); }
   }
 
   /* ─── SUPABASE HELPERS ──────────────────────────────────────────── */
