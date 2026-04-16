@@ -21,6 +21,9 @@
   const PROXY    = 'https://bot-airmate-1.vercel.app/api/chat';
   const SB_URL   = 'https://vjofxmfwdybktpwiuanc.supabase.co';
   const SB_KEY   = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZqb2Z4bWZ3ZHlia3Rwd2l1YW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NzU5NDYsImV4cCI6MjA5MDA1MTk0Nn0.ixU-33c0FEkO7F5xjWb3YHkvj_pQuR0gsJETrGA8ZTE';
+  const EJ_KEY   = 'i4iBVVP-BkUOOwBE9';
+  const EJ_SVC   = 'service_npmjvvf';
+  const EJ_TPL   = 'template_qnip0mc';
   const COLOR2   = darken(COLOR);
 
   /* ─── ESTADO ────────────────────────────────────────────────────── */
@@ -328,6 +331,8 @@
       if (ok) {
         addBot(`✅ ¡Reserva confirmada, ${esc(name)}!\n\n📅 ${svc?.name||'Servicio'}\n📆 ${st.selDate} a las ${st.selTime}\n\nTe esperamos. Si necesitas cambiar algo, contáctanos.`);
         st.history.push({ role:'assistant', content:'Reserva confirmada correctamente.' });
+        /* Email de confirmación al cliente */
+        if (email) sendConfirmEmail({ name, email, phone, svc, date: st.selDate, time: st.selTime });
         /* Guardar lead asociado */
         sbInsert('leads', {
           business_slug: SLUG, name, phone, email: email||null,
@@ -370,6 +375,30 @@
       addBot(`¡Perfecto, ${esc(name)}! Hemos guardado tus datos y te contactaremos pronto. ${WA?`Si prefieres algo más inmediato, escríbenos por WhatsApp 💬`:''}` );
       st.history.push({ role:'assistant', content:'Datos de contacto guardados.' });
     };
+  }
+
+  /* ─── EMAIL CONFIRMACIÓN ───────────────────────────────────────── */
+  async function sendConfirmEmail({ name, email, phone, svc, date, time }) {
+    try {
+      if (!window.emailjs) {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+        await new Promise(r => { s.onload = r; document.head.appendChild(s); });
+      }
+      const fechaFmt = new Date(date + 'T' + time).toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+      await window.emailjs.send(EJ_SVC, EJ_TPL, {
+        cliente_nombre:   name,
+        cliente_email:    email,
+        cliente_telefono: phone || '—',
+        negocio_nombre:   BOT_NAME,
+        servicio:         svc?.name || 'Servicio',
+        duracion:         (svc?.duration || 60) + ' min',
+        precio:           svc?.price || '—',
+        fecha:            fechaFmt,
+        hora:             time,
+        reply_to:         email,
+      }, EJ_KEY);
+    } catch(e) { console.warn('[Airmate] EmailJS error:', e); }
   }
 
   /* ─── SUPABASE HELPERS ──────────────────────────────────────────── */
