@@ -308,18 +308,17 @@
       const endsAt   = new Date(new Date(startsAt).getTime() + (svc?.duration||60)*60000).toISOString();
 
       const body = {
-        business_slug: SLUG,
-        client_name:   name,
-        client_phone:  phone,
-        client_email:  email || null,
-        service_name:  svc?.name || 'Servicio',
-        service:       svc?.name || 'Servicio',
-        starts_at:     startsAt,
-        ends_at:       endsAt,
+        business_slug:    SLUG,
+        client_name:      name,
+        client_phone:     phone,
+        client_email:     email || null,
+        service:          svc?.name || 'Servicio',
+        starts_at:        startsAt,
+        ends_at:          endsAt,
         duration_minutes: svc?.duration || 60,
-        status:        'pending',
-        created_at:    new Date().toISOString(),
-        updated_at:    new Date().toISOString()
+        status:           'pending',
+        notes:            'Web · ' + (EMOJI || ''),
+        created_at:       new Date().toISOString()
       };
 
       const ok = await sbInsert('appointments', body);
@@ -332,9 +331,9 @@
         /* Guardar lead asociado */
         sbInsert('leads', {
           business_slug: SLUG, name, phone, email: email||null,
-          interest:     svc?.name||'Reserva', intent: 'new',
-          temperature:  'warm', status: 'new',
-          created_at:   new Date().toISOString(), updated_at: new Date().toISOString()
+          interest:      svc?.name||'Reserva', intent_level: 'new',
+          status:        'new', source: 'web',
+          created_at:    new Date().toISOString()
         });
       } else {
         addBot('Ha ocurrido un error al guardar la reserva. Por favor escríbenos por WhatsApp y lo gestionamos enseguida.');
@@ -363,8 +362,8 @@
       card.innerHTML = '<div class="am-card" style="padding:16px;color:#8a97b0;">Guardando…</div>';
       await sbInsert('leads', {
         business_slug: SLUG, name, phone, interest: interest||'Consulta general',
-        intent: 'new', temperature: 'warm', status: 'new',
-        created_at: new Date().toISOString(), updated_at: new Date().toISOString()
+        intent_level: 'new', status: 'new', source: 'web',
+        created_at: new Date().toISOString()
       });
       card.remove();
       st.flow = null;
