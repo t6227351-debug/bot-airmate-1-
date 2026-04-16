@@ -389,8 +389,12 @@
         headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
         body: JSON.stringify(body)
       });
+      if (!r.ok) {
+        const txt = await r.text();
+        console.error('[Airmate] sbInsert error', r.status, txt, JSON.stringify(body));
+      }
       return r.ok;
-    } catch { return false; }
+    } catch(e) { console.error('[Airmate] sbInsert exception', e); return false; }
   }
 
   /* ─── SYSTEM PROMPT ─────────────────────────────────────────────── */
